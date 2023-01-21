@@ -9,8 +9,9 @@ void WrenchDistribution<PatchID>::Configuration::load(const mc_rtc::Configuratio
 }
 
 template<class PatchID>
-WrenchDistribution<PatchID>::WrenchDistribution(const std::unordered_map<PatchID, std::shared_ptr<Contact>> & contactList,
-                                       const mc_rtc::Configuration & mcRtcConfig)
+WrenchDistribution<PatchID>::WrenchDistribution(
+    const std::unordered_map<PatchID, std::shared_ptr<Contact>> & contactList,
+    const mc_rtc::Configuration & mcRtcConfig)
 : contactList_(contactList)
 {
   config_.load(mcRtcConfig);
@@ -31,7 +32,8 @@ WrenchDistribution<PatchID>::WrenchDistribution(const std::unordered_map<PatchID
 }
 
 template<class PatchID>
-sva::ForceVecd WrenchDistribution<PatchID>::run(const sva::ForceVecd & desiredTotalWrench, const Eigen::Vector3d & momentOrigin)
+sva::ForceVecd WrenchDistribution<PatchID>::run(const sva::ForceVecd & desiredTotalWrench,
+                                                const Eigen::Vector3d & momentOrigin)
 {
   desiredTotalWrench_ = desiredTotalWrench;
 
@@ -83,7 +85,8 @@ sva::ForceVecd WrenchDistribution<PatchID>::run(const sva::ForceVecd & desiredTo
 }
 
 template<class PatchID>
-std::unordered_map<PatchID, sva::ForceVecd> WrenchDistribution<PatchID>::calcWrenchList(const Eigen::Vector3d & momentOrigin) const
+std::unordered_map<PatchID, sva::ForceVecd> WrenchDistribution<PatchID>::calcWrenchList(
+    const Eigen::Vector3d & momentOrigin) const
 {
   std::unordered_map<PatchID, sva::ForceVecd> wrenchList;
   int wrenchRatioIdx = 0;
@@ -98,5 +101,4 @@ std::unordered_map<PatchID, sva::ForceVecd> WrenchDistribution<PatchID>::calcWre
   }
   return wrenchList;
 }
-}
-
+} // namespace WD
