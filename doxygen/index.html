@@ -73,7 +73,22 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Wrench distribution for robot control</p>
-<p><a href="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-standalone.yaml"><object type="image/svg+xml" data="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-standalone.yaml/badge.svg" style="pointer-events: none;">CI-standalone</object></a> <a href="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-catkin.yaml"><object type="image/svg+xml" data="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-catkin.yaml/badge.svg" style="pointer-events: none;">CI-catkin</object></a> <a href="https://isri-aist.github.io/WrenchDistribution/"><img src="https://img.shields.io/badge/doxygen-online-brightgreen?logo=read-the-docs&amp;style=flat" alt="Documentation" class="inline"/></a> </p>
+<p><a href="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-standalone.yaml"><object type="image/svg+xml" data="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-standalone.yaml/badge.svg" style="pointer-events: none;">CI-standalone</object></a> <a href="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-catkin.yaml"><object type="image/svg+xml" data="https://github.com/isri-aist/WrenchDistribution/actions/workflows/ci-catkin.yaml/badge.svg" style="pointer-events: none;">CI-catkin</object></a> <a href="https://isri-aist.github.io/WrenchDistribution/"><img src="https://img.shields.io/badge/doxygen-online-brightgreen?logo=read-the-docs&amp;style=flat" alt="Documentation" class="inline"/></a></p>
+<h1>Install</h1>
+<h2>Requirements</h2>
+<ul>
+<li>Compiler supporting C++17</li>
+<li>Tested on <code>Ubuntu 20.04 / ROS Noetic</code> and <code>Ubuntu 18.04 / ROS Melodic</code></li>
+</ul>
+<h2>Dependencies</h2>
+<p>This package depends on</p><ul>
+<li><a href="https://jrl-umi3218.github.io/mc_rtc">mc_rtc</a></li>
+<li><a href="https://github.com/isri-aist/QpSolverCollection">QpSolverCollection</a></li>
+</ul>
+<h1>Technical details</h1>
+<p>Wrench distribution is a common method in robot control that, given a resultant wrench, calculates the equivalent contact wrench at the contact patches. For example, section III.B of the following paper describes the formulas for wrench distribution.</p><ul>
+<li>M Murooka, et al. Centroidal trajectory generation and stabilization based on preview control for humanoid multi-contact motion. RA-Letters, 2022. </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
