@@ -31,6 +31,10 @@ jobs:
       matrix:
         os: [ubuntu-20.04, ubuntu-18.04]
         build-type: [Debug, RelWithDebInfo]
+        mc-rtc-version: [head, stable]
+        exclude:
+          - build-type: Debug
+            mc-rtc-version: stable
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set ROS version
@@ -55,7 +59,7 @@ jobs:
         run: |
           set -e
           set -x
-          curl -1sLf 'https://dl.cloudsmith.io/public/mc-rtc/head/setup.deb.sh' | sudo -E bash
+          curl -1sLf 'https://dl.cloudsmith.io/public/mc-rtc/${{ matrix.mc-rtc-version }}/setup.deb.sh' | sudo -E bash
           sudo apt-get install -qq libmc-rtc-dev libeigen-qld-dev
       - name: Setup catkin workspace
         run: |
@@ -109,7 +113,7 @@ jobs:
           catkin_test_results --verbose --all build
       - name: Upload documentation
         # Only run for one configuration and on origin master branch
-        if: matrix.os == 'ubuntu-20.04' && matrix.build-type == 'RelWithDebInfo' && github.repository_owner == 'isri-aist' && github.ref == 'refs/heads/master'
+        if: matrix.os == 'ubuntu-20.04' && matrix.build-type == 'RelWithDebInfo' && matrix.mc-rtc-version == 'head' && github.repository_owner == 'isri-aist' && github.ref == 'refs/heads/master'
         run: |
           set -e
           set -x
