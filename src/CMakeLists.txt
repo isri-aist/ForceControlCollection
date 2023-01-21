@@ -1,13 +1,9 @@
 add_library(WrenchDistribution
   Contact.cpp
   )
+target_link_libraries(WrenchDistribution PUBLIC mc_rtc::mc_rtc_utils)
 if(DEFINED CATKIN_DEVEL_PREFIX)
-  target_include_directories(WrenchDistribution PUBLIC
-    ${catkin_INCLUDE_DIRS}
-  )
-  target_link_libraries(WrenchDistribution PUBLIC
-    ${catkin_LIBRARIES}
-  )
+  target_link_libraries(WrenchDistribution PUBLIC ${catkin_LIBRARIES})
 else()
   target_link_libraries(WrenchDistribution PUBLIC qp_solver_collection::QpSolverCollection)
 endif()
