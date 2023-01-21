@@ -18,7 +18,7 @@ project(wrench_distribution LANGUAGES CXX)
 add_project_dependency(mc_rtc REQUIRED)
 
 if(DEFINED CATKIN_DEVEL_PREFIX)
-  set(DOXYGEN_HTML_OUTPUT doc/html)
+  set(DOXYGEN_HTML_OUTPUT html)
   find_package(catkin REQUIRED COMPONENTS
     roscpp
     qp_solver_collection
