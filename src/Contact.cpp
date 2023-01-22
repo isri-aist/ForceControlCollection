@@ -1,7 +1,7 @@
 #include <mc_rtc/constants.h>
 #include <mc_rtc/logging.h>
 
-#include <WrenchDistribution/Contact.h>
+#include <ForceControlCollection/Contact.h>
 
 using namespace WD;
 

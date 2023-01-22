@@ -1,13 +1,13 @@
 <package format="2">
-  <name>wrench_distribution</name>
+  <name>force_control_collection</name>
   <version>0.1.0</version>
   <description>
-    Wrench distribution for robot control
+    Force control functions for robot control
   </description>
   <maintainer email="m-murooka@aist.go.jp">Masaki Murooka</maintainer>
   <license>BSD</license>
 
-  <url>http://ros.org/wiki/wrench_distribution</url>
+  <url>http://ros.org/wiki/force_control_collection</url>
   <author>Masaki Murooka</author>
 
   <buildtool_depend>catkin</buildtool_depend>

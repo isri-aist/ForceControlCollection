@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
 
-set(PROJECT_NAME wrench_distribution)
+set(PROJECT_NAME force_control_collection)
 set(PROJECT_GENERATED_HEADERS_SKIP_DEPRECATED ON)
 set(PROJECT_GENERATED_HEADERS_SKIP_CONFIG ON)
 set(PROJECT_GENERATED_HEADERS_SKIP_WARNING ON)
-set(PROJECT_URL https://github.com/isri-aist/WrenchDistribution)
+set(PROJECT_URL https://github.com/isri-aist/ForceControlCollection)
 set(PROJECT_DESCRIPTION "")
 set(CMAKE_CXX_STANDARD 17)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
@@ -12,7 +12,7 @@ set(CXX_DISABLE_WERROR ON)
 option(INSTALL_DOCUMENTATION "Generate and install the documentation" OFF)
 
 include(cmake/base.cmake)
-project(wrench_distribution LANGUAGES CXX)
+project(force_control_collection LANGUAGES CXX)
 
 # mc_rtc
 add_project_dependency(mc_rtc REQUIRED)
@@ -34,7 +34,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
     qp_solver_collection
     DEPENDS EIGEN3
     INCLUDE_DIRS include
-    LIBRARIES WrenchDistribution
+    LIBRARIES ForceControlCollection
   )
 
   include_directories(include ${catkin_INCLUDE_DIRS})

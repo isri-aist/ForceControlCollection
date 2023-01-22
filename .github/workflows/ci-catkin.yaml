@@ -1,4 +1,4 @@
-name: CI of WrenchDistribution (catkin)
+name: CI of ForceControlCollection (catkin)
 
 on:
   push:
@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: recursive
-          path: catkin_ws/src/WrenchDistribution
+          path: catkin_ws/src/ForceControlCollection
       - name: Checkout QpSolverCollection
         uses: actions/checkout@v2
         with:
@@ -109,7 +109,7 @@ jobs:
           set +x
           . devel/setup.bash
           set -x
-          catkin build --limit-status-rate 0.1 --catkin-make-args run_tests -- wrench_distribution --no-deps
+          catkin build --limit-status-rate 0.1 --catkin-make-args run_tests -- force_control_collection --no-deps
           catkin_test_results --verbose --all build
       - name: Upload documentation
         # Only run for one configuration and on origin master branch
@@ -117,14 +117,14 @@ jobs:
         run: |
           set -e
           set -x
-          cd ${GITHUB_WORKSPACE}/catkin_ws/src/WrenchDistribution
+          cd ${GITHUB_WORKSPACE}/catkin_ws/src/ForceControlCollection
           git config --global user.name "Masaki Murooka"
           git config --global user.email "m-murooka@aist.go.jp"
-          git remote set-url origin "https://mmurooka:${{ secrets.CI_TOKEN }}@github.com/isri-aist/WrenchDistribution"
+          git remote set-url origin "https://mmurooka:${{ secrets.CI_TOKEN }}@github.com/isri-aist/ForceControlCollection"
           git fetch --depth=1 origin gh-pages:gh-pages
           git checkout --quiet gh-pages
           rm -rf doxygen/ cmake/
-          cp -r ${GITHUB_WORKSPACE}/catkin_ws/build/wrench_distribution/doc/html/ doxygen
+          cp -r ${GITHUB_WORKSPACE}/catkin_ws/build/force_control_collection/doc/html/ doxygen
           git add doxygen
           git_status=`git status -s`
           if test -n "$git_status"; then

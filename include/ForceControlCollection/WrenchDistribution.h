@@ -2,7 +2,7 @@
 
 #include <qp_solver_collection/QpSolverCollection.h>
 
-#include <WrenchDistribution/Contact.h>
+#include <ForceControlCollection/Contact.h>
 
 namespace WD
 {
@@ -87,4 +87,4 @@ protected:
 };
 } // namespace WD
 
-#include <WrenchDistribution/WrenchDistribution.hpp>
+#include <ForceControlCollection/WrenchDistribution.hpp>

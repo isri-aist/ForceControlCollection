@@ -1,4 +1,4 @@
-name: CI of WrenchDistribution (standalone)
+name: CI of ForceControlCollection (standalone)
 
 on:
   push:

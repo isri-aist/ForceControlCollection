@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include <WrenchDistribution/WrenchDistribution.h>
+#include <ForceControlCollection/WrenchDistribution.h>
 
 enum class Foot
 {

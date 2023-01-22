@@ -1,22 +1,22 @@
 if(NOT DEFINED CATKIN_DEVEL_PREFIX)
   find_package(GTest REQUIRED)
   include(GoogleTest)
-  function(add_WrenchDistribution_test NAME)
+  function(add_ForceControlCollection_test NAME)
     add_executable(${NAME} src/${NAME}.cpp)
-    target_link_libraries(${NAME} PUBLIC GTest::gtest WrenchDistribution)
+    target_link_libraries(${NAME} PUBLIC GTest::gtest ForceControlCollection)
     gtest_discover_tests(${NAME})
   endfunction()
 else()
-  function(add_WrenchDistribution_test NAME)
+  function(add_ForceControlCollection_test NAME)
     catkin_add_gtest(${NAME} src/${NAME}.cpp)
-    target_link_libraries(${NAME} WrenchDistribution)
+    target_link_libraries(${NAME} ForceControlCollection)
   endfunction()
 endif()
 
-set(WrenchDistribution_gtest_list
+set(ForceControlCollection_gtest_list
   TestWrenchDistribution
   )
 
-foreach(NAME IN LISTS WrenchDistribution_gtest_list)
-  add_WrenchDistribution_test(${NAME})
+foreach(NAME IN LISTS ForceControlCollection_gtest_list)
+  add_ForceControlCollection_test(${NAME})
 endforeach()
