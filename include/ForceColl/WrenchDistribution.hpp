@@ -1,4 +1,4 @@
-namespace WD
+namespace ForceColl
 {
 template<class PatchID>
 void WrenchDistribution<PatchID>::Configuration::load(const mc_rtc::Configuration & mcRtcConfig)
@@ -101,4 +101,4 @@ std::unordered_map<PatchID, sva::ForceVecd> WrenchDistribution<PatchID>::calcWre
   }
   return wrenchList;
 }
-} // namespace WD
+} // namespace ForceColl

@@ -1,9 +1,9 @@
 #include <mc_rtc/constants.h>
 #include <mc_rtc/logging.h>
 
-#include <ForceControlCollection/Contact.h>
+#include <ForceColl/Contact.h>
 
-using namespace WD;
+using namespace ForceColl;
 
 FrictionPyramid::FrictionPyramid(double fricCoeff, int ridgeNum)
 {

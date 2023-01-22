@@ -2,9 +2,9 @@
 
 #include <qp_solver_collection/QpSolverCollection.h>
 
-#include <ForceControlCollection/Contact.h>
+#include <ForceColl/Contact.h>
 
-namespace WD
+namespace ForceColl
 {
 /** \brief Wrench distribution.
     \tparam PatchID type of contact patch ID
@@ -85,6 +85,6 @@ protected:
   //! Configuration
   Configuration config_;
 };
-} // namespace WD
+} // namespace ForceColl
 
-#include <ForceControlCollection/WrenchDistribution.hpp>
+#include <ForceColl/WrenchDistribution.hpp>

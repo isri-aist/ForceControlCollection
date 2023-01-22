@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include <ForceControlCollection/WrenchDistribution.h>
+#include <ForceColl/WrenchDistribution.h>
 
 enum class Foot
 {
@@ -13,20 +13,20 @@ enum class Foot
 TEST(TestWrenchDistribution, Test1)
 {
   double fricCoeff = 0.5;
-  auto leftContact = std::make_shared<WD::Contact>("LeftContact", fricCoeff,
-                                                   std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0),
-                                                                                Eigen::Vector3d(-0.1, 0.1, 0.0),
-                                                                                Eigen::Vector3d(0.1, 0.0, 0.0)},
-                                                   sva::PTransformd::Identity());
-  auto rightContact =
-      std::make_shared<WD::Contact>("RightContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()},
-                                    sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0, 0.5, 0.5)));
-  std::unordered_map<Foot, std::shared_ptr<WD::Contact>> contactList = {{Foot::Left, leftContact},
-                                                                        {Foot::Right, rightContact}};
+  auto leftContact = std::make_shared<ForceColl::Contact>("LeftContact", fricCoeff,
+                                                          std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0),
+                                                                                       Eigen::Vector3d(-0.1, 0.1, 0.0),
+                                                                                       Eigen::Vector3d(0.1, 0.0, 0.0)},
+                                                          sva::PTransformd::Identity());
+  auto rightContact = std::make_shared<ForceColl::Contact>(
+      "RightContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()},
+      sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0, 0.5, 0.5)));
+  std::unordered_map<Foot, std::shared_ptr<ForceColl::Contact>> contactList = {{Foot::Left, leftContact},
+                                                                               {Foot::Right, rightContact}};
 
   sva::ForceVecd desiredTotalWrench =
       sva::ForceVecd(Eigen::Vector3d(100.0, 0.0, 0.0), Eigen::Vector3d(0.0, 0.0, 500.0));
-  auto wrenchDist = std::make_shared<WD::WrenchDistribution<Foot>>(contactList);
+  auto wrenchDist = std::make_shared<ForceColl::WrenchDistribution<Foot>>(contactList);
   sva::ForceVecd resultTotalWrench = wrenchDist->run(desiredTotalWrench);
 
   EXPECT_LT((desiredTotalWrench.vector() - resultTotalWrench.vector()).norm(), 1e-2)

@@ -5,7 +5,7 @@
 #include <mc_rtc/Configuration.h>
 #include <SpaceVecAlg/SpaceVecAlg>
 
-namespace WD
+namespace ForceColl
 {
 /** \brief Friction pyramid. */
 class FrictionPyramid
@@ -88,4 +88,4 @@ public:
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
 };
-} // namespace WD
+} // namespace ForceColl

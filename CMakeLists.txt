@@ -34,7 +34,7 @@ if(DEFINED CATKIN_DEVEL_PREFIX)
     qp_solver_collection
     DEPENDS EIGEN3
     INCLUDE_DIRS include
-    LIBRARIES ForceControlCollection
+    LIBRARIES ForceColl
   )
 
   include_directories(include ${catkin_INCLUDE_DIRS})
