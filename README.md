@@ -17,5 +17,5 @@ This package depends on
 - [QpSolverCollection](https://github.com/isri-aist/QpSolverCollection)
 
 ## Technical details
-Wrench distribution is a common method in robot control that, given a resultant wrench, calculates the equivalent contact wrench at the contact patches. For example, section III.B of the following paper describes the formulas for wrench distribution.
+[Wrench distribution](https://isri-aist.github.io/ForceControlCollection/doxygen/classForceColl_1_1WrenchDistribution.html#details) is a common method in robot control that, given a resultant wrench, calculates the equivalent contact wrench at the contact patches. For example, section III.B of the following paper describes the formulas for wrench distribution.
 - M Murooka, et al. Centroidal trajectory generation and stabilization based on preview control for humanoid multi-contact motion. RA-Letters, 2022. [(available here)](https://hal.science/hal-03720407)
