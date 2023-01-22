@@ -1,4 +1,4 @@
-name: WrenchDistribution documentation
+name: ForceControlCollection documentation
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
