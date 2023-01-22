@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['calcglobalridgelist_0',['calcGlobalRidgeList',['../classWD_1_1FrictionPyramid.html#a5579c85721448a7cdccca0bb7acadf2c',1,'WD::FrictionPyramid']]],
-  ['calcwrench_1',['calcWrench',['../classWD_1_1Contact.html#a8de53c31d9897f4e59ef48fef67efc29',1,'WD::Contact']]],
-  ['calcwrenchlist_2',['calcWrenchList',['../classWD_1_1WrenchDistribution.html#a7ebb5bc79bc66c11f7877c89192c2e95',1,'WD::WrenchDistribution']]],
-  ['config_3',['config',['../classWD_1_1WrenchDistribution.html#aef1299bc9574af44a87392127042b375',1,'WD::WrenchDistribution']]],
-  ['config_5f_4',['config_',['../classWD_1_1WrenchDistribution.html#abbefc9b13d268cc67b84c03555dd2f70',1,'WD::WrenchDistribution']]],
-  ['configuration_5',['Configuration',['../structWD_1_1WrenchDistribution_1_1Configuration.html',1,'WD::WrenchDistribution']]],
-  ['contact_6',['Contact',['../classWD_1_1Contact.html',1,'WD::Contact'],['../classWD_1_1Contact.html#afa0acc2b9e0e74436e698701370b8a4f',1,'WD::Contact::Contact()']]],
+  ['calcglobalridgelist_0',['calcGlobalRidgeList',['../classForceColl_1_1FrictionPyramid.html#aa0e9d39b5895621519df325337aa40b9',1,'ForceColl::FrictionPyramid']]],
+  ['calcwrench_1',['calcWrench',['../classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002',1,'ForceColl::Contact']]],
+  ['calcwrenchlist_2',['calcWrenchList',['../classForceColl_1_1WrenchDistribution.html#aa0e33a28c2f4d5bc6641f780ce99f82f',1,'ForceColl::WrenchDistribution']]],
+  ['config_3',['config',['../classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485',1,'ForceColl::WrenchDistribution']]],
+  ['config_5f_4',['config_',['../classForceColl_1_1WrenchDistribution.html#a16001556a975ffdf4caa852cd67ca1be',1,'ForceColl::WrenchDistribution']]],
+  ['configuration_5',['Configuration',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html',1,'ForceColl::WrenchDistribution']]],
+  ['contact_6',['Contact',['../classForceColl_1_1Contact.html',1,'ForceColl::Contact'],['../classForceColl_1_1Contact.html#aea09c1fc6e7870618d0c0066f474542a',1,'ForceColl::Contact::Contact()']]],
   ['contact_2eh_7',['Contact.h',['../Contact_8h.html',1,'']]],
-  ['contactlist_5f_8',['contactList_',['../classWD_1_1WrenchDistribution.html#ae51a87d214902d2f66fae1e3114305d1',1,'WD::WrenchDistribution']]]
+  ['contactlist_5f_8',['contactList_',['../classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a',1,'ForceColl::WrenchDistribution']]]
 ];

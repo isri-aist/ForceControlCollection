@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['frictionpyramid_10',['FrictionPyramid',['../classWD_1_1FrictionPyramid.html',1,'WD::FrictionPyramid'],['../classWD_1_1FrictionPyramid.html#a3eba93774a403b911ca752022a278845',1,'WD::FrictionPyramid::FrictionPyramid()']]]
+  ['forcecoll_10',['ForceColl',['../namespaceForceColl.html',1,'']]],
+  ['frictionpyramid_11',['FrictionPyramid',['../classForceColl_1_1FrictionPyramid.html',1,'ForceColl::FrictionPyramid'],['../classForceColl_1_1FrictionPyramid.html#a6d7c4f8cda6f6a486f4453dfbb5f3508',1,'ForceColl::FrictionPyramid::FrictionPyramid()']]]
 ];

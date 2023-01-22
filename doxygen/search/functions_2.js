@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_49',['load',['../structWD_1_1WrenchDistribution_1_1Configuration.html#aeea8402ff7652ea7ac4ee4fda48a7672',1,'WD::WrenchDistribution::Configuration']]]
+  ['load_49',['load',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a9809a456cce7ebe9ec7813dd2eacebc1',1,'ForceColl::WrenchDistribution::Configuration']]]
 ];

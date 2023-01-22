@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['config_5f_54',['config_',['../classWD_1_1WrenchDistribution.html#abbefc9b13d268cc67b84c03555dd2f70',1,'WD::WrenchDistribution']]],
-  ['contactlist_5f_55',['contactList_',['../classWD_1_1WrenchDistribution.html#ae51a87d214902d2f66fae1e3114305d1',1,'WD::WrenchDistribution']]]
+  ['config_5f_54',['config_',['../classForceColl_1_1WrenchDistribution.html#a16001556a975ffdf4caa852cd67ca1be',1,'ForceColl::WrenchDistribution']]],
+  ['contactlist_5f_55',['contactList_',['../classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a',1,'ForceColl::WrenchDistribution']]]
 ];

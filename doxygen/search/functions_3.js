@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ridgenum_50',['ridgeNum',['../classWD_1_1FrictionPyramid.html#aabc85ae26c64a4a463ad7dec9eb0e498',1,'WD::FrictionPyramid']]],
-  ['run_51',['run',['../classWD_1_1WrenchDistribution.html#a0dd61bc17635d42d658f3bfa71835351',1,'WD::WrenchDistribution']]]
+  ['ridgenum_50',['ridgeNum',['../classForceColl_1_1FrictionPyramid.html#a28df1f3a38092cc5fc544b74092ade09',1,'ForceColl::FrictionPyramid']]],
+  ['run_51',['run',['../classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca',1,'ForceColl::WrenchDistribution']]]
 ];

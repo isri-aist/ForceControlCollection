@@ -1,9 +1,9 @@
-<map id="/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceControlCollection/WrenchDistribution.h" name="/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceControlCollection/WrenchDistribution.h">
-<area shape="rect" id="node1" title=" " alt="" coords="95,5,460,76"/>
+<map id="/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceColl/WrenchDistribution.h" name="/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceColl/WrenchDistribution.h">
+<area shape="rect" id="node1" title=" " alt="" coords="127,5,406,76"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,124,168,165"/>
-<area shape="rect" id="node3" href="$Contact_8h.html" title=" " alt="" coords="193,124,362,165"/>
-<area shape="rect" id="node7" href="$WrenchDistribution_8hpp.html" title=" " alt="" coords="387,124,565,165"/>
-<area shape="rect" id="node4" title=" " alt="" coords="45,213,169,240"/>
-<area shape="rect" id="node5" title=" " alt="" coords="193,213,362,240"/>
-<area shape="rect" id="node6" title=" " alt="" coords="387,213,579,240"/>
+<area shape="rect" id="node3" href="$Contact_8h.html" title=" " alt="" coords="193,131,341,158"/>
+<area shape="rect" id="node7" href="$WrenchDistribution_8hpp.html" title=" " alt="" coords="365,131,603,158"/>
+<area shape="rect" id="node4" title=" " alt="" coords="34,213,158,240"/>
+<area shape="rect" id="node5" title=" " alt="" coords="182,213,351,240"/>
+<area shape="rect" id="node6" title=" " alt="" coords="376,213,568,240"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wrenchdistribution_37',['WrenchDistribution',['../classWD_1_1WrenchDistribution.html',1,'WD']]]
+  ['wrenchdistribution_37',['WrenchDistribution',['../classForceColl_1_1WrenchDistribution.html',1,'ForceColl']]]
 ];
