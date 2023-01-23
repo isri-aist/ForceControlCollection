@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['forcecoll_10',['ForceColl',['../namespaceForceColl.html',1,'']]],
-  ['frictionpyramid_11',['FrictionPyramid',['../classForceColl_1_1FrictionPyramid.html',1,'ForceColl::FrictionPyramid'],['../classForceColl_1_1FrictionPyramid.html#a6d7c4f8cda6f6a486f4453dfbb5f3508',1,'ForceColl::FrictionPyramid::FrictionPyramid()']]]
+  ['desiredtotalwrench_5f_10',['desiredTotalWrench_',['../classForceColl_1_1WrenchDistribution.html#a4ec3e1dfca70f1771a9301911ac1dd3f',1,'ForceColl::WrenchDistribution']]]
 ];

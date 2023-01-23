@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ridgenum_50',['ridgeNum',['../classForceColl_1_1FrictionPyramid.html#a28df1f3a38092cc5fc544b74092ade09',1,'ForceColl::FrictionPyramid']]],
-  ['run_51',['run',['../classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca',1,'ForceColl::WrenchDistribution']]]
+  ['load_51',['load',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a9809a456cce7ebe9ec7813dd2eacebc1',1,'ForceColl::WrenchDistribution::Configuration']]]
 ];

@@ -117,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485">config</a> () const noexcept</td></tr>
 <tr class="memdesc:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const accessor to the configuration.  <a href="classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485">More...</a><br /></td></tr>
 <tr class="separator:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45cd6926db95b24491d594642fa23323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a45cd6926db95b24491d594642fa23323">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, double forceScale=2e-3, double fricPyramidScale=5e-2)</td></tr>
+<tr class="memdesc:a45cd6926db95b24491d594642fa23323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1WrenchDistribution.html#a45cd6926db95b24491d594642fa23323">More...</a><br /></td></tr>
+<tr class="separator:a45cd6926db95b24491d594642fa23323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -201,6 +204,61 @@ template&lt;class PatchID &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a45cd6926db95b24491d594642fa23323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45cd6926db95b24491d594642fa23323">&#9670;&nbsp;</a></span>addToGUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class PatchID &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::addToGUI </td>
+          <td>(</td>
+          <td class="paramtype">mc_rtc::gui::StateBuilder &amp;&#160;</td>
+          <td class="paramname"><em>gui</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>forceScale</em> = <code>2e-3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fricPyramidScale</em> = <code>5e-2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add markers to GUI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gui</td><td>GUI </td></tr>
+    <tr><td class="paramname">category</td><td>category of GUI entries </td></tr>
+    <tr><td class="paramname">forceScale</td><td>scale of force markers (set non-positive for no visualization) </td></tr>
+    <tr><td class="paramname">fricPyramidScale</td><td>scale of friction pyramid markers (set non-positive for no visualization) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8hpp_source.html#l00106">106</a> of file <a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aa0e33a28c2f4d5bc6641f780ce99f82f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0e33a28c2f4d5bc6641f780ce99f82f">&#9670;&nbsp;</a></span>calcWrenchList()</h2>
 
@@ -330,7 +388,7 @@ template&lt;class PatchID &gt; </div>
 
 <p><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html" title="Configuration.">Configuration</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00086">86</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00097">97</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -350,7 +408,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>List of contact constraint. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00067">67</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00078">78</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -370,7 +428,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>Desired total wrench. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00073">73</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00084">84</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -390,7 +448,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>QP coefficients. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00082">82</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00093">93</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -410,7 +468,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>QP solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00079">79</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00090">90</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +488,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>Result total wrench. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00076">76</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00087">87</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
@@ -450,7 +508,7 @@ template&lt;class PatchID &gt; </div>
 
 <p>Result wrench ratio. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00070">70</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00081">81</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>

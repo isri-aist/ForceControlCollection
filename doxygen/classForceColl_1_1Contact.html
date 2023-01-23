@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">calcWrench</a> (const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero()) const</td></tr>
 <tr class="memdesc:a67be2179a2951ef3d7dc5fe90ddae002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench.  <a href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">More...</a><br /></td></tr>
 <tr class="separator:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20a70b89a74b04ff15d7b839630a2e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#ad20a70b89a74b04ff15d7b839630a2e3">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, const Eigen::VectorXd &amp;wrenchRatio, double forceScale=2e-3, double fricPyramidScale=5e-2)</td></tr>
+<tr class="memdesc:ad20a70b89a74b04ff15d7b839630a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1Contact.html#ad20a70b89a74b04ff15d7b839630a2e3">More...</a><br /></td></tr>
+<tr class="separator:ad20a70b89a74b04ff15d7b839630a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -117,7 +120,7 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classForceColl_1_1Contact.html" title="Contact constraint.">Contact</a> constraint. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00037">37</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00038">38</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aea09c1fc6e7870618d0c0066f474542a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea09c1fc6e7870618d0c0066f474542a">&#9670;&nbsp;</a></span>Contact()</h2>
@@ -171,6 +174,64 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad20a70b89a74b04ff15d7b839630a2e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20a70b89a74b04ff15d7b839630a2e3">&#9670;&nbsp;</a></span>addToGUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ForceColl::Contact::addToGUI </td>
+          <td>(</td>
+          <td class="paramtype">mc_rtc::gui::StateBuilder &amp;&#160;</td>
+          <td class="paramname"><em>gui</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>wrenchRatio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>forceScale</em> = <code>2e-3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fricPyramidScale</em> = <code>5e-2</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add markers to GUI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gui</td><td>GUI </td></tr>
+    <tr><td class="paramname">category</td><td>category of GUI entries </td></tr>
+    <tr><td class="paramname">wrenchRatio</td><td>wrench ratio of each ridge </td></tr>
+    <tr><td class="paramname">forceScale</td><td>scale of force markers (set non-positive for no visualization) </td></tr>
+    <tr><td class="paramname">fricPyramidScale</td><td>scale of friction pyramid markers (set non-positive for no visualization) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a67be2179a2951ef3d7dc5fe90ddae002"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67be2179a2951ef3d7dc5fe90ddae002">&#9670;&nbsp;</a></span>calcWrench()</h2>
 
@@ -224,7 +285,7 @@ Public Attributes</h2></td></tr>
 
 <p>Grasp matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00086">86</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00100">100</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -242,7 +303,7 @@ Public Attributes</h2></td></tr>
 
 <p>Name of contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00083">83</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00097">97</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +321,7 @@ Public Attributes</h2></td></tr>
 
 <p>List of vertex with ridges. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00089">89</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00103">103</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>

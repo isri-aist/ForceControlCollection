@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wrenchdistribution_53',['WrenchDistribution',['../classForceColl_1_1WrenchDistribution.html#a54ccdfaabdce9e2ef17f888d13396830',1,'ForceColl::WrenchDistribution']]]
+  ['vertexwithridge_54',['VertexWithRidge',['../structForceColl_1_1Contact_1_1VertexWithRidge.html#a4a7c10b3b1df346075571e38ef25f93f',1,'ForceColl::Contact::VertexWithRidge']]]
 ];

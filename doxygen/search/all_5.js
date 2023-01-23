@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_5f_15',['name_',['../classForceColl_1_1Contact.html#a501d816a655e704a224d94ee5bb6127e',1,'ForceColl::Contact']]]
+  ['load_14',['load',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a9809a456cce7ebe9ec7813dd2eacebc1',1,'ForceColl::WrenchDistribution::Configuration']]],
+  ['localridgelist_5f_15',['localRidgeList_',['../classForceColl_1_1FrictionPyramid.html#ab311408b04c69192ecfb5ffe9f5d938b',1,'ForceColl::FrictionPyramid']]]
 ];
