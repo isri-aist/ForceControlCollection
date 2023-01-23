@@ -3,6 +3,7 @@
 #include <unordered_map>
 
 #include <mc_rtc/Configuration.h>
+#include <mc_rtc/gui/StateBuilder.h>
 #include <SpaceVecAlg/SpaceVecAlg>
 
 namespace ForceColl
@@ -77,6 +78,19 @@ public:
    */
   sva::ForceVecd calcWrench(const Eigen::VectorXd & wrenchRatio,
                             const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero()) const;
+
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param wrenchRatio wrench ratio of each ridge
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+   */
+  void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                const std::vector<std::string> & category,
+                const Eigen::VectorXd & wrenchRatio,
+                double forceScale = 2e-3,
+                double fricPyramidScale = 5e-2);
 
 public:
   //! Name of contact

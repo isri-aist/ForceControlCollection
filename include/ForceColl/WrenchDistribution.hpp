@@ -101,4 +101,21 @@ std::unordered_map<PatchID, sva::ForceVecd> WrenchDistribution<PatchID>::calcWre
   }
   return wrenchList;
 }
+
+template<class PatchID>
+void WrenchDistribution<PatchID>::addToGUI(mc_rtc::gui::StateBuilder & gui,
+                                           const std::vector<std::string> & category,
+                                           double forceScale,
+                                           double fricPyramidScale)
+{
+  int wrenchRatioIdx = 0;
+
+  for(const auto & contactKV : contactList_)
+  {
+    contactKV.second->addToGUI(gui, category,
+                               resultWrenchRatio_.segment(wrenchRatioIdx, contactKV.second->graspMat_.cols()),
+                               forceScale, fricPyramidScale);
+    wrenchRatioIdx += static_cast<int>(contactKV.second->graspMat_.cols());
+  }
+}
 } // namespace ForceColl

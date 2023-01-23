@@ -1,7 +1,7 @@
 add_library(ForceColl
   Contact.cpp
   )
-target_link_libraries(ForceColl PUBLIC mc_rtc::mc_rtc_utils)
+target_link_libraries(ForceColl PUBLIC mc_rtc::mc_rtc_utils mc_rtc::mc_rtc_gui)
 if(DEFINED CATKIN_DEVEL_PREFIX)
   target_link_libraries(ForceColl PUBLIC ${catkin_LIBRARIES})
 else()

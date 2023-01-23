@@ -62,6 +62,17 @@ public:
     return config_;
   }
 
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+   */
+  void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                const std::vector<std::string> & category,
+                double forceScale = 2e-3,
+                double fricPyramidScale = 5e-2);
+
 public:
   //! List of contact constraint
   std::unordered_map<PatchID, std::shared_ptr<Contact>> contactList_;

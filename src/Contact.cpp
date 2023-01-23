@@ -1,4 +1,6 @@
 #include <mc_rtc/constants.h>
+#include <mc_rtc/gui/Arrow.h>
+#include <mc_rtc/gui/Polyhedron.h>
 #include <mc_rtc/logging.h>
 
 #include <ForceColl/Contact.h>
@@ -75,4 +77,76 @@ sva::ForceVecd Contact::calcWrench(const Eigen::VectorXd & wrenchRatio, const Ei
   assert(wrenchRatio.size() == wrenchRatioIdx);
 
   return totalWrench;
+}
+
+void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
+                       const std::vector<std::string> & category,
+                       const Eigen::VectorXd & wrenchRatio,
+                       double forceScale,
+                       double fricPyramidScale)
+{
+  int wrenchRatioIdx = 0;
+  int vertexIdx = 0;
+
+  for(const auto & vertexWithRidge : vertexWithRidgeList_)
+  {
+    const Eigen::Vector3d & vertex = vertexWithRidge.vertex;
+    const std::vector<Eigen::Vector3d> & ridgeList = vertexWithRidge.ridgeList;
+
+    int ridgeIdx = 0;
+    Eigen::Vector3d vertexForce = Eigen::Vector3d::Zero();
+    std::vector<Eigen::Vector3d> fricPyramidVertices = {vertex};
+    std::vector<std::array<size_t, 3>> fricPyramidVertexIndicies;
+    for(const auto & ridge : ridgeList)
+    {
+      Eigen::Vector3d force = wrenchRatio(wrenchRatioIdx) * ridge;
+      vertexForce += force;
+      Eigen::Vector3d fricPyramidVertex = vertex + fricPyramidScale * ridge;
+      fricPyramidVertices.push_back(fricPyramidVertex);
+      fricPyramidVertexIndicies.push_back(
+          {0, static_cast<size_t>(ridgeIdx + 1), static_cast<size_t>(ridgeIdx + 1) % ridgeList.size() + 1});
+
+      wrenchRatioIdx++;
+      ridgeIdx++;
+    }
+
+    // Add force arrow
+    if(forceScale > 0)
+    {
+      Eigen::Vector3d arrowStart = vertex;
+      Eigen::Vector3d arrowEnd = vertex + forceScale * vertexForce;
+      mc_rtc::gui::ArrowConfig arrowConfig;
+      arrowConfig.color = mc_rtc::gui::Color::Red;
+      arrowConfig.head_diam = 0.020;
+      arrowConfig.head_len = 0.03;
+      arrowConfig.shaft_diam = 0.010;
+      gui.addElement(category, mc_rtc::gui::Arrow(
+                                   name_ + "_Force" + std::to_string(vertexIdx), arrowConfig,
+                                   [arrowStart]() { return arrowStart; }, [arrowEnd]() { return arrowEnd; }));
+    }
+
+    // Add friction pyramid
+    if(fricPyramidScale > 0)
+    {
+      mc_rtc::gui::PolyhedronConfig polyConfig;
+      polyConfig.show_triangle = false;
+      polyConfig.edge_config.color = mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0);
+      polyConfig.show_vertices = false;
+      // \todo When https://github.com/jrl-umi3218/mc_rtc/issues/334 is resolved, replace with the following lines
+      // gui.addElement(category, mc_rtc::gui::Polyhedron(
+      //                              name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
+      //                              [fricPyramidVertices]() { return fricPyramidVertices; },
+      //                              [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; }));
+      gui.addElement(category, mc_rtc::gui::Polyhedron(
+                                   name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
+                                   [fricPyramidVertices]() { return fricPyramidVertices; },
+                                   [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; },
+                                   [fricPyramidVertices]() {
+                                     return std::vector<mc_rtc::gui::Color>(fricPyramidVertices.size(),
+                                                                            mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0));
+                                   }));
+    }
+
+    vertexIdx++;
+  }
 }
