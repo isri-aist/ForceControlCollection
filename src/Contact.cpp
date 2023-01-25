@@ -132,19 +132,10 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
       polyConfig.show_triangle = false;
       polyConfig.edge_config.color = mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0);
       polyConfig.show_vertices = false;
-      // \todo When https://github.com/jrl-umi3218/mc_rtc/issues/334 is resolved, replace with the following lines
-      // gui.addElement(category, mc_rtc::gui::Polyhedron(
-      //                              name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
-      //                              [fricPyramidVertices]() { return fricPyramidVertices; },
-      //                              [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; }));
       gui.addElement(category, mc_rtc::gui::Polyhedron(
                                    name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
                                    [fricPyramidVertices]() { return fricPyramidVertices; },
-                                   [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; },
-                                   [fricPyramidVertices]() {
-                                     return std::vector<mc_rtc::gui::Color>(fricPyramidVertices.size(),
-                                                                            mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0));
-                                   }));
+                                   [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; }));
     }
 
     vertexIdx++;
