@@ -6,8 +6,8 @@
 
 TEST(TestContact, SurfaceContact)
 {
-  const std::string vertexListYamlStr = R"(
-- name: vertexListSample
+  const std::string verticesYamlStr = R"(
+- name: verticesSample
   vertices:
     - [0, 0, 0]
     - [0.1, -0.2, 0.3]
@@ -16,7 +16,7 @@ TEST(TestContact, SurfaceContact)
 type: Surface
 name: ContactYaml
 fricCoeff: 1.0
-vertexListName: vertexListSample
+verticesName: verticesSample
 pose:
   translation: [0.0, 0.5, -0.5]
   rotation: [1.5707963267948966, 0, 0]
@@ -26,7 +26,7 @@ pose:
       "ContactDirect", 1.0, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero(), Eigen::Vector3d(0.1, -0.2, 0.3)},
       sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)));
 
-  ForceColl::SurfaceContact::loadVertexListMap(mc_rtc::Configuration::fromYAMLData(vertexListYamlStr));
+  ForceColl::SurfaceContact::loadVerticesMap(mc_rtc::Configuration::fromYAMLData(verticesYamlStr));
   auto contactYaml = ForceColl::Contact::makeSharedFromConfig(mc_rtc::Configuration::fromYAMLData(constructorYamlStr));
 
   EXPECT_LT((contactDirect->graspMat_ - contactYaml->graspMat_).norm(), 1e-8) << "contactDirect:\n"
@@ -37,8 +37,8 @@ pose:
 
 TEST(TestContact, GraspContact)
 {
-  const std::string vertexListYamlStr = R"(
-- name: vertexListSample
+  const std::string verticesYamlStr = R"(
+- name: verticesSample
   vertices:
     - translation: [0.0, -0.05, 0.0]
       rotation: [-1.5707963267948966, 0, 0]
@@ -49,7 +49,7 @@ TEST(TestContact, GraspContact)
 type: Grasp
 name: ContactYaml
 fricCoeff: 1.0
-vertexListName: vertexListSample
+verticesName: verticesSample
 pose:
   translation: [0.0, 0.5, -0.5]
   rotation: [0, 1.5707963267948966, 0]
@@ -61,7 +61,7 @@ pose:
                                     sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.05, 0.0))},
       sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)));
 
-  ForceColl::GraspContact::loadVertexListMap(mc_rtc::Configuration::fromYAMLData(vertexListYamlStr));
+  ForceColl::GraspContact::loadVerticesMap(mc_rtc::Configuration::fromYAMLData(verticesYamlStr));
   auto contactYaml = ForceColl::Contact::makeSharedFromConfig(mc_rtc::Configuration::fromYAMLData(constructorYamlStr));
 
   EXPECT_LT((contactDirect->graspMat_ - contactYaml->graspMat_).norm(), 1e-6) << "contactDirect:\n"

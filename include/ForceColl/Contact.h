@@ -110,10 +110,10 @@ public:
   /** \brief Load map of surface vertices in local coordinates
       \param mcRtcConfig mc_rtc configuration
   */
-  static void loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig);
+  static void loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig);
 
   //! Map of surface vertices in local coordinates
-  static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> vertexListMap;
+  static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> verticesMap;
 
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -121,12 +121,12 @@ public:
   /** \brief Constructor.
       \param name name of contact
       \param fricCoeff friction coefficient
-      \param localVertexList surface vertices in local coordinates
+      \param localVertices surface vertices in local coordinates
       \param pose pose of contact
    */
   SurfaceContact(const std::string & name,
                  double fricCoeff,
-                 const std::vector<Eigen::Vector3d> & localVertexList,
+                 const std::vector<Eigen::Vector3d> & localVertices,
                  const sva::PTransformd & pose);
 
   /** \brief Constructor.
@@ -142,10 +142,10 @@ public:
   /** \brief Load map of grasp vertices in local coordinates
       \param mcRtcConfig mc_rtc configuration
   */
-  static void loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig);
+  static void loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig);
 
   //! Map of grasp vertices in local coordinates
-  static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> vertexListMap;
+  static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> verticesMap;
 
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -153,12 +153,12 @@ public:
   /** \brief Constructor.
       \param name name of contact
       \param fricCoeff friction coefficient
-      \param localVertexList grasp vertices in local coordinates
+      \param localVertices grasp vertices in local coordinates
       \param pose pose of contact
    */
   GraspContact(const std::string & name,
                double fricCoeff,
-               const std::vector<sva::PTransformd> & localVertexList,
+               const std::vector<sva::PTransformd> & localVertices,
                const sva::PTransformd & pose);
 
   /** \brief Constructor.

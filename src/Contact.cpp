@@ -132,30 +132,30 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
   }
 }
 
-void SurfaceContact::loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig)
+void SurfaceContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 {
-  for(const auto & vertexListConfig : mcRtcConfig)
+  for(const auto & verticesConfig : mcRtcConfig)
   {
-    vertexListMap[vertexListConfig("name")] = vertexListConfig("vertices");
+    verticesMap[verticesConfig("name")] = verticesConfig("vertices");
   }
 }
 
 SurfaceContact::SurfaceContact(const std::string & name,
                                double fricCoeff,
-                               const std::vector<Eigen::Vector3d> & localVertexList,
+                               const std::vector<Eigen::Vector3d> & localVertices,
                                const sva::PTransformd & pose)
 : Contact(name)
 {
   // Set graspMat_ and vertexWithRidgeList_
   FrictionPyramid fricPyramid(fricCoeff);
 
-  graspMat_.resize(6, localVertexList.size() * fricPyramid.ridgeNum());
+  graspMat_.resize(6, localVertices.size() * fricPyramid.ridgeNum());
 
   const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(pose.rotation().transpose());
 
-  for(size_t vertexIdx = 0; vertexIdx < localVertexList.size(); vertexIdx++)
+  for(size_t vertexIdx = 0; vertexIdx < localVertices.size(); vertexIdx++)
   {
-    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertexList[vertexIdx]) * pose).translation();
+    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertices[vertexIdx]) * pose).translation();
 
     for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
     {
@@ -171,33 +171,33 @@ SurfaceContact::SurfaceContact(const std::string & name,
 SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
 : SurfaceContact(mcRtcConfig("name"),
                  mcRtcConfig("fricCoeff"),
-                 vertexListMap.at(mcRtcConfig("vertexListName")),
+                 verticesMap.at(mcRtcConfig("verticesName")),
                  mcRtcConfig("pose"))
 {
 }
 
-void GraspContact::loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig)
+void GraspContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 {
-  for(const auto & vertexListConfig : mcRtcConfig)
+  for(const auto & verticesConfig : mcRtcConfig)
   {
-    vertexListMap[vertexListConfig("name")] = vertexListConfig("vertices");
+    verticesMap[verticesConfig("name")] = verticesConfig("vertices");
   }
 }
 
 GraspContact::GraspContact(const std::string & name,
                            double fricCoeff,
-                           const std::vector<sva::PTransformd> & localVertexList,
+                           const std::vector<sva::PTransformd> & localVertices,
                            const sva::PTransformd & pose)
 : Contact(name)
 {
   // Set graspMat_ and vertexWithRidgeList_
   FrictionPyramid fricPyramid(fricCoeff);
 
-  graspMat_.resize(6, localVertexList.size() * fricPyramid.ridgeNum());
+  graspMat_.resize(6, localVertices.size() * fricPyramid.ridgeNum());
 
-  for(size_t vertexIdx = 0; vertexIdx < localVertexList.size(); vertexIdx++)
+  for(size_t vertexIdx = 0; vertexIdx < localVertices.size(); vertexIdx++)
   {
-    sva::PTransformd globalVertexPose = localVertexList[vertexIdx] * pose;
+    sva::PTransformd globalVertexPose = localVertices[vertexIdx] * pose;
     Eigen::Vector3d globalVertex = globalVertexPose.translation();
     const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(globalVertexPose.rotation().transpose());
 
@@ -215,7 +215,7 @@ GraspContact::GraspContact(const std::string & name,
 GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
 : GraspContact(mcRtcConfig("name"),
                mcRtcConfig("fricCoeff"),
-               vertexListMap.at(mcRtcConfig("vertexListName")),
+               verticesMap.at(mcRtcConfig("verticesName")),
                mcRtcConfig("pose"))
 {
 }
