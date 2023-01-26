@@ -107,6 +107,11 @@ public:
 class SurfaceContact : public Contact
 {
 public:
+  /** \brief Load map of surface vertices in local coordinates
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static void loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig);
+
   //! Map of surface vertices in local coordinates
   static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> vertexListMap;
 
@@ -134,6 +139,11 @@ public:
 class GraspContact : public Contact
 {
 public:
+  /** \brief Load map of grasp vertices in local coordinates
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static void loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig);
+
   //! Map of grasp vertices in local coordinates
   static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> vertexListMap;
 

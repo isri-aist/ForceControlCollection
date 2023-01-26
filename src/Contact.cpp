@@ -132,6 +132,14 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
   }
 }
 
+void SurfaceContact::loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig)
+{
+  for(const auto & vertexListConfig : mcRtcConfig)
+  {
+    vertexListMap[vertexListConfig("name")] = vertexListConfig("vertices");
+  }
+}
+
 SurfaceContact::SurfaceContact(const std::string & name,
                                double fricCoeff,
                                const std::vector<Eigen::Vector3d> & localVertexList,
@@ -166,6 +174,14 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
                  vertexListMap.at(mcRtcConfig("vertexListName")),
                  mcRtcConfig("pose"))
 {
+}
+
+void GraspContact::loadVertexListMap(const mc_rtc::Configuration & mcRtcConfig)
+{
+  for(const auto & vertexListConfig : mcRtcConfig)
+  {
+    vertexListMap[vertexListConfig("name")] = vertexListConfig("vertices");
+  }
 }
 
 GraspContact::GraspContact(const std::string & name,
