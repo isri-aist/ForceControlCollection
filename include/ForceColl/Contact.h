@@ -34,7 +34,7 @@ public:
   std::vector<Eigen::Vector3d> localRidgeList_;
 };
 
-/** \brief Contact constraint. */
+/** \brief Contact. */
 class Contact
 {
 public:
@@ -58,18 +58,18 @@ public:
   };
 
 public:
+  /** \brief Make shared pointer from mc_rtc configuration.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static std::shared_ptr<Contact> makeSharedFromConfig(const mc_rtc::Configuration & mcRtcConfig);
+
+public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
   /** \brief Constructor.
       \param name name of contact
-      \param fricCoeff friction coefficient
-      \param localVertexList vertices of surface in local coordinates
-      \param pose pose of contact
    */
-  Contact(const std::string & name,
-          double fricCoeff,
-          const std::vector<Eigen::Vector3d> & localVertexList,
-          const sva::PTransformd & pose);
+  Contact(const std::string & name);
 
   /** \brief Calculate wrench.
       \param wrenchRatio wrench ratio of each ridge
@@ -101,5 +101,32 @@ public:
 
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
+};
+
+/** \brief Surface contact. */
+class SurfaceContact : public Contact
+{
+public:
+  //! Map of surface vertices in local coordinates
+  static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> vertexListMap;
+
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+      \param fricCoeff friction coefficient
+      \param localVertexList surface vertices in local coordinates
+      \param pose pose of contact
+   */
+  SurfaceContact(const std::string & name,
+                 double fricCoeff,
+                 const std::vector<Eigen::Vector3d> & localVertexList,
+                 const sva::PTransformd & pose);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  SurfaceContact(const mc_rtc::Configuration & mcRtcConfig);
 };
 } // namespace ForceColl

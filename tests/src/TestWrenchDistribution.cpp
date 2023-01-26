@@ -13,12 +13,12 @@ enum class Foot
 TEST(TestWrenchDistribution, Test1)
 {
   double fricCoeff = 0.5;
-  auto leftContact = std::make_shared<ForceColl::Contact>("LeftContact", fricCoeff,
-                                                          std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0),
-                                                                                       Eigen::Vector3d(-0.1, 0.1, 0.0),
-                                                                                       Eigen::Vector3d(0.1, 0.0, 0.0)},
-                                                          sva::PTransformd::Identity());
-  auto rightContact = std::make_shared<ForceColl::Contact>(
+  auto leftContact = std::make_shared<ForceColl::SurfaceContact>(
+      "LeftContact", fricCoeff,
+      std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
+                                   Eigen::Vector3d(0.1, 0.0, 0.0)},
+      sva::PTransformd::Identity());
+  auto rightContact = std::make_shared<ForceColl::SurfaceContact>(
       "RightContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()},
       sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0, 0.5, 0.5)));
   std::unordered_map<Foot, std::shared_ptr<ForceColl::Contact>> contactList = {{Foot::Left, leftContact},

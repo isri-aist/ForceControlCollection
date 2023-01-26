@@ -27,33 +27,23 @@ std::vector<Eigen::Vector3d> FrictionPyramid::calcGlobalRidgeList(const Eigen::M
   return globalRidgeList;
 }
 
-Contact::Contact(const std::string & name,
-                 double fricCoeff,
-                 const std::vector<Eigen::Vector3d> & localVertexList,
-                 const sva::PTransformd & pose)
-: name_(name)
+std::shared_ptr<Contact> Contact::makeSharedFromConfig(const mc_rtc::Configuration & mcRtcConfig)
 {
-  // Set graspMat_ and vertexWithRidgeList_
-  FrictionPyramid fricPyramid(fricCoeff);
-
-  graspMat_.resize(6, localVertexList.size() * fricPyramid.ridgeNum());
-
-  const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(pose.rotation().transpose());
-
-  for(size_t vertexIdx = 0; vertexIdx < localVertexList.size(); vertexIdx++)
+  if(mcRtcConfig("type") == "Surface")
   {
-    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertexList[vertexIdx]) * pose).translation();
-
-    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
-    {
-      const auto & globalRidge = globalRidgeList[ridgeIdx];
-      // The top 3 rows are moment, the bottom 3 rows are force.
-      graspMat_.col(vertexIdx * fricPyramid.ridgeNum() + ridgeIdx) << globalVertex.cross(globalRidge), globalRidge;
-    }
-
-    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
+    return std::make_shared<SurfaceContact>(mcRtcConfig);
+  }
+  else if(mcRtcConfig("type") == "Grasp")
+  {
+    // return std::make_shared<GraspContact>(mcRtcConfig);
+  }
+  {
+    mc_rtc::log::error_and_throw<std::runtime_error>("[Contact::makeSharedFromConfig] Invalid type: {}.",
+                                                     mcRtcConfig("type"));
   }
 }
+
+Contact::Contact(const std::string & name) : name_(name) {}
 
 sva::ForceVecd Contact::calcWrench(const Eigen::VectorXd & wrenchRatio, const Eigen::Vector3d & momentOrigin) const
 {
@@ -140,4 +130,40 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
 
     vertexIdx++;
   }
+}
+
+SurfaceContact::SurfaceContact(const std::string & name,
+                               double fricCoeff,
+                               const std::vector<Eigen::Vector3d> & localVertexList,
+                               const sva::PTransformd & pose)
+: Contact(name)
+{
+  // Set graspMat_ and vertexWithRidgeList_
+  FrictionPyramid fricPyramid(fricCoeff);
+
+  graspMat_.resize(6, localVertexList.size() * fricPyramid.ridgeNum());
+
+  const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(pose.rotation().transpose());
+
+  for(size_t vertexIdx = 0; vertexIdx < localVertexList.size(); vertexIdx++)
+  {
+    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertexList[vertexIdx]) * pose).translation();
+
+    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    {
+      const auto & globalRidge = globalRidgeList[ridgeIdx];
+      // The top 3 rows are moment, the bottom 3 rows are force.
+      graspMat_.col(vertexIdx * fricPyramid.ridgeNum() + ridgeIdx) << globalVertex.cross(globalRidge), globalRidge;
+    }
+
+    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
+  }
+}
+
+SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
+: SurfaceContact(mcRtcConfig("name"),
+                 mcRtcConfig("fricCoeff"),
+                 vertexListMap.at(mcRtcConfig("vertexListName")),
+                 mcRtcConfig("pose"))
+{
 }
