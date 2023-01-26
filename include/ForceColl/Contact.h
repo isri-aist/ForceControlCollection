@@ -129,4 +129,31 @@ public:
   */
   SurfaceContact(const mc_rtc::Configuration & mcRtcConfig);
 };
+
+/** \brief Grasp contact. */
+class GraspContact : public Contact
+{
+public:
+  //! Map of grasp vertices in local coordinates
+  static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> vertexListMap;
+
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+      \param fricCoeff friction coefficient
+      \param localVertexList grasp vertices in local coordinates
+      \param pose pose of contact
+   */
+  GraspContact(const std::string & name,
+               double fricCoeff,
+               const std::vector<sva::PTransformd> & localVertexList,
+               const sva::PTransformd & pose);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  GraspContact(const mc_rtc::Configuration & mcRtcConfig);
+};
 } // namespace ForceColl

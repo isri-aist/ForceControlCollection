@@ -35,7 +35,7 @@ std::shared_ptr<Contact> Contact::makeSharedFromConfig(const mc_rtc::Configurati
   }
   else if(mcRtcConfig("type") == "Grasp")
   {
-    // return std::make_shared<GraspContact>(mcRtcConfig);
+    return std::make_shared<GraspContact>(mcRtcConfig);
   }
   {
     mc_rtc::log::error_and_throw<std::runtime_error>("[Contact::makeSharedFromConfig] Invalid type: {}.",
@@ -165,5 +165,41 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
                  mcRtcConfig("fricCoeff"),
                  vertexListMap.at(mcRtcConfig("vertexListName")),
                  mcRtcConfig("pose"))
+{
+}
+
+GraspContact::GraspContact(const std::string & name,
+                           double fricCoeff,
+                           const std::vector<sva::PTransformd> & localVertexList,
+                           const sva::PTransformd & pose)
+: Contact(name)
+{
+  // Set graspMat_ and vertexWithRidgeList_
+  FrictionPyramid fricPyramid(fricCoeff);
+
+  graspMat_.resize(6, localVertexList.size() * fricPyramid.ridgeNum());
+
+  for(size_t vertexIdx = 0; vertexIdx < localVertexList.size(); vertexIdx++)
+  {
+    sva::PTransformd globalVertexPose = localVertexList[vertexIdx] * pose;
+    Eigen::Vector3d globalVertex = globalVertexPose.translation();
+    const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(globalVertexPose.rotation().transpose());
+
+    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    {
+      const auto & globalRidge = globalRidgeList[ridgeIdx];
+      // The top 3 rows are moment, the bottom 3 rows are force.
+      graspMat_.col(vertexIdx * fricPyramid.ridgeNum() + ridgeIdx) << globalVertex.cross(globalRidge), globalRidge;
+    }
+
+    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
+  }
+}
+
+GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
+: GraspContact(mcRtcConfig("name"),
+               mcRtcConfig("fricCoeff"),
+               vertexListMap.at(mcRtcConfig("vertexListName")),
+               mcRtcConfig("pose"))
 {
 }
