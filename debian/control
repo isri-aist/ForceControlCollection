@@ -1,0 +1,24 @@
+Source: forcecontrolcollection
+Priority: optional
+Maintainer: Pierre Gergondet <pierre.gergondet+ppa@gmail.com>
+Standards-Version: 3.9.5
+Section: libs
+Homepage: https://github.com/isri-aist/forceControlCollection
+Build-Depends: debhelper (>= 9),
+               pkg-config,
+               cmake,
+               doxygen,
+               graphviz,
+               libqpsolvercollection-dev,
+               libmc-rtc-dev,
+               libgtest-dev
+
+Package: libforcecontrolcollection-dev
+Section: libdevel
+Architecture: any
+Depends: cmake,
+         libqpsolvercollection-dev,
+         libmc-rtc-dev,
+         ${shlibs:Depends},
+         ${misc:Depends}
+Description: Force control functions for robot control
