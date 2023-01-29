@@ -4,6 +4,23 @@
 
 #include <ForceColl/Contact.h>
 
+TEST(TestContact, EmptyContact)
+{
+  const std::string constructorYamlStr = R"(
+type: Empty
+name: ContactYaml
+)";
+
+  auto contactDirect = std::make_shared<ForceColl::EmptyContact>(std::string("ContactDirect"));
+
+  auto contactYaml = ForceColl::Contact::makeSharedFromConfig(mc_rtc::Configuration::fromYAMLData(constructorYamlStr));
+
+  EXPECT_LT((contactDirect->graspMat_ - contactYaml->graspMat_).norm(), 1e-8) << "contactDirect:\n"
+                                                                              << contactDirect->graspMat_ << std::endl
+                                                                              << "contactYaml:\n"
+                                                                              << contactYaml->graspMat_ << std::endl;
+}
+
 TEST(TestContact, SurfaceContact)
 {
   const std::string verticesYamlStr = R"(

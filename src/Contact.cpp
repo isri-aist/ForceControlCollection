@@ -29,7 +29,11 @@ std::vector<Eigen::Vector3d> FrictionPyramid::calcGlobalRidgeList(const Eigen::M
 
 std::shared_ptr<Contact> Contact::makeSharedFromConfig(const mc_rtc::Configuration & mcRtcConfig)
 {
-  if(mcRtcConfig("type") == "Surface")
+  if(mcRtcConfig("type") == "Empty")
+  {
+    return std::make_shared<EmptyContact>(mcRtcConfig);
+  }
+  else if(mcRtcConfig("type") == "Surface")
   {
     return std::make_shared<SurfaceContact>(mcRtcConfig);
   }
@@ -130,6 +134,17 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
 
     vertexIdx++;
   }
+}
+
+EmptyContact::EmptyContact(const std::string & name) : Contact(name)
+{
+  // Set graspMat_ and vertexWithRidgeList_
+  graspMat_.setZero(6, 0);
+}
+
+EmptyContact::EmptyContact(const mc_rtc::Configuration & mcRtcConfig)
+: EmptyContact(static_cast<std::string>(mcRtcConfig("name")))
+{
 }
 
 void SurfaceContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)

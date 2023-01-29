@@ -103,6 +103,23 @@ public:
   std::vector<VertexWithRidge> vertexWithRidgeList_;
 };
 
+/** \brief Empty contact. */
+class EmptyContact : public Contact
+{
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+   */
+  EmptyContact(const std::string & name);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  EmptyContact(const mc_rtc::Configuration & mcRtcConfig);
+};
+
 /** \brief Surface contact. */
 class SurfaceContact : public Contact
 {
