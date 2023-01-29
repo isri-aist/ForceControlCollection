@@ -41,6 +41,7 @@ std::shared_ptr<Contact> Contact::makeSharedFromConfig(const mc_rtc::Configurati
   {
     return std::make_shared<GraspContact>(mcRtcConfig);
   }
+  else
   {
     mc_rtc::log::error_and_throw<std::runtime_error>("[Contact::makeSharedFromConfig] Invalid type: {}.",
                                                      mcRtcConfig("type"));

@@ -41,6 +41,8 @@ public:
   /** \brief Vertex with ridges. */
   struct VertexWithRidge
   {
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
     //! Vertex
     Eigen::Vector3d vertex;
 
@@ -70,6 +72,9 @@ public:
       \param name name of contact
    */
   Contact(const std::string & name);
+
+  /** \brief Get type of contact. */
+  virtual std::string type() const = 0;
 
   /** \brief Calculate wrench.
       \param wrenchRatio wrench ratio of each ridge
@@ -118,6 +123,12 @@ public:
       \param mcRtcConfig mc_rtc configuration
   */
   EmptyContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Empty";
+  }
 };
 
 /** \brief Surface contact. */
@@ -150,6 +161,12 @@ public:
       \param mcRtcConfig mc_rtc configuration
   */
   SurfaceContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Surface";
+  }
 };
 
 /** \brief Grasp contact. */
@@ -182,5 +199,11 @@ public:
       \param mcRtcConfig mc_rtc configuration
   */
   GraspContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Grasp";
+  }
 };
 } // namespace ForceColl
