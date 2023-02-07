@@ -93,11 +93,11 @@ public:
       \param forceScale scale of force markers (set non-positive for no visualization)
       \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
    */
-  void addToGUI(mc_rtc::gui::StateBuilder & gui,
-                const std::vector<std::string> & category,
-                const Eigen::VectorXd & wrenchRatio,
-                double forceScale = constants::defaultForceScale,
-                double fricPyramidScale = constants::defaultFricPyramidScale);
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        const Eigen::VectorXd & wrenchRatio,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale);
 
 public:
   //! Name of contact
@@ -169,6 +169,19 @@ public:
   {
     return "Surface";
   }
+
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param wrenchRatio wrench ratio of each ridge
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+   */
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        const Eigen::VectorXd & wrenchRatio,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale) override;
 };
 
 /** \brief Grasp contact. */
@@ -207,5 +220,18 @@ public:
   {
     return "Grasp";
   }
+
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param wrenchRatio wrench ratio of each ridge
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+   */
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        const Eigen::VectorXd & wrenchRatio,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale) override;
 };
 } // namespace ForceColl

@@ -1,5 +1,7 @@
 #include <mc_rtc/constants.h>
 #include <mc_rtc/gui/Arrow.h>
+#include <mc_rtc/gui/Point3D.h>
+#include <mc_rtc/gui/Polygon.h>
 #include <mc_rtc/gui/Polyhedron.h>
 #include <mc_rtc/logging.h>
 
@@ -80,60 +82,62 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
                        double forceScale,
                        double fricPyramidScale)
 {
-  int wrenchRatioIdx = 0;
-  int vertexIdx = 0;
-
-  for(const auto & vertexWithRidge : vertexWithRidgeList_)
+  if(forceScale > 0 || fricPyramidScale > 0)
   {
-    const Eigen::Vector3d & vertex = vertexWithRidge.vertex;
-    const std::vector<Eigen::Vector3d> & ridgeList = vertexWithRidge.ridgeList;
-
-    int ridgeIdx = 0;
-    Eigen::Vector3d vertexForce = Eigen::Vector3d::Zero();
-    std::vector<Eigen::Vector3d> fricPyramidVertices = {vertex};
-    std::vector<std::array<size_t, 3>> fricPyramidVertexIndicies;
-    for(const auto & ridge : ridgeList)
+    int wrenchRatioIdx = 0;
+    int vertexIdx = 0;
+    for(const auto & vertexWithRidge : vertexWithRidgeList_)
     {
-      Eigen::Vector3d force = wrenchRatio(wrenchRatioIdx) * ridge;
-      vertexForce += force;
-      Eigen::Vector3d fricPyramidVertex = vertex + fricPyramidScale * ridge;
-      fricPyramidVertices.push_back(fricPyramidVertex);
-      fricPyramidVertexIndicies.push_back(
-          {0, static_cast<size_t>(ridgeIdx + 1), static_cast<size_t>(ridgeIdx + 1) % ridgeList.size() + 1});
+      const Eigen::Vector3d & vertex = vertexWithRidge.vertex;
+      const std::vector<Eigen::Vector3d> & ridgeList = vertexWithRidge.ridgeList;
 
-      wrenchRatioIdx++;
-      ridgeIdx++;
+      int ridgeIdx = 0;
+      Eigen::Vector3d vertexForce = Eigen::Vector3d::Zero();
+      std::vector<Eigen::Vector3d> fricPyramidVertices = {vertex};
+      std::vector<std::array<size_t, 3>> fricPyramidVertexIndicies;
+      for(const auto & ridge : ridgeList)
+      {
+        Eigen::Vector3d force = wrenchRatio(wrenchRatioIdx) * ridge;
+        vertexForce += force;
+        Eigen::Vector3d fricPyramidVertex = vertex + fricPyramidScale * ridge;
+        fricPyramidVertices.push_back(fricPyramidVertex);
+        fricPyramidVertexIndicies.push_back(
+            {0, static_cast<size_t>(ridgeIdx + 1), static_cast<size_t>(ridgeIdx + 1) % ridgeList.size() + 1});
+
+        wrenchRatioIdx++;
+        ridgeIdx++;
+      }
+
+      // Add force arrow
+      if(forceScale > 0)
+      {
+        Eigen::Vector3d arrowStart = vertex;
+        Eigen::Vector3d arrowEnd = vertex + forceScale * vertexForce;
+        mc_rtc::gui::ArrowConfig arrowConfig;
+        arrowConfig.color = mc_rtc::gui::Color::Red;
+        arrowConfig.head_diam = 0.020;
+        arrowConfig.head_len = 0.03;
+        arrowConfig.shaft_diam = 0.010;
+        gui.addElement(category, mc_rtc::gui::Arrow(
+                                     name_ + "_Force" + std::to_string(vertexIdx), arrowConfig,
+                                     [arrowStart]() { return arrowStart; }, [arrowEnd]() { return arrowEnd; }));
+      }
+
+      // Add friction pyramid
+      if(fricPyramidScale > 0)
+      {
+        mc_rtc::gui::PolyhedronConfig polyConfig;
+        polyConfig.show_triangle = false;
+        polyConfig.edge_config.color = mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0);
+        polyConfig.show_vertices = false;
+        gui.addElement(category, mc_rtc::gui::Polyhedron(
+                                     name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
+                                     [fricPyramidVertices]() { return fricPyramidVertices; },
+                                     [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; }));
+      }
+
+      vertexIdx++;
     }
-
-    // Add force arrow
-    if(forceScale > 0)
-    {
-      Eigen::Vector3d arrowStart = vertex;
-      Eigen::Vector3d arrowEnd = vertex + forceScale * vertexForce;
-      mc_rtc::gui::ArrowConfig arrowConfig;
-      arrowConfig.color = mc_rtc::gui::Color::Red;
-      arrowConfig.head_diam = 0.020;
-      arrowConfig.head_len = 0.03;
-      arrowConfig.shaft_diam = 0.010;
-      gui.addElement(category, mc_rtc::gui::Arrow(
-                                   name_ + "_Force" + std::to_string(vertexIdx), arrowConfig,
-                                   [arrowStart]() { return arrowStart; }, [arrowEnd]() { return arrowEnd; }));
-    }
-
-    // Add friction pyramid
-    if(fricPyramidScale > 0)
-    {
-      mc_rtc::gui::PolyhedronConfig polyConfig;
-      polyConfig.show_triangle = false;
-      polyConfig.edge_config.color = mc_rtc::gui::Color(1.0, 0.6, 0.0, 1.0);
-      polyConfig.show_vertices = false;
-      gui.addElement(category, mc_rtc::gui::Polyhedron(
-                                   name_ + "_FricPyramid" + std::to_string(vertexIdx), polyConfig,
-                                   [fricPyramidVertices]() { return fricPyramidVertices; },
-                                   [fricPyramidVertexIndicies]() { return fricPyramidVertexIndicies; }));
-    }
-
-    vertexIdx++;
   }
 }
 
@@ -192,6 +196,26 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
 {
 }
 
+void SurfaceContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
+                              const std::vector<std::string> & category,
+                              const Eigen::VectorXd & wrenchRatio,
+                              double forceScale,
+                              double fricPyramidScale)
+{
+  Contact::addToGUI(gui, category, wrenchRatio, forceScale, fricPyramidScale);
+
+  // Add region
+  {
+    std::vector<Eigen::Vector3d> vertices;
+    for(const auto & vertexWithRidge : vertexWithRidgeList_)
+    {
+      vertices.push_back(vertexWithRidge.vertex);
+    }
+    gui.addElement(category, mc_rtc::gui::Polygon(name_ + "_SurfaceRegion", {mc_rtc::gui::Color::Blue, 0.02},
+                                                  [vertices]() { return vertices; }));
+  }
+}
+
 void GraspContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 {
   for(const auto & verticesConfig : mcRtcConfig)
@@ -234,4 +258,25 @@ GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
                verticesMap.at(mcRtcConfig("verticesName")),
                mcRtcConfig("pose"))
 {
+}
+
+void GraspContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
+                            const std::vector<std::string> & category,
+                            const Eigen::VectorXd & wrenchRatio,
+                            double forceScale,
+                            double fricPyramidScale)
+{
+  Contact::addToGUI(gui, category, wrenchRatio, forceScale, fricPyramidScale);
+
+  // Add region
+  {
+    int vertexIdx = 0;
+    for(const auto & vertexWithRidge : vertexWithRidgeList_)
+    {
+      Eigen::Vector3d vertex = vertexWithRidge.vertex;
+      gui.addElement(category, mc_rtc::gui::Point3D(name_ + "_GraspRegion_" + std::to_string(vertexIdx),
+                                                    {mc_rtc::gui::Color::Blue, 0.03}, [vertex]() { return vertex; }));
+      vertexIdx++;
+    }
+  }
 }
