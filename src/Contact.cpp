@@ -78,9 +78,9 @@ sva::ForceVecd Contact::calcWrench(const Eigen::VectorXd & wrenchRatio, const Ei
 
 void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
                        const std::vector<std::string> & category,
-                       const Eigen::VectorXd & wrenchRatio,
                        double forceScale,
-                       double fricPyramidScale)
+                       double fricPyramidScale,
+                       const Eigen::VectorXd & wrenchRatio)
 {
   if(forceScale > 0 || fricPyramidScale > 0)
   {
@@ -97,12 +97,19 @@ void Contact::addToGUI(mc_rtc::gui::StateBuilder & gui,
       std::vector<std::array<size_t, 3>> fricPyramidVertexIndicies;
       for(const auto & ridge : ridgeList)
       {
-        Eigen::Vector3d force = wrenchRatio(wrenchRatioIdx) * ridge;
-        vertexForce += force;
-        Eigen::Vector3d fricPyramidVertex = vertex + fricPyramidScale * ridge;
-        fricPyramidVertices.push_back(fricPyramidVertex);
-        fricPyramidVertexIndicies.push_back(
-            {0, static_cast<size_t>(ridgeIdx + 1), static_cast<size_t>(ridgeIdx + 1) % ridgeList.size() + 1});
+        if(forceScale > 0)
+        {
+          Eigen::Vector3d force = wrenchRatio(wrenchRatioIdx) * ridge;
+          vertexForce += force;
+        }
+
+        if(fricPyramidScale > 0)
+        {
+          Eigen::Vector3d fricPyramidVertex = vertex + fricPyramidScale * ridge;
+          fricPyramidVertices.push_back(fricPyramidVertex);
+          fricPyramidVertexIndicies.push_back(
+              {0, static_cast<size_t>(ridgeIdx + 1), static_cast<size_t>(ridgeIdx + 1) % ridgeList.size() + 1});
+        }
 
         wrenchRatioIdx++;
         ridgeIdx++;
@@ -198,11 +205,11 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
 
 void SurfaceContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
                               const std::vector<std::string> & category,
-                              const Eigen::VectorXd & wrenchRatio,
                               double forceScale,
-                              double fricPyramidScale)
+                              double fricPyramidScale,
+                              const Eigen::VectorXd & wrenchRatio)
 {
-  Contact::addToGUI(gui, category, wrenchRatio, forceScale, fricPyramidScale);
+  Contact::addToGUI(gui, category, forceScale, fricPyramidScale, wrenchRatio);
 
   // Add region
   {
@@ -262,11 +269,11 @@ GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
 
 void GraspContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
                             const std::vector<std::string> & category,
-                            const Eigen::VectorXd & wrenchRatio,
                             double forceScale,
-                            double fricPyramidScale)
+                            double fricPyramidScale,
+                            const Eigen::VectorXd & wrenchRatio)
 {
-  Contact::addToGUI(gui, category, wrenchRatio, forceScale, fricPyramidScale);
+  Contact::addToGUI(gui, category, forceScale, fricPyramidScale, wrenchRatio);
 
   // Add region
   {
