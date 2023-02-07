@@ -6,6 +6,8 @@
 #include <mc_rtc/gui/StateBuilder.h>
 #include <SpaceVecAlg/SpaceVecAlg>
 
+#include <ForceColl/Constants.h>
+
 namespace ForceColl
 {
 /** \brief Friction pyramid. */
@@ -34,13 +36,15 @@ public:
   std::vector<Eigen::Vector3d> localRidgeList_;
 };
 
-/** \brief Contact constraint. */
+/** \brief Contact. */
 class Contact
 {
 public:
   /** \brief Vertex with ridges. */
   struct VertexWithRidge
   {
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
     //! Vertex
     Eigen::Vector3d vertex;
 
@@ -58,18 +62,21 @@ public:
   };
 
 public:
+  /** \brief Make shared pointer from mc_rtc configuration.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static std::shared_ptr<Contact> makeSharedFromConfig(const mc_rtc::Configuration & mcRtcConfig);
+
+public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
   /** \brief Constructor.
       \param name name of contact
-      \param fricCoeff friction coefficient
-      \param localVertexList vertices of surface in local coordinates
-      \param pose pose of contact
    */
-  Contact(const std::string & name,
-          double fricCoeff,
-          const std::vector<Eigen::Vector3d> & localVertexList,
-          const sva::PTransformd & pose);
+  Contact(const std::string & name);
+
+  /** \brief Get type of contact. */
+  virtual std::string type() const = 0;
 
   /** \brief Calculate wrench.
       \param wrenchRatio wrench ratio of each ridge
@@ -82,15 +89,15 @@ public:
   /** \brief Add markers to GUI.
       \param gui GUI
       \param category category of GUI entries
-      \param wrenchRatio wrench ratio of each ridge
       \param forceScale scale of force markers (set non-positive for no visualization)
       \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+      \param wrenchRatio wrench ratio of each ridge
    */
-  void addToGUI(mc_rtc::gui::StateBuilder & gui,
-                const std::vector<std::string> & category,
-                const Eigen::VectorXd & wrenchRatio,
-                double forceScale = 2e-3,
-                double fricPyramidScale = 5e-2);
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale,
+                        const Eigen::VectorXd & wrenchRatio = Eigen::VectorXd::Zero(0));
 
 public:
   //! Name of contact
@@ -101,5 +108,130 @@ public:
 
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
+};
+
+/** \brief Empty contact. */
+class EmptyContact : public Contact
+{
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+   */
+  EmptyContact(const std::string & name);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  EmptyContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Empty";
+  }
+};
+
+/** \brief Surface contact. */
+class SurfaceContact : public Contact
+{
+public:
+  /** \brief Load map of surface vertices in local coordinates
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static void loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig);
+
+  //! Map of surface vertices in local coordinates
+  static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> verticesMap;
+
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+      \param fricCoeff friction coefficient
+      \param localVertices surface vertices in local coordinates
+      \param pose pose of contact
+   */
+  SurfaceContact(const std::string & name,
+                 double fricCoeff,
+                 const std::vector<Eigen::Vector3d> & localVertices,
+                 const sva::PTransformd & pose);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  SurfaceContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Surface";
+  }
+
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+      \param wrenchRatio wrench ratio of each ridge
+   */
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale,
+                        const Eigen::VectorXd & wrenchRatio = Eigen::VectorXd::Zero(0)) override;
+};
+
+/** \brief Grasp contact. */
+class GraspContact : public Contact
+{
+public:
+  /** \brief Load map of grasp vertices in local coordinates
+      \param mcRtcConfig mc_rtc configuration
+  */
+  static void loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig);
+
+  //! Map of grasp vertices in local coordinates
+  static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> verticesMap;
+
+public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+  /** \brief Constructor.
+      \param name name of contact
+      \param fricCoeff friction coefficient
+      \param localVertices grasp vertices in local coordinates
+      \param pose pose of contact
+   */
+  GraspContact(const std::string & name,
+               double fricCoeff,
+               const std::vector<sva::PTransformd> & localVertices,
+               const sva::PTransformd & pose);
+
+  /** \brief Constructor.
+      \param mcRtcConfig mc_rtc configuration
+  */
+  GraspContact(const mc_rtc::Configuration & mcRtcConfig);
+
+  /** \brief Get type of contact. */
+  inline virtual std::string type() const override
+  {
+    return "Grasp";
+  }
+
+  /** \brief Add markers to GUI.
+      \param gui GUI
+      \param category category of GUI entries
+      \param forceScale scale of force markers (set non-positive for no visualization)
+      \param fricPyramidScale scale of friction pyramid markers (set non-positive for no visualization)
+      \param wrenchRatio wrench ratio of each ridge
+   */
+  virtual void addToGUI(mc_rtc::gui::StateBuilder & gui,
+                        const std::vector<std::string> & category,
+                        double forceScale = constants::defaultForceScale,
+                        double fricPyramidScale = constants::defaultFricPyramidScale,
+                        const Eigen::VectorXd & wrenchRatio = Eigen::VectorXd::Zero(0)) override;
 };
 } // namespace ForceColl

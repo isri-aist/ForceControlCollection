@@ -14,6 +14,7 @@ else()
 endif()
 
 set(ForceColl_gtest_list
+  TestContact
   TestWrenchDistribution
   )
 

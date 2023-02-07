@@ -112,9 +112,8 @@ void WrenchDistribution<PatchID>::addToGUI(mc_rtc::gui::StateBuilder & gui,
 
   for(const auto & contactKV : contactList_)
   {
-    contactKV.second->addToGUI(gui, category,
-                               resultWrenchRatio_.segment(wrenchRatioIdx, contactKV.second->graspMat_.cols()),
-                               forceScale, fricPyramidScale);
+    contactKV.second->addToGUI(gui, category, forceScale, fricPyramidScale,
+                               resultWrenchRatio_.segment(wrenchRatioIdx, contactKV.second->graspMat_.cols()));
     wrenchRatioIdx += static_cast<int>(contactKV.second->graspMat_.cols());
   }
 }
