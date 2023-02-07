@@ -2,6 +2,7 @@
 
 #include <qp_solver_collection/QpSolverCollection.h>
 
+#include <ForceColl/Constants.h>
 #include <ForceColl/Contact.h>
 
 namespace ForceColl
@@ -70,8 +71,8 @@ public:
    */
   void addToGUI(mc_rtc::gui::StateBuilder & gui,
                 const std::vector<std::string> & category,
-                double forceScale = 2e-3,
-                double fricPyramidScale = 5e-2);
+                double forceScale = constants::defaultForceScale,
+                double fricPyramidScale = constants::defaultFricPyramidScale);
 
 public:
   //! List of contact constraint

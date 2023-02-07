@@ -6,6 +6,8 @@
 #include <mc_rtc/gui/StateBuilder.h>
 #include <SpaceVecAlg/SpaceVecAlg>
 
+#include <ForceColl/Constants.h>
+
 namespace ForceColl
 {
 /** \brief Friction pyramid. */
@@ -94,8 +96,8 @@ public:
   void addToGUI(mc_rtc::gui::StateBuilder & gui,
                 const std::vector<std::string> & category,
                 const Eigen::VectorXd & wrenchRatio,
-                double forceScale = 2e-3,
-                double fricPyramidScale = 5e-2);
+                double forceScale = constants::defaultForceScale,
+                double fricPyramidScale = constants::defaultFricPyramidScale);
 
 public:
   //! Name of contact
