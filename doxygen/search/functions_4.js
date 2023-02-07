@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ridgenum_52',['ridgeNum',['../classForceColl_1_1FrictionPyramid.html#a28df1f3a38092cc5fc544b74092ade09',1,'ForceColl::FrictionPyramid']]],
-  ['run_53',['run',['../classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca',1,'ForceColl::WrenchDistribution']]]
+  ['graspcontact_68',['GraspContact',['../classForceColl_1_1GraspContact.html#a69fba7812c02620289484c16648d35d9',1,'ForceColl::GraspContact::GraspContact(const std::string &amp;name, double fricCoeff, const std::vector&lt; sva::PTransformd &gt; &amp;localVertices, const sva::PTransformd &amp;pose)'],['../classForceColl_1_1GraspContact.html#a61c45ec5fa8096e976aa158e501e0407',1,'ForceColl::GraspContact::GraspContact(const mc_rtc::Configuration &amp;mcRtcConfig)']]]
 ];

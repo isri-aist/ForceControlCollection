@@ -75,17 +75,29 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classForceColl_1_1Contact-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ForceColl::Contact Class Reference</div>  </div>
+<div class="title">ForceColl::Contact Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classForceColl_1_1Contact.html" title="Contact constraint.">Contact</a> constraint.  
+<p><a class="el" href="classForceColl_1_1Contact.html" title="Contact.">Contact</a>.  
  <a href="classForceColl_1_1Contact.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Contact_8h_source.html">Contact.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ForceColl::Contact:</div>
+<div class="dyncontent">
+<div class="center"><img src="classForceColl_1_1Contact__inherit__graph.png" border="0" usemap="#ForceColl_1_1Contact_inherit__map" alt="Inheritance graph"/></div>
+<map name="ForceColl_1_1Contact_inherit__map" id="ForceColl_1_1Contact_inherit__map">
+<area shape="rect" title="Contact." alt="" coords="232,5,372,32"/>
+<area shape="rect" href="classForceColl_1_1EmptyContact.html" title="Empty contact." alt="" coords="5,80,188,107"/>
+<area shape="rect" href="classForceColl_1_1GraspContact.html" title="Grasp contact." alt="" coords="213,80,391,107"/>
+<area shape="rect" href="classForceColl_1_1SurfaceContact.html" title="Surface contact." alt="" coords="415,80,605,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -95,15 +107,24 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aea09c1fc6e7870618d0c0066f474542a"><td class="memItemLeft" align="right" valign="top">EIGEN_MAKE_ALIGNED_OPERATOR_NEW&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#aea09c1fc6e7870618d0c0066f474542a">Contact</a> (const std::string &amp;name, double fricCoeff, const std::vector&lt; Eigen::Vector3d &gt; &amp;localVertexList, const sva::PTransformd &amp;pose)</td></tr>
-<tr class="memdesc:aea09c1fc6e7870618d0c0066f474542a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classForceColl_1_1Contact.html#aea09c1fc6e7870618d0c0066f474542a">More...</a><br /></td></tr>
-<tr class="separator:aea09c1fc6e7870618d0c0066f474542a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a799fdda5d6cfb7baba165fa3269792"><td class="memItemLeft" align="right" valign="top">EIGEN_MAKE_ALIGNED_OPERATOR_NEW&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a8a799fdda5d6cfb7baba165fa3269792">Contact</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a8a799fdda5d6cfb7baba165fa3269792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classForceColl_1_1Contact.html#a8a799fdda5d6cfb7baba165fa3269792">More...</a><br /></td></tr>
+<tr class="separator:a8a799fdda5d6cfb7baba165fa3269792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e9d6cacc46c44df619a9282c6c65ce"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#ae2e9d6cacc46c44df619a9282c6c65ce">type</a> () const =0</td></tr>
+<tr class="memdesc:ae2e9d6cacc46c44df619a9282c6c65ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of contact.  <a href="classForceColl_1_1Contact.html#ae2e9d6cacc46c44df619a9282c6c65ce">More...</a><br /></td></tr>
+<tr class="separator:ae2e9d6cacc46c44df619a9282c6c65ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">calcWrench</a> (const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero()) const</td></tr>
 <tr class="memdesc:a67be2179a2951ef3d7dc5fe90ddae002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench.  <a href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">More...</a><br /></td></tr>
 <tr class="separator:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad20a70b89a74b04ff15d7b839630a2e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#ad20a70b89a74b04ff15d7b839630a2e3">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, const Eigen::VectorXd &amp;wrenchRatio, double forceScale=2e-3, double fricPyramidScale=5e-2)</td></tr>
-<tr class="memdesc:ad20a70b89a74b04ff15d7b839630a2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1Contact.html#ad20a70b89a74b04ff15d7b839630a2e3">More...</a><br /></td></tr>
-<tr class="separator:ad20a70b89a74b04ff15d7b839630a2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402a972ca85fd5c038ecdc871d7e8e46"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a402a972ca85fd5c038ecdc871d7e8e46">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, double forceScale=<a class="el" href="namespaceForceColl_1_1constants.html#aa4fa732bf7037e49ca07e92e96b1b408">constants::defaultForceScale</a>, double fricPyramidScale=<a class="el" href="namespaceForceColl_1_1constants.html#add557c7b35363d9b2e21fd4dd368777c">constants::defaultFricPyramidScale</a>, const Eigen::VectorXd &amp;wrenchRatio=Eigen::VectorXd::Zero(0))</td></tr>
+<tr class="memdesc:a402a972ca85fd5c038ecdc871d7e8e46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1Contact.html#a402a972ca85fd5c038ecdc871d7e8e46">More...</a><br /></td></tr>
+<tr class="separator:a402a972ca85fd5c038ecdc871d7e8e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a09877c9f239922603a74f35daf36dd1d"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a09877c9f239922603a74f35daf36dd1d">makeSharedFromConfig</a> (const mc_rtc::Configuration &amp;mcRtcConfig)</td></tr>
+<tr class="memdesc:a09877c9f239922603a74f35daf36dd1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make shared pointer from mc_rtc configuration.  <a href="classForceColl_1_1Contact.html#a09877c9f239922603a74f35daf36dd1d">More...</a><br /></td></tr>
+<tr class="separator:a09877c9f239922603a74f35daf36dd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,12 +139,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a42bbd7a64ba424fd427481a4487ded64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classForceColl_1_1Contact.html" title="Contact constraint.">Contact</a> constraint. </p>
+<div class="textblock"><p><a class="el" href="classForceColl_1_1Contact.html" title="Contact.">Contact</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00038">38</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00040">40</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aea09c1fc6e7870618d0c0066f474542a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea09c1fc6e7870618d0c0066f474542a">&#9670;&nbsp;</a></span>Contact()</h2>
+<a id="a8a799fdda5d6cfb7baba165fa3269792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a799fdda5d6cfb7baba165fa3269792">&#9670;&nbsp;</a></span>Contact()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,30 +153,8 @@ Public Attributes</h2></td></tr>
           <td class="memname">EIGEN_MAKE_ALIGNED_OPERATOR_NEW ForceColl::Contact::Contact </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fricCoeff</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; Eigen::Vector3d &gt; &amp;&#160;</td>
-          <td class="paramname"><em>localVertexList</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const sva::PTransformd &amp;&#160;</td>
-          <td class="paramname"><em>pose</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -164,9 +163,6 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>name of contact </td></tr>
-    <tr><td class="paramname">fricCoeff</td><td>friction coefficient </td></tr>
-    <tr><td class="paramname">localVertexList</td><td>vertices of surface in local coordinates </td></tr>
-    <tr><td class="paramname">pose</td><td>pose of contact </td></tr>
   </table>
   </dd>
 </dl>
@@ -174,14 +170,17 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad20a70b89a74b04ff15d7b839630a2e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad20a70b89a74b04ff15d7b839630a2e3">&#9670;&nbsp;</a></span>addToGUI()</h2>
+<a id="a402a972ca85fd5c038ecdc871d7e8e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402a972ca85fd5c038ecdc871d7e8e46">&#9670;&nbsp;</a></span>addToGUI()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ForceColl::Contact::addToGUI </td>
+          <td class="memname">virtual void ForceColl::Contact::addToGUI </td>
           <td>(</td>
           <td class="paramtype">mc_rtc::gui::StateBuilder &amp;&#160;</td>
           <td class="paramname"><em>gui</em>, </td>
@@ -195,20 +194,20 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>forceScale</em> = <code><a class="el" href="namespaceForceColl_1_1constants.html#aa4fa732bf7037e49ca07e92e96b1b408">constants::defaultForceScale</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fricPyramidScale</em> = <code><a class="el" href="namespaceForceColl_1_1constants.html#add557c7b35363d9b2e21fd4dd368777c">constants::defaultFricPyramidScale</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
-          <td class="paramname"><em>wrenchRatio</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>forceScale</em> = <code>2e-3</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>fricPyramidScale</em> = <code>5e-2</code>&#160;</td>
+          <td class="paramname"><em>wrenchRatio</em> = <code>Eigen::VectorXd::Zero(0)</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -216,6 +215,11 @@ Public Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Add markers to GUI. </p>
@@ -223,12 +227,14 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">gui</td><td>GUI </td></tr>
     <tr><td class="paramname">category</td><td>category of GUI entries </td></tr>
-    <tr><td class="paramname">wrenchRatio</td><td>wrench ratio of each ridge </td></tr>
     <tr><td class="paramname">forceScale</td><td>scale of force markers (set non-positive for no visualization) </td></tr>
     <tr><td class="paramname">fricPyramidScale</td><td>scale of friction pyramid markers (set non-positive for no visualization) </td></tr>
+    <tr><td class="paramname">wrenchRatio</td><td>wrench ratio of each ridge </td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="classForceColl_1_1GraspContact.html#a11bf4dd07150b3c23e5e5023670e2cd7">ForceColl::GraspContact</a>, and <a class="el" href="classForceColl_1_1SurfaceContact.html#a0c00745d6ddcf6ff9523e9933f0debe5">ForceColl::SurfaceContact</a>.</p>
 
 </div>
 </div>
@@ -270,6 +276,69 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a09877c9f239922603a74f35daf36dd1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09877c9f239922603a74f35daf36dd1d">&#9670;&nbsp;</a></span>makeSharedFromConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::shared_ptr&lt;<a class="el" href="classForceColl_1_1Contact.html">Contact</a>&gt; ForceColl::Contact::makeSharedFromConfig </td>
+          <td>(</td>
+          <td class="paramtype">const mc_rtc::Configuration &amp;&#160;</td>
+          <td class="paramname"><em>mcRtcConfig</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Make shared pointer from mc_rtc configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mcRtcConfig</td><td>mc_rtc configuration </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae2e9d6cacc46c44df619a9282c6c65ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e9d6cacc46c44df619a9282c6c65ce">&#9670;&nbsp;</a></span>type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string ForceColl::Contact::type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get type of contact. </p>
+
+<p>Implemented in <a class="el" href="classForceColl_1_1GraspContact.html#a7c90f2f24ed49cce520df8ee31465deb">ForceColl::GraspContact</a>, <a class="el" href="classForceColl_1_1SurfaceContact.html#a1e71567c63009a0b455b4ff5b294b8a7">ForceColl::SurfaceContact</a>, and <a class="el" href="classForceColl_1_1EmptyContact.html#a8309993135937bae367b01756fd15c28">ForceColl::EmptyContact</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a57146197ace2ff24f0f41cda63629852"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57146197ace2ff24f0f41cda63629852">&#9670;&nbsp;</a></span>graspMat_</h2>
@@ -285,7 +354,7 @@ Public Attributes</h2></td></tr>
 
 <p>Grasp matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00100">100</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00107">107</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -303,7 +372,7 @@ Public Attributes</h2></td></tr>
 
 <p>Name of contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00097">97</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00104">104</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -321,7 +390,7 @@ Public Attributes</h2></td></tr>
 
 <p>List of vertex with ridges. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00103">103</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00110">110</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>

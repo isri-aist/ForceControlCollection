@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['qpcoeff_5f_17',['qpCoeff_',['../classForceColl_1_1WrenchDistribution.html#ad4b1e6fc7fee6013be962ec80dcb37a6',1,'ForceColl::WrenchDistribution']]],
-  ['qpsolver_5f_18',['qpSolver_',['../classForceColl_1_1WrenchDistribution.html#a496dfc85c219a27aab816069dae57048',1,'ForceColl::WrenchDistribution']]]
+  ['makesharedfromconfig_23',['makeSharedFromConfig',['../classForceColl_1_1Contact.html#a09877c9f239922603a74f35daf36dd1d',1,'ForceColl::Contact']]]
 ];

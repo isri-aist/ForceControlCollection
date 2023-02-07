@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertexwithridge_37',['VertexWithRidge',['../structForceColl_1_1Contact_1_1VertexWithRidge.html',1,'ForceColl::Contact']]]
+  ['frictionpyramid_48',['FrictionPyramid',['../classForceColl_1_1FrictionPyramid.html',1,'ForceColl']]]
 ];

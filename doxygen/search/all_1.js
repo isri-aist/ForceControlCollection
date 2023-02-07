@@ -6,7 +6,8 @@ var searchData=
   ['config_4',['config',['../classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485',1,'ForceColl::WrenchDistribution']]],
   ['config_5f_5',['config_',['../classForceColl_1_1WrenchDistribution.html#a16001556a975ffdf4caa852cd67ca1be',1,'ForceColl::WrenchDistribution']]],
   ['configuration_6',['Configuration',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html',1,'ForceColl::WrenchDistribution']]],
-  ['contact_7',['Contact',['../classForceColl_1_1Contact.html',1,'ForceColl::Contact'],['../classForceColl_1_1Contact.html#aea09c1fc6e7870618d0c0066f474542a',1,'ForceColl::Contact::Contact()']]],
-  ['contact_2eh_8',['Contact.h',['../Contact_8h.html',1,'']]],
-  ['contactlist_5f_9',['contactList_',['../classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a',1,'ForceColl::WrenchDistribution']]]
+  ['constants_2eh_7',['Constants.h',['../Constants_8h.html',1,'']]],
+  ['contact_8',['Contact',['../classForceColl_1_1Contact.html',1,'ForceColl::Contact'],['../classForceColl_1_1Contact.html#a8a799fdda5d6cfb7baba165fa3269792',1,'ForceColl::Contact::Contact()']]],
+  ['contact_2eh_9',['Contact.h',['../Contact_8h.html',1,'']]],
+  ['contactlist_5f_10',['contactList_',['../classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a',1,'ForceColl::WrenchDistribution']]]
 ];

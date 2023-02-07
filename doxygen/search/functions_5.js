@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vertexwithridge_54',['VertexWithRidge',['../structForceColl_1_1Contact_1_1VertexWithRidge.html#a4a7c10b3b1df346075571e38ef25f93f',1,'ForceColl::Contact::VertexWithRidge']]]
+  ['load_69',['load',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a9809a456cce7ebe9ec7813dd2eacebc1',1,'ForceColl::WrenchDistribution::Configuration']]],
+  ['loadverticesmap_70',['loadVerticesMap',['../classForceColl_1_1SurfaceContact.html#a06ee4e07a3444058b69d7bbe729133ee',1,'ForceColl::SurfaceContact::loadVerticesMap()'],['../classForceColl_1_1GraspContact.html#a8da32f8f4720dc5c759d8215cdab1522',1,'ForceColl::GraspContact::loadVerticesMap()']]]
 ];

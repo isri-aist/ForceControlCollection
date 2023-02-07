@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_51',['load',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a9809a456cce7ebe9ec7813dd2eacebc1',1,'ForceColl::WrenchDistribution::Configuration']]]
+  ['frictionpyramid_67',['FrictionPyramid',['../classForceColl_1_1FrictionPyramid.html#a6d7c4f8cda6f6a486f4453dfbb5f3508',1,'ForceColl::FrictionPyramid']]]
 ];

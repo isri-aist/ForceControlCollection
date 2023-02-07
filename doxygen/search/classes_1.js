@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['frictionpyramid_36',['FrictionPyramid',['../classForceColl_1_1FrictionPyramid.html',1,'ForceColl']]]
+  ['emptycontact_47',['EmptyContact',['../classForceColl_1_1EmptyContact.html',1,'ForceColl']]]
 ];

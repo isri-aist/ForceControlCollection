@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['wrenchdistribution_30',['WrenchDistribution',['../classForceColl_1_1WrenchDistribution.html',1,'ForceColl::WrenchDistribution&lt; PatchID &gt;'],['../classForceColl_1_1WrenchDistribution.html#a54ccdfaabdce9e2ef17f888d13396830',1,'ForceColl::WrenchDistribution::WrenchDistribution()']]],
-  ['wrenchdistribution_2eh_31',['WrenchDistribution.h',['../WrenchDistribution_8h.html',1,'']]],
-  ['wrenchdistribution_2ehpp_32',['WrenchDistribution.hpp',['../WrenchDistribution_8hpp.html',1,'']]],
-  ['wrenchweight_33',['wrenchWeight',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#afbde769259c878543e70b0bb34e89b92',1,'ForceColl::WrenchDistribution::Configuration']]]
+  ['readme_2emd_27',['README.md',['../README_8md.html',1,'']]],
+  ['regularweight_28',['regularWeight',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#aaf7c13167662de708f66eb32b00a7044',1,'ForceColl::WrenchDistribution::Configuration']]],
+  ['resulttotalwrench_5f_29',['resultTotalWrench_',['../classForceColl_1_1WrenchDistribution.html#a43dfc4b19e73196916c064c67ff8f378',1,'ForceColl::WrenchDistribution']]],
+  ['resultwrenchratio_5f_30',['resultWrenchRatio_',['../classForceColl_1_1WrenchDistribution.html#a28e2e88e00179efacbb19f03cca52a42',1,'ForceColl::WrenchDistribution']]],
+  ['ridgeforceminmax_31',['ridgeForceMinMax',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a81a1ab8dc03c33bd080388b1521b882c',1,'ForceColl::WrenchDistribution::Configuration']]],
+  ['ridgelist_32',['ridgeList',['../structForceColl_1_1Contact_1_1VertexWithRidge.html#a88d8c24418d3eb2192d76ca2ef45e543',1,'ForceColl::Contact::VertexWithRidge']]],
+  ['ridgenum_33',['ridgeNum',['../classForceColl_1_1FrictionPyramid.html#a28df1f3a38092cc5fc544b74092ade09',1,'ForceColl::FrictionPyramid']]],
+  ['run_34',['run',['../classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca',1,'ForceColl::WrenchDistribution']]]
 ];

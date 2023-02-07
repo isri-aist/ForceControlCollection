@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wrenchdistribution_55',['WrenchDistribution',['../classForceColl_1_1WrenchDistribution.html#a54ccdfaabdce9e2ef17f888d13396830',1,'ForceColl::WrenchDistribution']]]
+  ['makesharedfromconfig_71',['makeSharedFromConfig',['../classForceColl_1_1Contact.html#a09877c9f239922603a74f35daf36dd1d',1,'ForceColl::Contact']]]
 ];
