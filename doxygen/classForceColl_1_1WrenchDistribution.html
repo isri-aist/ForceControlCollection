@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>force_control_collection: ForceColl::WrenchDistribution&lt; PatchID &gt; Class Template Reference</title>
+<title>force_control_collection: ForceColl::WrenchDistribution Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -79,7 +79,7 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classForceColl_1_1WrenchDistribution-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ForceColl::WrenchDistribution&lt; PatchID &gt; Class Template Reference</div>  </div>
+<div class="title">ForceColl::WrenchDistribution Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -88,11 +88,11 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>&gt;</code></p>
 <div class="dynheader">
-Collaboration diagram for ForceColl::WrenchDistribution&lt; PatchID &gt;:</div>
+Collaboration diagram for ForceColl::WrenchDistribution:</div>
 <div class="dyncontent">
-<div class="center"><img src="classForceColl_1_1WrenchDistribution__coll__graph.png" border="0" usemap="#ForceColl_1_1WrenchDistribution_3_01PatchID_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="ForceColl_1_1WrenchDistribution_3_01PatchID_01_4_coll__map" id="ForceColl_1_1WrenchDistribution_3_01PatchID_01_4_coll__map">
-<area shape="rect" title="Wrench distribution." alt="" coords="5,109,220,151"/>
+<div class="center"><img src="classForceColl_1_1WrenchDistribution__coll__graph.png" border="0" usemap="#ForceColl_1_1WrenchDistribution_coll__map" alt="Collaboration graph"/></div>
+<map name="ForceColl_1_1WrenchDistribution_coll__map" id="ForceColl_1_1WrenchDistribution_coll__map">
+<area shape="rect" title="Wrench distribution." alt="" coords="5,109,220,136"/>
 <area shape="rect" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html" title="Configuration." alt="" coords="5,5,220,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -105,75 +105,61 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a54ccdfaabdce9e2ef17f888d13396830"><td class="memItemLeft" align="right" valign="top">EIGEN_MAKE_ALIGNED_OPERATOR_NEW&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a54ccdfaabdce9e2ef17f888d13396830">WrenchDistribution</a> (const std::unordered_map&lt; PatchID, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const mc_rtc::Configuration &amp;mcRtcConfig={})</td></tr>
-<tr class="memdesc:a54ccdfaabdce9e2ef17f888d13396830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classForceColl_1_1WrenchDistribution.html#a54ccdfaabdce9e2ef17f888d13396830">More...</a><br /></td></tr>
-<tr class="separator:a54ccdfaabdce9e2ef17f888d13396830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8ac00c52406584cebf2a6fa53cefaca"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca">run</a> (const sva::ForceVecd &amp;desiredTotalWrench, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
-<tr class="memdesc:ac8ac00c52406584cebf2a6fa53cefaca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run wrench distribution calculation.  <a href="classForceColl_1_1WrenchDistribution.html#ac8ac00c52406584cebf2a6fa53cefaca">More...</a><br /></td></tr>
-<tr class="separator:ac8ac00c52406584cebf2a6fa53cefaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0e33a28c2f4d5bc6641f780ce99f82f"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; PatchID, sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#aa0e33a28c2f4d5bc6641f780ce99f82f">calcWrenchList</a> (const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero()) const</td></tr>
-<tr class="memdesc:aa0e33a28c2f4d5bc6641f780ce99f82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench list.  <a href="classForceColl_1_1WrenchDistribution.html#aa0e33a28c2f4d5bc6641f780ce99f82f">More...</a><br /></td></tr>
-<tr class="separator:aa0e33a28c2f4d5bc6641f780ce99f82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485">config</a> () const noexcept</td></tr>
-<tr class="memdesc:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const accessor to the configuration.  <a href="classForceColl_1_1WrenchDistribution.html#a7c27e0fc62be25521bf92bfa2ea1b485">More...</a><br /></td></tr>
-<tr class="separator:a7c27e0fc62be25521bf92bfa2ea1b485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aa0f950c4717ad538f097f7f78ed439"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a9aa0f950c4717ad538f097f7f78ed439">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, double forceScale=<a class="el" href="namespaceForceColl_1_1constants.html#aa4fa732bf7037e49ca07e92e96b1b408">constants::defaultForceScale</a>, double fricPyramidScale=<a class="el" href="namespaceForceColl_1_1constants.html#add557c7b35363d9b2e21fd4dd368777c">constants::defaultFricPyramidScale</a>)</td></tr>
-<tr class="memdesc:a9aa0f950c4717ad538f097f7f78ed439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1WrenchDistribution.html#a9aa0f950c4717ad538f097f7f78ed439">More...</a><br /></td></tr>
-<tr class="separator:a9aa0f950c4717ad538f097f7f78ed439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31ba33b535a762bfa6c2f4257275522"><td class="memItemLeft" align="right" valign="top">EIGEN_MAKE_ALIGNED_OPERATOR_NEW&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#ab31ba33b535a762bfa6c2f4257275522">WrenchDistribution</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const mc_rtc::Configuration &amp;mcRtcConfig={})</td></tr>
+<tr class="memdesc:ab31ba33b535a762bfa6c2f4257275522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classForceColl_1_1WrenchDistribution.html#ab31ba33b535a762bfa6c2f4257275522">More...</a><br /></td></tr>
+<tr class="separator:ab31ba33b535a762bfa6c2f4257275522"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7ec653c4965e5e3ea1c6503265d056"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a4c7ec653c4965e5e3ea1c6503265d056">run</a> (const sva::ForceVecd &amp;desiredTotalWrench, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
+<tr class="memdesc:a4c7ec653c4965e5e3ea1c6503265d056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run wrench distribution calculation.  <a href="classForceColl_1_1WrenchDistribution.html#a4c7ec653c4965e5e3ea1c6503265d056">More...</a><br /></td></tr>
+<tr class="separator:a4c7ec653c4965e5e3ea1c6503265d056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e0b222e1f0bd7f9f5bef030db7a597d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a8e0b222e1f0bd7f9f5bef030db7a597d">config</a> () const noexcept</td></tr>
+<tr class="memdesc:a8e0b222e1f0bd7f9f5bef030db7a597d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const accessor to the configuration.  <a href="classForceColl_1_1WrenchDistribution.html#a8e0b222e1f0bd7f9f5bef030db7a597d">More...</a><br /></td></tr>
+<tr class="separator:a8e0b222e1f0bd7f9f5bef030db7a597d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7bb362c67821afb7e6a42ac2fab9144"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#ab7bb362c67821afb7e6a42ac2fab9144">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, double forceScale=<a class="el" href="namespaceForceColl_1_1constants.html#aa4fa732bf7037e49ca07e92e96b1b408">constants::defaultForceScale</a>, double fricPyramidScale=<a class="el" href="namespaceForceColl_1_1constants.html#add557c7b35363d9b2e21fd4dd368777c">constants::defaultFricPyramidScale</a>)</td></tr>
+<tr class="memdesc:ab7bb362c67821afb7e6a42ac2fab9144"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1WrenchDistribution.html#ab7bb362c67821afb7e6a42ac2fab9144">More...</a><br /></td></tr>
+<tr class="separator:ab7bb362c67821afb7e6a42ac2fab9144"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a558ee8bd115c0fda802887e29b728a8a"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; PatchID, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a">contactList_</a></td></tr>
-<tr class="memdesc:a558ee8bd115c0fda802887e29b728a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of contact constraint.  <a href="classForceColl_1_1WrenchDistribution.html#a558ee8bd115c0fda802887e29b728a8a">More...</a><br /></td></tr>
-<tr class="separator:a558ee8bd115c0fda802887e29b728a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28e2e88e00179efacbb19f03cca52a42"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a28e2e88e00179efacbb19f03cca52a42">resultWrenchRatio_</a></td></tr>
-<tr class="memdesc:a28e2e88e00179efacbb19f03cca52a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result wrench ratio.  <a href="classForceColl_1_1WrenchDistribution.html#a28e2e88e00179efacbb19f03cca52a42">More...</a><br /></td></tr>
-<tr class="separator:a28e2e88e00179efacbb19f03cca52a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec3e1dfca70f1771a9301911ac1dd3f"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a4ec3e1dfca70f1771a9301911ac1dd3f">desiredTotalWrench_</a> = sva::ForceVecd::Zero()</td></tr>
-<tr class="memdesc:a4ec3e1dfca70f1771a9301911ac1dd3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desired total wrench.  <a href="classForceColl_1_1WrenchDistribution.html#a4ec3e1dfca70f1771a9301911ac1dd3f">More...</a><br /></td></tr>
-<tr class="separator:a4ec3e1dfca70f1771a9301911ac1dd3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43dfc4b19e73196916c064c67ff8f378"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a43dfc4b19e73196916c064c67ff8f378">resultTotalWrench_</a> = sva::ForceVecd::Zero()</td></tr>
-<tr class="memdesc:a43dfc4b19e73196916c064c67ff8f378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result total wrench.  <a href="classForceColl_1_1WrenchDistribution.html#a43dfc4b19e73196916c064c67ff8f378">More...</a><br /></td></tr>
-<tr class="separator:a43dfc4b19e73196916c064c67ff8f378"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a496dfc85c219a27aab816069dae57048"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; QpSolverCollection::QpSolver &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a496dfc85c219a27aab816069dae57048">qpSolver_</a></td></tr>
-<tr class="memdesc:a496dfc85c219a27aab816069dae57048"><td class="mdescLeft">&#160;</td><td class="mdescRight">QP solver.  <a href="classForceColl_1_1WrenchDistribution.html#a496dfc85c219a27aab816069dae57048">More...</a><br /></td></tr>
-<tr class="separator:a496dfc85c219a27aab816069dae57048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4b1e6fc7fee6013be962ec80dcb37a6"><td class="memItemLeft" align="right" valign="top">QpSolverCollection::QpCoeff&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#ad4b1e6fc7fee6013be962ec80dcb37a6">qpCoeff_</a></td></tr>
-<tr class="memdesc:ad4b1e6fc7fee6013be962ec80dcb37a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">QP coefficients.  <a href="classForceColl_1_1WrenchDistribution.html#ad4b1e6fc7fee6013be962ec80dcb37a6">More...</a><br /></td></tr>
-<tr class="separator:ad4b1e6fc7fee6013be962ec80dcb37a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f036186495ce77ba53736983171a6e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a69f036186495ce77ba53736983171a6e">contactList_</a></td></tr>
+<tr class="memdesc:a69f036186495ce77ba53736983171a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of contact constraint.  <a href="classForceColl_1_1WrenchDistribution.html#a69f036186495ce77ba53736983171a6e">More...</a><br /></td></tr>
+<tr class="separator:a69f036186495ce77ba53736983171a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e4743670affc6efd90a91514dea14d"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a86e4743670affc6efd90a91514dea14d">resultWrenchRatio_</a></td></tr>
+<tr class="memdesc:a86e4743670affc6efd90a91514dea14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result wrench ratio.  <a href="classForceColl_1_1WrenchDistribution.html#a86e4743670affc6efd90a91514dea14d">More...</a><br /></td></tr>
+<tr class="separator:a86e4743670affc6efd90a91514dea14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e587ca6a1ddaca81387413dcfce880d"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a0e587ca6a1ddaca81387413dcfce880d">desiredTotalWrench_</a> = sva::ForceVecd::Zero()</td></tr>
+<tr class="memdesc:a0e587ca6a1ddaca81387413dcfce880d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desired total wrench.  <a href="classForceColl_1_1WrenchDistribution.html#a0e587ca6a1ddaca81387413dcfce880d">More...</a><br /></td></tr>
+<tr class="separator:a0e587ca6a1ddaca81387413dcfce880d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a93af629f8b2fd35d9553ea6218a4ff"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a0a93af629f8b2fd35d9553ea6218a4ff">resultTotalWrench_</a> = sva::ForceVecd::Zero()</td></tr>
+<tr class="memdesc:a0a93af629f8b2fd35d9553ea6218a4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Result total wrench.  <a href="classForceColl_1_1WrenchDistribution.html#a0a93af629f8b2fd35d9553ea6218a4ff">More...</a><br /></td></tr>
+<tr class="separator:a0a93af629f8b2fd35d9553ea6218a4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559beb0ebc13d25fce37dee5bf97360e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; QpSolverCollection::QpSolver &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a559beb0ebc13d25fce37dee5bf97360e">qpSolver_</a></td></tr>
+<tr class="memdesc:a559beb0ebc13d25fce37dee5bf97360e"><td class="mdescLeft">&#160;</td><td class="mdescRight">QP solver.  <a href="classForceColl_1_1WrenchDistribution.html#a559beb0ebc13d25fce37dee5bf97360e">More...</a><br /></td></tr>
+<tr class="separator:a559beb0ebc13d25fce37dee5bf97360e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02f09e221d157107e746a19ec347e3c2"><td class="memItemLeft" align="right" valign="top">QpSolverCollection::QpCoeff&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a02f09e221d157107e746a19ec347e3c2">qpCoeff_</a></td></tr>
+<tr class="memdesc:a02f09e221d157107e746a19ec347e3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">QP coefficients.  <a href="classForceColl_1_1WrenchDistribution.html#a02f09e221d157107e746a19ec347e3c2">More...</a><br /></td></tr>
+<tr class="separator:a02f09e221d157107e746a19ec347e3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a16001556a975ffdf4caa852cd67ca1be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a16001556a975ffdf4caa852cd67ca1be">config_</a></td></tr>
-<tr class="memdesc:a16001556a975ffdf4caa852cd67ca1be"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html" title="Configuration.">Configuration</a>.  <a href="classForceColl_1_1WrenchDistribution.html#a16001556a975ffdf4caa852cd67ca1be">More...</a><br /></td></tr>
-<tr class="separator:a16001556a975ffdf4caa852cd67ca1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497c70da4c36ef80fa44e850c7ed085f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1WrenchDistribution.html#a497c70da4c36ef80fa44e850c7ed085f">config_</a></td></tr>
+<tr class="memdesc:a497c70da4c36ef80fa44e850c7ed085f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html" title="Configuration.">Configuration</a>.  <a href="classForceColl_1_1WrenchDistribution.html#a497c70da4c36ef80fa44e850c7ed085f">More...</a><br /></td></tr>
+<tr class="separator:a497c70da4c36ef80fa44e850c7ed085f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class PatchID&gt;<br />
-class ForceColl::WrenchDistribution&lt; PatchID &gt;</h3>
+<div class="textblock"><p>Wrench distribution. </p>
 
-<p>Wrench distribution. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">PatchID</td><td>type of contact patch ID </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00014">14</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00011">11</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a54ccdfaabdce9e2ef17f888d13396830"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54ccdfaabdce9e2ef17f888d13396830">&#9670;&nbsp;</a></span>WrenchDistribution()</h2>
+<a id="ab31ba33b535a762bfa6c2f4257275522"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31ba33b535a762bfa6c2f4257275522">&#9670;&nbsp;</a></span>WrenchDistribution()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::<a class="el" href="classForceColl_1_1WrenchDistribution.html">WrenchDistribution</a> </td>
+          <td class="memname">EIGEN_MAKE_ALIGNED_OPERATOR_NEW ForceColl::WrenchDistribution::WrenchDistribution </td>
           <td>(</td>
-          <td class="paramtype">const std::unordered_map&lt; PatchID, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>contactList</em>, </td>
         </tr>
         <tr>
@@ -199,21 +185,17 @@ template&lt;class PatchID &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8hpp_source.html#l00012">12</a> of file <a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9aa0f950c4717ad538f097f7f78ed439"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aa0f950c4717ad538f097f7f78ed439">&#9670;&nbsp;</a></span>addToGUI()</h2>
+<a id="ab7bb362c67821afb7e6a42ac2fab9144"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7bb362c67821afb7e6a42ac2fab9144">&#9670;&nbsp;</a></span>addToGUI()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::addToGUI </td>
+          <td class="memname">void ForceColl::WrenchDistribution::addToGUI </td>
           <td>(</td>
           <td class="paramtype">mc_rtc::gui::StateBuilder &amp;&#160;</td>
           <td class="paramname"><em>gui</em>, </td>
@@ -255,54 +237,19 @@ template&lt;class PatchID &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8hpp_source.html#l00106">106</a> of file <a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a>.</p>
-
 </div>
 </div>
-<a id="aa0e33a28c2f4d5bc6641f780ce99f82f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0e33a28c2f4d5bc6641f780ce99f82f">&#9670;&nbsp;</a></span>calcWrenchList()</h2>
+<a id="a8e0b222e1f0bd7f9f5bef030db7a597d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0b222e1f0bd7f9f5bef030db7a597d">&#9670;&nbsp;</a></span>config()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unordered_map&lt; PatchID, sva::ForceVecd &gt; <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::calcWrenchList </td>
-          <td>(</td>
-          <td class="paramtype">const Eigen::Vector3d &amp;&#160;</td>
-          <td class="paramname"><em>momentOrigin</em> = <code>Eigen::Vector3d::Zero()</code></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Calculate wrench list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">momentOrigin</td><td>moment origin </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>contact wrench list </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8hpp_source.html#l00088">88</a> of file <a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a7c27e0fc62be25521bf92bfa2ea1b485"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c27e0fc62be25521bf92bfa2ea1b485">&#9670;&nbsp;</a></span>config()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a>&amp; <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::config </td>
+          <td class="memname">const <a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a>&amp; ForceColl::WrenchDistribution::config </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -317,20 +264,18 @@ template&lt;class PatchID &gt; </div>
 
 <p>Const accessor to the configuration. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00061">61</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00051">51</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="ac8ac00c52406584cebf2a6fa53cefaca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8ac00c52406584cebf2a6fa53cefaca">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a4c7ec653c4965e5e3ea1c6503265d056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7ec653c4965e5e3ea1c6503265d056">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">sva::ForceVecd <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::run </td>
+          <td class="memname">sva::ForceVecd ForceColl::WrenchDistribution::run </td>
           <td>(</td>
           <td class="paramtype">const sva::ForceVecd &amp;&#160;</td>
           <td class="paramname"><em>desiredTotalWrench</em>, </td>
@@ -359,24 +304,20 @@ template&lt;class PatchID &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>total wrench of distributed result wrenches </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8hpp_source.html#l00035">35</a> of file <a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a16001556a975ffdf4caa852cd67ca1be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16001556a975ffdf4caa852cd67ca1be">&#9670;&nbsp;</a></span>config_</h2>
+<a id="a497c70da4c36ef80fa44e850c7ed085f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497c70da4c36ef80fa44e850c7ed085f">&#9670;&nbsp;</a></span>config_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a> <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::config_</td>
+          <td class="memname"><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html">Configuration</a> ForceColl::WrenchDistribution::config_</td>
         </tr>
       </table>
   </td>
@@ -388,133 +329,120 @@ template&lt;class PatchID &gt; </div>
 
 <p><a class="el" href="structForceColl_1_1WrenchDistribution_1_1Configuration.html" title="Configuration.">Configuration</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00098">98</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00088">88</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="a558ee8bd115c0fda802887e29b728a8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a558ee8bd115c0fda802887e29b728a8a">&#9670;&nbsp;</a></span>contactList_</h2>
+<a id="a69f036186495ce77ba53736983171a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69f036186495ce77ba53736983171a6e">&#9670;&nbsp;</a></span>contactList_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;PatchID, std::shared_ptr&lt;<a class="el" href="classForceColl_1_1Contact.html">Contact</a>&gt; &gt; <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::contactList_</td>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classForceColl_1_1Contact.html">Contact</a>&gt; &gt; ForceColl::WrenchDistribution::contactList_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>List of contact constraint. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00079">79</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00069">69</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="a4ec3e1dfca70f1771a9301911ac1dd3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ec3e1dfca70f1771a9301911ac1dd3f">&#9670;&nbsp;</a></span>desiredTotalWrench_</h2>
+<a id="a0e587ca6a1ddaca81387413dcfce880d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e587ca6a1ddaca81387413dcfce880d">&#9670;&nbsp;</a></span>desiredTotalWrench_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">sva::ForceVecd <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::desiredTotalWrench_ = sva::ForceVecd::Zero()</td>
+          <td class="memname">sva::ForceVecd ForceColl::WrenchDistribution::desiredTotalWrench_ = sva::ForceVecd::Zero()</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Desired total wrench. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00085">85</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00075">75</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="ad4b1e6fc7fee6013be962ec80dcb37a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4b1e6fc7fee6013be962ec80dcb37a6">&#9670;&nbsp;</a></span>qpCoeff_</h2>
+<a id="a02f09e221d157107e746a19ec347e3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02f09e221d157107e746a19ec347e3c2">&#9670;&nbsp;</a></span>qpCoeff_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">QpSolverCollection::QpCoeff <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::qpCoeff_</td>
+          <td class="memname">QpSolverCollection::QpCoeff ForceColl::WrenchDistribution::qpCoeff_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>QP coefficients. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00094">94</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00084">84</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="a496dfc85c219a27aab816069dae57048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a496dfc85c219a27aab816069dae57048">&#9670;&nbsp;</a></span>qpSolver_</h2>
+<a id="a559beb0ebc13d25fce37dee5bf97360e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a559beb0ebc13d25fce37dee5bf97360e">&#9670;&nbsp;</a></span>qpSolver_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;QpSolverCollection::QpSolver&gt; <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::qpSolver_</td>
+          <td class="memname">std::shared_ptr&lt;QpSolverCollection::QpSolver&gt; ForceColl::WrenchDistribution::qpSolver_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>QP solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00091">91</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00081">81</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="a43dfc4b19e73196916c064c67ff8f378"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43dfc4b19e73196916c064c67ff8f378">&#9670;&nbsp;</a></span>resultTotalWrench_</h2>
+<a id="a0a93af629f8b2fd35d9553ea6218a4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a93af629f8b2fd35d9553ea6218a4ff">&#9670;&nbsp;</a></span>resultTotalWrench_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">sva::ForceVecd <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::resultTotalWrench_ = sva::ForceVecd::Zero()</td>
+          <td class="memname">sva::ForceVecd ForceColl::WrenchDistribution::resultTotalWrench_ = sva::ForceVecd::Zero()</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Result total wrench. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00088">88</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00078">78</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<a id="a28e2e88e00179efacbb19f03cca52a42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28e2e88e00179efacbb19f03cca52a42">&#9670;&nbsp;</a></span>resultWrenchRatio_</h2>
+<a id="a86e4743670affc6efd90a91514dea14d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86e4743670affc6efd90a91514dea14d">&#9670;&nbsp;</a></span>resultWrenchRatio_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;class PatchID &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Eigen::VectorXd <a class="el" href="classForceColl_1_1WrenchDistribution.html">ForceColl::WrenchDistribution</a>&lt; PatchID &gt;::resultWrenchRatio_</td>
+          <td class="memname">Eigen::VectorXd ForceColl::WrenchDistribution::resultWrenchRatio_</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Result wrench ratio. </p>
 
-<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00082">82</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="WrenchDistribution_8h_source.html#l00072">72</a> of file <a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceColl/<a class="el" href="WrenchDistribution_8h_source.html">WrenchDistribution.h</a></li>
-<li>/home/runner/work/ForceControlCollection/ForceControlCollection/catkin_ws/src/ForceControlCollection/include/ForceColl/<a class="el" href="WrenchDistribution_8hpp_source.html">WrenchDistribution.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
