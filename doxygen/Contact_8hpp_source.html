@@ -88,10 +88,10 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">int</span> wrenchRatioIdx = 0;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp; contactKV : contactList)</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    wrenchList.emplace(contactKV.first,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                       contactKV.second-&gt;calcWrench(</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                           wrenchRatio.segment(wrenchRatioIdx, contactKV.second-&gt;graspMat_.cols()), momentOrigin));</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    wrenchRatioIdx += <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(contactKV.second-&gt;graspMat_.cols());</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    wrenchList.emplace(</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        contactKV.first,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        contactKV.second-&gt;calcWrench(wrenchRatio.segment(wrenchRatioIdx, contactKV.second-&gt;ridgeNum()), momentOrigin));</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    wrenchRatioIdx += contactKV.second-&gt;ridgeNum();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordflow">return</span> wrenchList;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
