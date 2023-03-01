@@ -288,6 +288,18 @@ void GraspContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
   }
 }
 
+sva::ForceVecd ForceColl::calcTotalWrench(const std::vector<std::shared_ptr<Contact>> & contactList,
+                                          const Eigen::VectorXd & wrenchRatio,
+                                          const Eigen::Vector3d & momentOrigin)
+{
+  sva::ForceVecd totalWrench = sva::ForceVecd::Zero();
+  for(const auto & wrench : calcWrenchList(contactList, wrenchRatio, momentOrigin))
+  {
+    totalWrench += wrench;
+  }
+  return totalWrench;
+}
+
 std::vector<sva::ForceVecd> ForceColl::calcWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
                                                       const Eigen::VectorXd & wrenchRatio,
                                                       const Eigen::Vector3d & momentOrigin)

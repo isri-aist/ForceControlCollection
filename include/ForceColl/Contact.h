@@ -235,7 +235,17 @@ public:
                         const Eigen::VectorXd & wrenchRatio = Eigen::VectorXd::Zero(0)) override;
 };
 
-/** \brief Calculate wrench list.
+/** \brief Calculate total wrench.
+    \param contactList list of contact constraint
+    \param wrenchRatio wrench ratio
+    \param momentOrigin moment origin
+    \returns total wrench
+*/
+sva::ForceVecd calcTotalWrench(const std::vector<std::shared_ptr<Contact>> & contactList,
+                               const Eigen::VectorXd & wrenchRatio,
+                               const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
+
+/** \brief Calculate contact wrench list.
     \param contactList list of contact constraint
     \param wrenchRatio wrench ratio
     \param momentOrigin moment origin
@@ -245,7 +255,7 @@ std::vector<sva::ForceVecd> calcWrenchList(const std::vector<std::shared_ptr<Con
                                            const Eigen::VectorXd & wrenchRatio,
                                            const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
 
-/** \brief Calculate wrench list.
+/** \brief Calculate contact wrench list.
     \tparam MapType type of map container
     \tparam KeyType key type
     \param contactList list of contact constraint

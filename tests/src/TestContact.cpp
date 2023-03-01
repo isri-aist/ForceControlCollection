@@ -87,7 +87,7 @@ pose:
                                                                               << contactYaml->graspMat_ << std::endl;
 }
 
-TEST(TestContact, calcWrenchList)
+TEST(TestContact, calcWrench)
 {
   using Limb = std::string;
 
@@ -118,6 +118,10 @@ TEST(TestContact, calcWrenchList)
     wrenchRatioIdx += static_cast<int>(contact->graspMat_.cols());
   }
   Eigen::VectorXd wrenchRatio = Eigen::VectorXd::Random(wrenchRatioIdx);
+
+  ForceColl::calcTotalWrench(contactList, wrenchRatio);
+  ForceColl::calcTotalWrench(ForceColl::getContactVecFromMap(contactMap), wrenchRatio);
+  ForceColl::calcTotalWrench(ForceColl::getContactVecFromMap(contactUnorderedMap), wrenchRatio);
 
   ForceColl::calcWrenchList(contactList, wrenchRatio);
   ForceColl::calcWrenchList(contactMap, wrenchRatio);
