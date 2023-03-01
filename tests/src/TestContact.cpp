@@ -87,6 +87,43 @@ pose:
                                                                               << contactYaml->graspMat_ << std::endl;
 }
 
+TEST(TestContact, calcWrenchList)
+{
+  using Limb = std::string;
+
+  double fricCoeff = 0.5;
+  auto leftFootContact = std::make_shared<ForceColl::SurfaceContact>(
+      "LeftFootContact", fricCoeff,
+      std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
+                                   Eigen::Vector3d(0.1, 0.0, 0.0)},
+      sva::PTransformd::Identity());
+  auto rightFootContact = std::make_shared<ForceColl::SurfaceContact>(
+      "RightFootContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()},
+      sva::PTransformd(Eigen::Vector3d(0, -0.5, 0.5)));
+  auto leftHandContact = std::make_shared<ForceColl::EmptyContact>(std::string("LefttHandContact"));
+
+  std::vector<Limb> limbList = {"LeftFoot", "RightFoot", "LeftHand"};
+  std::vector<std::shared_ptr<ForceColl::Contact>> contactList = {leftFootContact, rightFootContact, leftHandContact};
+  std::map<Limb, std::shared_ptr<ForceColl::Contact>> contactMap;
+  std::unordered_map<Limb, std::shared_ptr<ForceColl::Contact>> contactUnorderedMap;
+  for(size_t i = 0; i < contactList.size(); i++)
+  {
+    contactMap.emplace(limbList[i], contactList[i]);
+    contactUnorderedMap.emplace(limbList[i], contactList[i]);
+  }
+
+  int wrenchRatioIdx = 0;
+  for(const auto & contact : contactList)
+  {
+    wrenchRatioIdx += static_cast<int>(contact->graspMat_.cols());
+  }
+  Eigen::VectorXd wrenchRatio = Eigen::VectorXd::Random(wrenchRatioIdx);
+
+  ForceColl::calcWrenchList(contactList, wrenchRatio);
+  ForceColl::calcWrenchList(contactMap, wrenchRatio);
+  ForceColl::calcWrenchList(contactUnorderedMap, wrenchRatio);
+}
+
 int main(int argc, char ** argv)
 {
   testing::InitGoogleTest(&argc, argv);

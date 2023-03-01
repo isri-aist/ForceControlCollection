@@ -1,5 +1,6 @@
 add_library(ForceColl
   Contact.cpp
+  WrenchDistribution.cpp
   )
 target_link_libraries(ForceColl PUBLIC mc_rtc::mc_rtc_utils mc_rtc::mc_rtc_gui)
 if(DEFINED CATKIN_DEVEL_PREFIX)

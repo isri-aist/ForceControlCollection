@@ -234,4 +234,29 @@ public:
                         double fricPyramidScale = constants::defaultFricPyramidScale,
                         const Eigen::VectorXd & wrenchRatio = Eigen::VectorXd::Zero(0)) override;
 };
+
+/** \brief Calculate wrench list.
+    \param contactList list of contact constraint
+    \param wrenchRatio wrench ratio
+    \param momentOrigin moment origin
+    \returns contact wrench list
+*/
+std::vector<sva::ForceVecd> calcWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
+                                           const Eigen::VectorXd & wrenchRatio,
+                                           const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
+
+/** \brief Calculate wrench list.
+    \tparam MapType type of map container
+    \tparam PatchID type of contact patch ID
+    \param contactList list of contact constraint
+    \param wrenchRatio wrench ratio
+    \param momentOrigin moment origin
+    \returns contact wrench list
+*/
+template<template<class, class> class MapType, class PatchID>
+MapType<PatchID, sva::ForceVecd> calcWrenchList(const MapType<PatchID, std::shared_ptr<Contact>> & contactList,
+                                                const Eigen::VectorXd & wrenchRatio,
+                                                const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
 } // namespace ForceColl
+
+#include <ForceColl/Contact.hpp>

@@ -7,10 +7,7 @@
 
 namespace ForceColl
 {
-/** \brief Wrench distribution.
-    \tparam PatchID type of contact patch ID
-*/
-template<class PatchID>
+/** \brief Wrench distribution. */
 class WrenchDistribution
 {
 public:
@@ -39,7 +36,7 @@ public:
       \param contactList list of contact constraint
       \param mcRtcConfig mc_rtc configuration
    */
-  WrenchDistribution(const std::unordered_map<PatchID, std::shared_ptr<Contact>> & contactList,
+  WrenchDistribution(const std::vector<std::shared_ptr<Contact>> & contactList,
                      const mc_rtc::Configuration & mcRtcConfig = {});
 
   /** \brief Run wrench distribution calculation.
@@ -49,13 +46,6 @@ public:
    */
   sva::ForceVecd run(const sva::ForceVecd & desiredTotalWrench,
                      const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
-
-  /** \brief Calculate wrench list.
-      \param momentOrigin moment origin
-      \returns contact wrench list
-   */
-  std::unordered_map<PatchID, sva::ForceVecd> calcWrenchList(
-      const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero()) const;
 
   /** \brief Const accessor to the configuration. */
   inline const Configuration & config() const noexcept
@@ -76,7 +66,7 @@ public:
 
 public:
   //! List of contact constraint
-  std::unordered_map<PatchID, std::shared_ptr<Contact>> contactList_;
+  std::vector<std::shared_ptr<Contact>> contactList_;
 
   //! Result wrench ratio
   Eigen::VectorXd resultWrenchRatio_;
@@ -98,5 +88,3 @@ protected:
   Configuration config_;
 };
 } // namespace ForceColl
-
-#include <ForceColl/WrenchDistribution.hpp>
