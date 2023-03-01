@@ -108,28 +108,28 @@ Functions</h2></td></tr>
 <tr class="memitem:a824799cdfb792d36efde9b8c0943cddd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a824799cdfb792d36efde9b8c0943cddd">calcWrenchList</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
 <tr class="memdesc:a824799cdfb792d36efde9b8c0943cddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench list.  <a href="namespaceForceColl.html#a824799cdfb792d36efde9b8c0943cddd">More...</a><br /></td></tr>
 <tr class="separator:a824799cdfb792d36efde9b8c0943cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a915d65990eaf387b36f693e94902de15"><td class="memTemplParams" colspan="2">template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </td></tr>
-<tr class="memitem:a915d65990eaf387b36f693e94902de15"><td class="memTemplItemLeft" align="right" valign="top">MapType&lt; KeyType, sva::ForceVecd &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a915d65990eaf387b36f693e94902de15">calcWrenchList</a> (const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
-<tr class="memdesc:a915d65990eaf387b36f693e94902de15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench list.  <a href="namespaceForceColl.html#a915d65990eaf387b36f693e94902de15">More...</a><br /></td></tr>
-<tr class="separator:a915d65990eaf387b36f693e94902de15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49883305b624ddf2401015fe2424ab5b"><td class="memTemplParams" colspan="2">template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </td></tr>
-<tr class="memitem:a49883305b624ddf2401015fe2424ab5b"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a49883305b624ddf2401015fe2424ab5b">getContactVecFromMap</a> (const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList)</td></tr>
-<tr class="memdesc:a49883305b624ddf2401015fe2424ab5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert vector of contact constraint to map.  <a href="namespaceForceColl.html#a49883305b624ddf2401015fe2424ab5b">More...</a><br /></td></tr>
-<tr class="separator:a49883305b624ddf2401015fe2424ab5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="memTemplParams" colspan="2">template&lt;template&lt; class... &gt; class MapType, class KeyType , class... RestTypes&gt; </td></tr>
+<tr class="memitem:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="memTemplItemLeft" align="right" valign="top">MapType&lt; KeyType, sva::ForceVecd &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a3a3ef11ac58933a91779a23fe6dd3d33">calcWrenchList</a> (const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;, RestTypes... &gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
+<tr class="memdesc:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench list.  <a href="namespaceForceColl.html#a3a3ef11ac58933a91779a23fe6dd3d33">More...</a><br /></td></tr>
+<tr class="separator:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a6aba576e6f63faf00058c689dcb25"><td class="memTemplParams" colspan="2">template&lt;template&lt; class... &gt; class MapType, class KeyType , class... RestTypes&gt; </td></tr>
+<tr class="memitem:a37a6aba576e6f63faf00058c689dcb25"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a37a6aba576e6f63faf00058c689dcb25">getContactVecFromMap</a> (const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;, RestTypes... &gt; &amp;contactList)</td></tr>
+<tr class="memdesc:a37a6aba576e6f63faf00058c689dcb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert vector of contact constraint to map.  <a href="namespaceForceColl.html#a37a6aba576e6f63faf00058c689dcb25">More...</a><br /></td></tr>
+<tr class="separator:a37a6aba576e6f63faf00058c689dcb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a915d65990eaf387b36f693e94902de15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a915d65990eaf387b36f693e94902de15">&#9670;&nbsp;</a></span>calcWrenchList() <span class="overload">[1/2]</span></h2>
+<a id="a3a3ef11ac58933a91779a23fe6dd3d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3ef11ac58933a91779a23fe6dd3d33">&#9670;&nbsp;</a></span>calcWrenchList() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </div>
+template&lt;template&lt; class... &gt; class MapType, class KeyType , class... RestTypes&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">MapType&lt; KeyType, sva::ForceVecd &gt; ForceColl::calcWrenchList </td>
           <td>(</td>
-          <td class="paramtype">const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;, RestTypes... &gt; &amp;&#160;</td>
           <td class="paramname"><em>contactList</em>, </td>
         </tr>
         <tr>
@@ -219,18 +219,18 @@ template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </d
 
 </div>
 </div>
-<a id="a49883305b624ddf2401015fe2424ab5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49883305b624ddf2401015fe2424ab5b">&#9670;&nbsp;</a></span>getContactVecFromMap()</h2>
+<a id="a37a6aba576e6f63faf00058c689dcb25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a6aba576e6f63faf00058c689dcb25">&#9670;&nbsp;</a></span>getContactVecFromMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </div>
+template&lt;template&lt; class... &gt; class MapType, class KeyType , class... RestTypes&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt; &gt; ForceColl::getContactVecFromMap </td>
           <td>(</td>
-          <td class="paramtype">const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;, RestTypes... &gt; &amp;&#160;</td>
           <td class="paramname"><em>contactList</em></td><td>)</td>
           <td></td>
         </tr>
@@ -253,7 +253,7 @@ template&lt;template&lt; class, class &gt; class MapType, class KeyType &gt; </d
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>map of contact constraint </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8hpp_source.html#l00021">21</a> of file <a class="el" href="Contact_8hpp_source.html">Contact.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8hpp_source.html#l00022">22</a> of file <a class="el" href="Contact_8hpp_source.html">Contact.hpp</a>.</p>
 
 </div>
 </div>
