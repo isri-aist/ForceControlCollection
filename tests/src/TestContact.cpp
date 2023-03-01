@@ -122,6 +122,8 @@ TEST(TestContact, calcWrenchList)
   ForceColl::calcWrenchList(contactList, wrenchRatio);
   ForceColl::calcWrenchList(contactMap, wrenchRatio);
   ForceColl::calcWrenchList(contactUnorderedMap, wrenchRatio);
+  ForceColl::calcWrenchList(ForceColl::getContactVecFromMap(contactMap), wrenchRatio);
+  ForceColl::calcWrenchList(ForceColl::getContactVecFromMap(contactUnorderedMap), wrenchRatio);
 }
 
 int main(int argc, char ** argv)

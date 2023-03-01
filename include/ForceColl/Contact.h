@@ -247,16 +247,26 @@ std::vector<sva::ForceVecd> calcWrenchList(const std::vector<std::shared_ptr<Con
 
 /** \brief Calculate wrench list.
     \tparam MapType type of map container
-    \tparam PatchID type of contact patch ID
+    \tparam KeyType key type
     \param contactList list of contact constraint
     \param wrenchRatio wrench ratio
     \param momentOrigin moment origin
     \returns contact wrench list
 */
-template<template<class, class> class MapType, class PatchID>
-MapType<PatchID, sva::ForceVecd> calcWrenchList(const MapType<PatchID, std::shared_ptr<Contact>> & contactList,
+template<template<class, class> class MapType, class KeyType>
+MapType<KeyType, sva::ForceVecd> calcWrenchList(const MapType<KeyType, std::shared_ptr<Contact>> & contactList,
                                                 const Eigen::VectorXd & wrenchRatio,
                                                 const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
+
+/** \brief Convert vector of contact constraint to map.
+    \tparam MapType type of map container
+    \tparam KeyType key type
+    \param contactList vector of contact constraint
+    \returns map of contact constraint
+*/
+template<template<class, class> class MapType, class KeyType>
+std::vector<std::shared_ptr<Contact>> getContactVecFromMap(
+    const MapType<KeyType, std::shared_ptr<Contact>> & contactList);
 } // namespace ForceColl
 
 #include <ForceColl/Contact.hpp>
