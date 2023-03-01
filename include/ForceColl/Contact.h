@@ -78,6 +78,12 @@ public:
   /** \brief Get type of contact. */
   virtual std::string type() const = 0;
 
+  /** \brief Get the number of ridges. */
+  inline int ridgeNum() const
+  {
+    return static_cast<int>(graspMat_.cols());
+  }
+
   /** \brief Calculate wrench.
       \param wrenchRatio wrench ratio of each ridge
       \param momentOrigin moment origin

@@ -308,9 +308,8 @@ std::vector<sva::ForceVecd> ForceColl::calcWrenchList(const std::vector<std::sha
   int wrenchRatioIdx = 0;
   for(const auto & contact : contactList)
   {
-    wrenchList.push_back(
-        contact->calcWrench(wrenchRatio.segment(wrenchRatioIdx, contact->graspMat_.cols()), momentOrigin));
-    wrenchRatioIdx += static_cast<int>(contact->graspMat_.cols());
+    wrenchList.push_back(contact->calcWrench(wrenchRatio.segment(wrenchRatioIdx, contact->ridgeNum()), momentOrigin));
+    wrenchRatioIdx += contact->ridgeNum();
   }
   return wrenchList;
 }

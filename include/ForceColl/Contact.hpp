@@ -10,10 +10,10 @@ MapType<KeyType, sva::ForceVecd> calcWrenchList(
   int wrenchRatioIdx = 0;
   for(const auto & contactKV : contactList)
   {
-    wrenchList.emplace(contactKV.first,
-                       contactKV.second->calcWrench(
-                           wrenchRatio.segment(wrenchRatioIdx, contactKV.second->graspMat_.cols()), momentOrigin));
-    wrenchRatioIdx += static_cast<int>(contactKV.second->graspMat_.cols());
+    wrenchList.emplace(
+        contactKV.first,
+        contactKV.second->calcWrench(wrenchRatio.segment(wrenchRatioIdx, contactKV.second->ridgeNum()), momentOrigin));
+    wrenchRatioIdx += contactKV.second->ridgeNum();
   }
   return wrenchList;
 }

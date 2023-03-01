@@ -15,12 +15,12 @@ WrenchDistribution::WrenchDistribution(const std::vector<std::shared_ptr<Contact
 {
   config_.load(mcRtcConfig);
 
-  int colNum = 0;
+  int ridgeNum = 0;
   for(const auto & contact : contactList_)
   {
-    colNum += static_cast<int>(contact->graspMat_.cols());
+    ridgeNum += contact->ridgeNum();
   }
-  resultWrenchRatio_ = Eigen::VectorXd::Zero(colNum);
+  resultWrenchRatio_ = Eigen::VectorXd::Zero(ridgeNum);
 
   QpSolverCollection::QpSolverType qpSolverType = QpSolverCollection::QpSolverType::Any;
   if(mcRtcConfig.has("qpSolverType"))
@@ -44,15 +44,15 @@ sva::ForceVecd WrenchDistribution::run(const sva::ForceVecd & desiredTotalWrench
   // Construct totalGraspMat
   Eigen::Matrix<double, 6, Eigen::Dynamic> totalGraspMat(6, resultWrenchRatio_.size());
   {
-    int colNum = 0;
+    int ridgeNum = 0;
     for(const auto & contact : contactList_)
     {
-      totalGraspMat.middleCols(colNum, contact->graspMat_.cols()) = contact->graspMat_;
-      colNum += static_cast<int>(contact->graspMat_.cols());
+      totalGraspMat.middleCols(ridgeNum, contact->ridgeNum()) = contact->graspMat_;
+      ridgeNum += contact->ridgeNum();
     }
     if(momentOrigin.norm() > 0)
     {
-      for(int i = 0; i < colNum; i++)
+      for(int i = 0; i < ridgeNum; i++)
       {
         // totalGraspMat.col(i).tail<3>() is the force ridge
         totalGraspMat.col(i).head<3>() -= momentOrigin.cross(totalGraspMat.col(i).tail<3>());
@@ -91,7 +91,7 @@ void WrenchDistribution::addToGUI(mc_rtc::gui::StateBuilder & gui,
   for(const auto & contact : contactList_)
   {
     contact->addToGUI(gui, category, forceScale, fricPyramidScale,
-                      resultWrenchRatio_.segment(wrenchRatioIdx, contact->graspMat_.cols()));
-    wrenchRatioIdx += static_cast<int>(contact->graspMat_.cols());
+                      resultWrenchRatio_.segment(wrenchRatioIdx, contact->ridgeNum()));
+    wrenchRatioIdx += contact->ridgeNum();
   }
 }

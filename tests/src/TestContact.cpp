@@ -115,7 +115,7 @@ TEST(TestContact, calcWrench)
   int wrenchRatioIdx = 0;
   for(const auto & contact : contactList)
   {
-    wrenchRatioIdx += static_cast<int>(contact->graspMat_.cols());
+    wrenchRatioIdx += contact->ridgeNum();
   }
   Eigen::VectorXd wrenchRatio = Eigen::VectorXd::Random(wrenchRatioIdx);
 
