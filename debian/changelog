@@ -1,3 +1,9 @@
+forcecontrolcollection (0.2.0-1debian1ubuntu1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- mmurooka <masaki.murooka@gmail.com>  Wed, 01 Mar 2023 09:34:19 +0900
+
 forcecontrolcollection (0.1.0-1debian1) unstable; urgency=medium
 
   * Initial release.
