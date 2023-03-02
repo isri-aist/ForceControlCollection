@@ -278,8 +278,8 @@ MapType<KeyType, sva::ForceVecd> calcWrenchList(
 /** \brief Convert vector of contact constraint to map.
     \tparam MapType type of map container
     \tparam KeyType key type
-    \param contactList vector of contact constraint
-    \returns map of contact constraint
+    \param contactList map of contact constraint
+    \returns vector of contact constraint
 */
 template<template<class...> class MapType, class KeyType, class... RestTypes>
 std::vector<std::shared_ptr<Contact>> getContactVecFromMap(
