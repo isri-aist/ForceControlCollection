@@ -72,8 +72,9 @@ public:
 
   /** \brief Constructor.
       \param name name of contact
+      \param maxWrench maximum wrench (absolute value) that can be accepted by this contact
    */
-  Contact(const std::string & name);
+  Contact(const std::string & name, std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Get type of contact. */
   virtual std::string type() const = 0;
@@ -114,6 +115,9 @@ public:
 
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
+
+  //! Maximum wrench that can be accepted by this contact
+  std::optional<sva::ForceVecd> maxWrench_;
 };
 
 /** \brief Empty contact. */
@@ -163,7 +167,8 @@ public:
   SurfaceContact(const std::string & name,
                  double fricCoeff,
                  const std::vector<Eigen::Vector3d> & localVertices,
-                 const sva::PTransformd & pose);
+                 const sva::PTransformd & pose,
+                 std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Constructor.
       \param mcRtcConfig mc_rtc configuration
@@ -214,7 +219,8 @@ public:
   GraspContact(const std::string & name,
                double fricCoeff,
                const std::vector<sva::PTransformd> & localVertices,
-               const sva::PTransformd & pose);
+               const sva::PTransformd & pose,
+               std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Constructor.
       \param mcRtcConfig mc_rtc configuration

@@ -50,7 +50,9 @@ std::shared_ptr<Contact> Contact::makeSharedFromConfig(const mc_rtc::Configurati
   }
 }
 
-Contact::Contact(const std::string & name) : name_(name) {}
+Contact::Contact(const std::string & name, std::optional<sva::ForceVecd> maxWrench) : name_(name), maxWrench_(maxWrench)
+{
+}
 
 sva::ForceVecd Contact::calcWrench(const Eigen::VectorXd & wrenchRatio, const Eigen::Vector3d & momentOrigin) const
 {
@@ -170,8 +172,9 @@ void SurfaceContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 SurfaceContact::SurfaceContact(const std::string & name,
                                double fricCoeff,
                                const std::vector<Eigen::Vector3d> & localVertices,
-                               const sva::PTransformd & pose)
-: Contact(name)
+                               const sva::PTransformd & pose,
+                               std::optional<sva::ForceVecd> maxWrench)
+: Contact(name, std::move(maxWrench))
 {
   // Set graspMat_ and vertexWithRidgeList_
   FrictionPyramid fricPyramid(fricCoeff);
@@ -199,7 +202,8 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
 : SurfaceContact(mcRtcConfig("name"),
                  mcRtcConfig("fricCoeff"),
                  verticesMap.at(mcRtcConfig("verticesName")),
-                 mcRtcConfig("pose"))
+                 mcRtcConfig("pose"),
+                 mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
 {
 }
 
@@ -234,8 +238,9 @@ void GraspContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 GraspContact::GraspContact(const std::string & name,
                            double fricCoeff,
                            const std::vector<sva::PTransformd> & localVertices,
-                           const sva::PTransformd & pose)
-: Contact(name)
+                           const sva::PTransformd & pose,
+                           std::optional<sva::ForceVecd> maxWrench)
+: Contact(name, std::move(maxWrench))
 {
   // Set graspMat_ and vertexWithRidgeList_
   FrictionPyramid fricPyramid(fricCoeff);
@@ -263,7 +268,8 @@ GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
 : GraspContact(mcRtcConfig("name"),
                mcRtcConfig("fricCoeff"),
                verticesMap.at(mcRtcConfig("verticesName")),
-               mcRtcConfig("pose"))
+               mcRtcConfig("pose"),
+               mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
 {
 }
 

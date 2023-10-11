@@ -67,7 +67,8 @@ TEST(TestWrenchDistribution, ContainsEmptyContact)
   }
 }
 
-TEST(TestWrenchDistribution, ContainsGraspContact)
+template<bool WithMaxWrench>
+void do_TestWrenchDistribution_ContainsGraspContact()
 {
   double fricCoeff = 0.5;
   auto leftFootContact = std::make_shared<ForceColl::SurfaceContact>(
@@ -82,6 +83,12 @@ TEST(TestWrenchDistribution, ContainsGraspContact)
       "LeftHandContact", fricCoeff,
       std::vector<sva::PTransformd>{sva::PTransformd::Identity(), sva::PTransformd(sva::RotX(M_PI))},
       sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.5, 0.5, 1.0)));
+
+  if constexpr(WithMaxWrench)
+  {
+    leftHandContact->maxWrench_ = sva::ForceVecd({1.0, 1.0, 1.0}, {1.0, 1.0, 10.0});
+  }
+
   std::vector<std::shared_ptr<ForceColl::Contact>> contactList = {leftFootContact, rightFootContact, leftHandContact};
 
   sva::ForceVecd desiredTotalWrench = sva::ForceVecd(Eigen::Vector3d(10.0, 0.0, 0.0), Eigen::Vector3d(0.0, 0.0, 500.0));
@@ -92,10 +99,31 @@ TEST(TestWrenchDistribution, ContainsGraspContact)
       << "desiredTotalWrench: " << desiredTotalWrench << std::endl
       << "resultTotalWrench: " << resultTotalWrench << std::endl;
   EXPECT_TRUE((wrenchDist->resultWrenchRatio_.array() > 0).all());
-  for(const auto & wrench : ForceColl::calcWrenchList(contactList, wrenchDist->resultWrenchRatio_))
+  auto wrenchList = ForceColl::calcWrenchList(contactList, wrenchDist->resultWrenchRatio_);
+  for(size_t i = 0; i < contactList.size(); ++i)
   {
+    const auto & contact = contactList[i];
+    const auto & wrench = wrenchList[i];
     EXPECT_GT(wrench.vector().norm(), 1e-10);
+    if(contact->maxWrench_)
+    {
+      for(Eigen::DenseIndex i = 0; i < 3; ++i)
+      {
+        EXPECT_LT(std::fabs(wrench.force()(i)), contact->maxWrench_->force()(i) + 1e-6);
+        EXPECT_LT(std::fabs(wrench.couple()(i)), contact->maxWrench_->couple()(i) + 1e-6);
+      }
+    }
   }
+}
+
+TEST(TestWrenchDistribution, ContainsGraspContact)
+{
+  do_TestWrenchDistribution_ContainsGraspContact<false>();
+}
+
+TEST(TestWrenchDistribution, ContainsGraspContactWithMaxWrench)
+{
+  do_TestWrenchDistribution_ContainsGraspContact<true>();
 }
 
 int main(int argc, char ** argv)
