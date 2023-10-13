@@ -100,6 +100,7 @@ void do_TestWrenchDistribution_ContainsGraspContact()
       << "resultTotalWrench: " << resultTotalWrench << std::endl;
   EXPECT_TRUE((wrenchDist->resultWrenchRatio_.array() > 0).all());
   auto wrenchList = ForceColl::calcWrenchList(contactList, wrenchDist->resultWrenchRatio_);
+  auto localWrenchList = ForceColl::calcLocalWrenchList(contactList, wrenchDist->resultWrenchRatio_);
   for(size_t i = 0; i < contactList.size(); ++i)
   {
     const auto & contact = contactList[i];
@@ -107,10 +108,11 @@ void do_TestWrenchDistribution_ContainsGraspContact()
     EXPECT_GT(wrench.vector().norm(), 1e-10);
     if(contact->maxWrench_)
     {
+      const auto & localWrench = localWrenchList[i];
       for(Eigen::DenseIndex i = 0; i < 3; ++i)
       {
-        EXPECT_LT(std::fabs(wrench.force()(i)), contact->maxWrench_->force()(i) + 1e-6);
-        EXPECT_LT(std::fabs(wrench.couple()(i)), contact->maxWrench_->couple()(i) + 1e-6);
+        EXPECT_LT(std::fabs(localWrench.force()(i)), contact->maxWrench_->force()(i) + 1e-6);
+        EXPECT_LT(std::fabs(localWrench.couple()(i)), contact->maxWrench_->couple()(i) + 1e-6);
       }
     }
   }

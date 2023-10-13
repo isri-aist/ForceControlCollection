@@ -53,15 +53,29 @@ sva::ForceVecd WrenchDistribution::run(const sva::ForceVecd & desiredTotalWrench
     {
       qpCoeff_.setup(varDim, 0, nIneq);
     }
+    if(qpCoeff_.dim_ineq_ != 0)
+    {
+      qpCoeff_.ineq_mat_.setZero();
+    }
   }
 
   // Construct totalGraspMat
   Eigen::Matrix<double, 6, Eigen::Dynamic> totalGraspMat(6, resultWrenchRatio_.size());
   {
     int ridgeNum = 0;
+    int ineqRow = 0;
     for(const auto & contact : contactList_)
     {
       totalGraspMat.middleCols(ridgeNum, contact->ridgeNum()) = contact->graspMat_;
+      if(contact->maxWrench_)
+      {
+        const auto & maxWrench = contact->maxWrench_->vector();
+        qpCoeff_.ineq_mat_.block(ineqRow, ridgeNum, 6, contact->ridgeNum()).noalias() = -contact->localGraspMat_;
+        qpCoeff_.ineq_mat_.block(ineqRow + 6, ridgeNum, 6, contact->ridgeNum()).noalias() = contact->localGraspMat_;
+        qpCoeff_.ineq_vec_.segment(ineqRow, 6) = maxWrench;
+        qpCoeff_.ineq_vec_.segment(ineqRow + 6, 6) = maxWrench;
+        ineqRow += 12;
+      }
       ridgeNum += contact->ridgeNum();
     }
     if(momentOrigin.norm() > 0)
@@ -82,27 +96,6 @@ sva::ForceVecd WrenchDistribution::run(const sva::ForceVecd & desiredTotalWrench
     qpCoeff_.obj_vec_.noalias() = -1 * totalGraspMat.transpose() * weightMat * desiredTotalWrench_.vector();
     qpCoeff_.x_min_.setConstant(qpCoeff_.dim_var_, config_.ridgeForceMinMax.first);
     qpCoeff_.x_max_.setConstant(qpCoeff_.dim_var_, config_.ridgeForceMinMax.second);
-    if(qpCoeff_.dim_ineq_ != 0)
-    {
-      qpCoeff_.ineq_mat_.setZero();
-      int contactCol = 0;
-      int ineqRow = 0;
-      for(const auto & contact : contactList_)
-      {
-        if(contact->maxWrench_)
-        {
-          const auto & maxWrench = contact->maxWrench_->vector();
-          qpCoeff_.ineq_mat_.block(ineqRow, contactCol, 6, contact->ridgeNum()).noalias() =
-              -totalGraspMat.middleCols(contactCol, contact->ridgeNum());
-          qpCoeff_.ineq_mat_.block(ineqRow + 6, contactCol, 6, contact->ridgeNum()).noalias() =
-              totalGraspMat.middleCols(contactCol, contact->ridgeNum());
-          qpCoeff_.ineq_vec_.segment(ineqRow, 6) = maxWrench;
-          qpCoeff_.ineq_vec_.segment(ineqRow + 6, 6) = maxWrench;
-          ineqRow += 12;
-        }
-        contactCol += contact->ridgeNum();
-      }
-    }
     resultWrenchRatio_ = qpSolver_->solve(qpCoeff_);
   }
 

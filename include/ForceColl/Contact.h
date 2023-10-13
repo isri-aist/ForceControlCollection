@@ -93,6 +93,12 @@ public:
   sva::ForceVecd calcWrench(const Eigen::VectorXd & wrenchRatio,
                             const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero()) const;
 
+  /** \brief Calculate the local wrench
+      \param wrenchRatio wrench ratio of each ridge
+      \returns contact wrench in local frame
+   */
+  sva::ForceVecd calcLocalWrench(const Eigen::VectorXd & wrenchRatio) const;
+
   /** \brief Add markers to GUI.
       \param gui GUI
       \param category category of GUI entries
@@ -112,6 +118,9 @@ public:
 
   //! Grasp matrix
   Eigen::Matrix<double, 6, Eigen::Dynamic> graspMat_;
+
+  //! Local grasp matrix
+  Eigen::Matrix<double, 6, Eigen::Dynamic> localGraspMat_;
 
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
@@ -266,6 +275,14 @@ sva::ForceVecd calcTotalWrench(const std::vector<std::shared_ptr<Contact>> & con
 std::vector<sva::ForceVecd> calcWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
                                            const Eigen::VectorXd & wrenchRatio,
                                            const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
+
+/** \brief Calculate local contact wrench list
+    \param contactList list of contact constraint
+    \param wrenchRatio wrench ratio
+    \returns local contact wrench list
+*/
+std::vector<sva::ForceVecd> calcLocalWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
+                                                const Eigen::VectorXd & wrenchRatio);
 
 /** \brief Calculate contact wrench list.
     \tparam MapType type of map container
