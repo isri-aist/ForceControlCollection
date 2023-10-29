@@ -1,5 +1,3 @@
-/* Author: Masaki Murooka */
-
 #pragma once
 
 namespace ForceColl

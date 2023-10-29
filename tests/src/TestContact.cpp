@@ -1,5 +1,3 @@
-/* Author: Masaki Murooka */
-
 #include <gtest/gtest.h>
 
 #include <ForceColl/Contact.h>
