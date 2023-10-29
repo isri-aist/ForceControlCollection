@@ -160,6 +160,7 @@ EmptyContact::EmptyContact(const std::string & name) : Contact(name)
 {
   // Set graspMat_ and vertexWithRidgeList_
   graspMat_.setZero(6, 0);
+  localGraspMat_.setZero(6, 0);
 }
 
 EmptyContact::EmptyContact(const mc_rtc::Configuration & mcRtcConfig)
@@ -199,7 +200,8 @@ SurfaceContact::SurfaceContact(const std::string & name,
     {
       const auto & localRidge = fricPyramid.localRidgeList_[ridgeIdx];
       const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx =
+          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
       graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
@@ -272,7 +274,8 @@ GraspContact::GraspContact(const std::string & name,
     {
       const auto & localRidge = localRidgeList[ridgeIdx];
       const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx =
+          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
       graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
@@ -330,7 +333,7 @@ std::vector<sva::ForceVecd> ForceColl::calcWrenchList(const std::vector<std::sha
 {
   std::vector<sva::ForceVecd> wrenchList;
   wrenchList.reserve(contactList.size());
-  int wrenchRatioIdx = 0;
+  Eigen::DenseIndex wrenchRatioIdx = 0;
   for(const auto & contact : contactList)
   {
     wrenchList.push_back(contact->calcWrench(wrenchRatio.segment(wrenchRatioIdx, contact->ridgeNum()), momentOrigin));
@@ -339,7 +342,8 @@ std::vector<sva::ForceVecd> ForceColl::calcWrenchList(const std::vector<std::sha
   return wrenchList;
 }
 
-std::vector<sva::ForceVecd> ForceColl::calcLocalWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList, const Eigen::VectorXd & wrenchRatio)
+std::vector<sva::ForceVecd> ForceColl::calcLocalWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
+                                                           const Eigen::VectorXd & wrenchRatio)
 {
   std::vector<sva::ForceVecd> wrenchList;
   wrenchList.reserve(contactList.size());

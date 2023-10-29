@@ -72,7 +72,7 @@ public:
 
   /** \brief Constructor.
       \param name name of contact
-      \param maxWrench maximum wrench (absolute value) that can be accepted by this contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
   Contact(const std::string & name, std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
@@ -125,7 +125,7 @@ public:
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
 
-  //! Maximum wrench that can be accepted by this contact
+  //! Maximum wrench in local frame that can be accepted by this contact
   std::optional<sva::ForceVecd> maxWrench_;
 };
 
@@ -172,6 +172,7 @@ public:
       \param fricCoeff friction coefficient
       \param localVertices surface vertices in local coordinates
       \param pose pose of contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
   SurfaceContact(const std::string & name,
                  double fricCoeff,
@@ -224,6 +225,7 @@ public:
       \param fricCoeff friction coefficient
       \param localVertices grasp vertices in local coordinates
       \param pose pose of contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
   GraspContact(const std::string & name,
                double fricCoeff,
