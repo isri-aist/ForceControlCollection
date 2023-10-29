@@ -111,6 +111,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a824799cdfb792d36efde9b8c0943cddd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a824799cdfb792d36efde9b8c0943cddd">calcWrenchList</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
 <tr class="memdesc:a824799cdfb792d36efde9b8c0943cddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate contact wrench list.  <a href="namespaceForceColl.html#a824799cdfb792d36efde9b8c0943cddd">More...</a><br /></td></tr>
 <tr class="separator:a824799cdfb792d36efde9b8c0943cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af920e67a98d4c3f9a39f2ea5d83045f5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#af920e67a98d4c3f9a39f2ea5d83045f5">calcLocalWrenchList</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio)</td></tr>
+<tr class="memdesc:af920e67a98d4c3f9a39f2ea5d83045f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate local contact wrench list.  <a href="namespaceForceColl.html#af920e67a98d4c3f9a39f2ea5d83045f5">More...</a><br /></td></tr>
+<tr class="separator:af920e67a98d4c3f9a39f2ea5d83045f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="memTemplParams" colspan="2">template&lt;template&lt; class... &gt; class MapType, class KeyType , class... RestTypes&gt; </td></tr>
 <tr class="memitem:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="memTemplItemLeft" align="right" valign="top">MapType&lt; KeyType, sva::ForceVecd &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceForceColl.html#a3a3ef11ac58933a91779a23fe6dd3d33">calcWrenchList</a> (const MapType&lt; KeyType, std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;, RestTypes... &gt; &amp;contactList, const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero())</td></tr>
 <tr class="memdesc:a3a3ef11ac58933a91779a23fe6dd3d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate contact wrench list.  <a href="namespaceForceColl.html#a3a3ef11ac58933a91779a23fe6dd3d33">More...</a><br /></td></tr>
@@ -121,6 +124,44 @@ Functions</h2></td></tr>
 <tr class="separator:a37a6aba576e6f63faf00058c689dcb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="af920e67a98d4c3f9a39f2ea5d83045f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af920e67a98d4c3f9a39f2ea5d83045f5">&#9670;&nbsp;</a></span>calcLocalWrenchList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;sva::ForceVecd&gt; ForceColl::calcLocalWrenchList </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classForceColl_1_1Contact.html">Contact</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>contactList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;&#160;</td>
+          <td class="paramname"><em>wrenchRatio</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate local contact wrench list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contactList</td><td>list of contact constraint </td></tr>
+    <tr><td class="paramname">wrenchRatio</td><td>wrench ratio </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>local contact wrench list </dd></dl>
+
+</div>
+</div>
 <a id="a0ecaca7e2e1aa22555c1a08c27febfdb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ecaca7e2e1aa22555c1a08c27febfdb">&#9670;&nbsp;</a></span>calcTotalWrench()</h2>
 
