@@ -72,8 +72,9 @@ public:
 
   /** \brief Constructor.
       \param name name of contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
-  Contact(const std::string & name);
+  Contact(const std::string & name, std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Get type of contact. */
   virtual std::string type() const = 0;
@@ -91,6 +92,12 @@ public:
    */
   sva::ForceVecd calcWrench(const Eigen::VectorXd & wrenchRatio,
                             const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero()) const;
+
+  /** \brief Calculate the local wrench
+      \param wrenchRatio wrench ratio of each ridge
+      \returns contact wrench in local frame
+   */
+  sva::ForceVecd calcLocalWrench(const Eigen::VectorXd & wrenchRatio) const;
 
   /** \brief Add markers to GUI.
       \param gui GUI
@@ -112,8 +119,14 @@ public:
   //! Grasp matrix
   Eigen::Matrix<double, 6, Eigen::Dynamic> graspMat_;
 
+  //! Local grasp matrix
+  Eigen::Matrix<double, 6, Eigen::Dynamic> localGraspMat_;
+
   //! List of vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
+
+  //! Maximum wrench in local frame that can be accepted by this contact
+  std::optional<sva::ForceVecd> maxWrench_;
 };
 
 /** \brief Empty contact. */
@@ -159,11 +172,13 @@ public:
       \param fricCoeff friction coefficient
       \param localVertices surface vertices in local coordinates
       \param pose pose of contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
   SurfaceContact(const std::string & name,
                  double fricCoeff,
                  const std::vector<Eigen::Vector3d> & localVertices,
-                 const sva::PTransformd & pose);
+                 const sva::PTransformd & pose,
+                 std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Constructor.
       \param mcRtcConfig mc_rtc configuration
@@ -210,11 +225,13 @@ public:
       \param fricCoeff friction coefficient
       \param localVertices grasp vertices in local coordinates
       \param pose pose of contact
+      \param maxWrench maximum wrench in local frame (absolute value) that can be accepted by this contact
    */
   GraspContact(const std::string & name,
                double fricCoeff,
                const std::vector<sva::PTransformd> & localVertices,
-               const sva::PTransformd & pose);
+               const sva::PTransformd & pose,
+               std::optional<sva::ForceVecd> maxWrench = std::nullopt);
 
   /** \brief Constructor.
       \param mcRtcConfig mc_rtc configuration
@@ -260,6 +277,14 @@ sva::ForceVecd calcTotalWrench(const std::vector<std::shared_ptr<Contact>> & con
 std::vector<sva::ForceVecd> calcWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
                                            const Eigen::VectorXd & wrenchRatio,
                                            const Eigen::Vector3d & momentOrigin = Eigen::Vector3d::Zero());
+
+/** \brief Calculate local contact wrench list
+    \param contactList list of contact constraint
+    \param wrenchRatio wrench ratio
+    \returns local contact wrench list
+*/
+std::vector<sva::ForceVecd> calcLocalWrenchList(const std::vector<std::shared_ptr<Contact>> & contactList,
+                                                const Eigen::VectorXd & wrenchRatio);
 
 /** \brief Calculate contact wrench list.
     \tparam MapType type of map container
