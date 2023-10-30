@@ -69,19 +69,21 @@ template<bool WithMaxWrench>
 void do_TestWrenchDistribution_ContainsGraspContact()
 {
   double fricCoeff = 0.5;
+  std::vector<sva::PTransformd> contactPoseList = {
+      sva::PTransformd::Identity(), sva::PTransformd(Eigen::Vector3d(0, -0.5, 0.5)),
+      sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.5, 0.5, 1.0))};
   auto leftFootContact = std::make_shared<ForceColl::SurfaceContact>(
       "LeftFootContact", fricCoeff,
       std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
                                    Eigen::Vector3d(0.1, 0.0, 0.0)},
-      sva::PTransformd::Identity());
+      contactPoseList[0]);
   auto rightFootContact = std::make_shared<ForceColl::SurfaceContact>(
-      "RightFootContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()},
-      sva::PTransformd(Eigen::Vector3d(0, -0.5, 0.5)));
+      "RightFootContact", fricCoeff, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero()}, contactPoseList[1]);
   auto leftHandContact = std::make_shared<ForceColl::GraspContact>(
       "LeftHandContact", fricCoeff,
       std::vector<sva::PTransformd>{sva::PTransformd(Eigen::Vector3d(0.0, 0.0, -0.01)),
                                     sva::PTransformd(sva::RotX(M_PI), Eigen::Vector3d(0.0, 0.0, 0.01))},
-      sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.5, 0.5, 1.0)));
+      contactPoseList[2]);
 
   sva::ForceVecd maxWrench = sva::ForceVecd(Eigen::Vector3d(1.0, 1.0, 1.0), Eigen::Vector3d(1.0, 1.0, 10.0));
   if constexpr(WithMaxWrench)
@@ -108,6 +110,8 @@ void do_TestWrenchDistribution_ContainsGraspContact()
     const auto & localWrench = localWrenchList[i];
 
     EXPECT_GT(wrench.vector().norm(), 1e-10);
+
+    EXPECT_LT((wrench - contactPoseList[i].transMul(localWrench)).vector().norm(), 1e-10);
 
     if(contact->name_ == "LeftHandContact")
     {
