@@ -17,6 +17,7 @@ name: ContactYaml
                                                                               << contactDirect->graspMat_ << std::endl
                                                                               << "contactYaml:\n"
                                                                               << contactYaml->graspMat_ << std::endl;
+  EXPECT_TRUE(contactDirect->maxWrench_ == contactYaml->maxWrench_);
 }
 
 TEST(TestContact, SurfaceContact)
@@ -35,11 +36,15 @@ verticesName: verticesSample
 pose:
   translation: [0.0, 0.5, -0.5]
   rotation: [1.5707963267948966, 0, 0]
+maxWrench:
+  force: [10.0, 10.0, 100.0]
+  couple: [2.0, 2.0, 2.0]
 )";
 
   auto contactDirect = std::make_shared<ForceColl::SurfaceContact>(
       "ContactDirect", 1.0, std::vector<Eigen::Vector3d>{Eigen::Vector3d::Zero(), Eigen::Vector3d(0.1, -0.2, 0.3)},
-      sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)));
+      sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)),
+      sva::ForceVecd(Eigen::Vector3d(2.0, 2.0, 2.0), Eigen::Vector3d(10.0, 10.0, 100.0)));
 
   ForceColl::SurfaceContact::loadVerticesMap(mc_rtc::Configuration::fromYAMLData(verticesYamlStr));
   auto contactYaml = ForceColl::Contact::makeSharedFromConfig(mc_rtc::Configuration::fromYAMLData(constructorYamlStr));
@@ -48,6 +53,7 @@ pose:
                                                                               << contactDirect->graspMat_ << std::endl
                                                                               << "contactYaml:\n"
                                                                               << contactYaml->graspMat_ << std::endl;
+  EXPECT_TRUE(contactDirect->maxWrench_ == contactYaml->maxWrench_);
 }
 
 TEST(TestContact, GraspContact)
@@ -68,13 +74,17 @@ verticesName: verticesSample
 pose:
   translation: [0.0, 0.5, -0.5]
   rotation: [0, 1.5707963267948966, 0]
+maxWrench:
+  force: [20.0, 20.0, 100.0]
+  couple: [1.0, 1.0, 1.0]
 )";
 
   auto contactDirect = std::make_shared<ForceColl::GraspContact>(
       "ContactDirect", 1.0,
       std::vector<sva::PTransformd>{sva::PTransformd(sva::RotX(-1 * M_PI / 2), Eigen::Vector3d(0.0, -0.05, 0.0)),
                                     sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.05, 0.0))},
-      sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)));
+      sva::PTransformd(sva::RotY(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5)),
+      sva::ForceVecd(Eigen::Vector3d(1.0, 1.0, 1.0), Eigen::Vector3d(20.0, 20.0, 100.0)));
 
   ForceColl::GraspContact::loadVerticesMap(mc_rtc::Configuration::fromYAMLData(verticesYamlStr));
   auto contactYaml = ForceColl::Contact::makeSharedFromConfig(mc_rtc::Configuration::fromYAMLData(constructorYamlStr));
@@ -83,6 +93,7 @@ pose:
                                                                               << contactDirect->graspMat_ << std::endl
                                                                               << "contactYaml:\n"
                                                                               << contactYaml->graspMat_ << std::endl;
+  EXPECT_TRUE(contactDirect->maxWrench_ == contactYaml->maxWrench_);
 }
 
 TEST(TestContact, calcWrench)
