@@ -157,9 +157,7 @@ public:
     return "Empty";
   }
 
-  inline virtual void updateGlobalVertices(const sva::PTransformd & pose)
-  {
-  }
+  inline virtual void updateGlobalVertices(const sva::PTransformd & pose) {}
 };
 
 /** \brief Surface contact. */

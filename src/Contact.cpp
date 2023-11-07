@@ -196,8 +196,8 @@ SurfaceContact::SurfaceContact(const std::string & name,
     for(size_t ridgeIdx = 0; ridgeIdx < fricPyramid_->localRidgeList_.size(); ridgeIdx++)
     {
       const auto & localRidge = fricPyramid_->localRidgeList_[ridgeIdx];
-      auto colIdx =
-          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
     }
@@ -230,8 +230,8 @@ void SurfaceContact::updateGlobalVertices(const sva::PTransformd & pose)
     for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
     {
       const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx =
-        static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
     }
@@ -291,8 +291,8 @@ GraspContact::GraspContact(const std::string & name,
     for(size_t ridgeIdx = 0; ridgeIdx < localRidgeList.size(); ridgeIdx++)
     {
       const auto & localRidge = localRidgeList[ridgeIdx];
-      auto colIdx =
-          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
     }
@@ -325,8 +325,8 @@ void GraspContact::updateGlobalVertices(const sva::PTransformd & pose)
     for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
     {
       const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx =
-          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
     }
