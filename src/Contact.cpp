@@ -183,32 +183,27 @@ SurfaceContact::SurfaceContact(const std::string & name,
                                std::optional<sva::ForceVecd> maxWrench)
 : Contact(name, std::move(maxWrench))
 {
-  // Set graspMat_ and vertexWithRidgeList_
-  FrictionPyramid fricPyramid(fricCoeff);
+  // Set graspMat_ and localRidgeList_
+  fricPyramid_ = std::make_shared<FrictionPyramid>(fricCoeff);
 
-  graspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices.size()) * fricPyramid.ridgeNum());
-  localGraspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices.size()) * fricPyramid.ridgeNum());
+  localVertices_.resize(localVertices.size());
+  std::copy(localVertices.begin(), localVertices.end(), localVertices_.begin());
 
-  const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(pose.rotation().transpose());
-
-  for(size_t vertexIdx = 0; vertexIdx < localVertices.size(); vertexIdx++)
+  localGraspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices_.size()) * fricPyramid_->ridgeNum());
+  for(size_t vertexIdx = 0; vertexIdx < localVertices_.size(); vertexIdx++)
   {
-    const auto & localVertex = localVertices[vertexIdx];
-    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertex) * pose).translation();
-
-    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    const auto & localVertex = localVertices_[vertexIdx];
+    for(size_t ridgeIdx = 0; ridgeIdx < fricPyramid_->localRidgeList_.size(); ridgeIdx++)
     {
-      const auto & localRidge = fricPyramid.localRidgeList_[ridgeIdx];
-      const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx =
-          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      const auto & localRidge = fricPyramid_->localRidgeList_[ridgeIdx];
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
-      graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
     }
-
-    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
   }
+
+  updateGlobalVertices(pose);
 }
 
 SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
@@ -218,6 +213,31 @@ SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
                  mcRtcConfig("pose"),
                  mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
 {
+}
+
+void SurfaceContact::updateGlobalVertices(const sva::PTransformd & pose)
+{
+  graspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices_.size()) * fricPyramid_->ridgeNum());
+  vertexWithRidgeList_.clear();
+
+  const auto & globalRidgeList = fricPyramid_->calcGlobalRidgeList(pose.rotation().transpose());
+
+  for(size_t vertexIdx = 0; vertexIdx < localVertices_.size(); vertexIdx++)
+  {
+    const auto & localVertex = localVertices_[vertexIdx];
+    Eigen::Vector3d globalVertex = (sva::PTransformd(localVertex) * pose).translation();
+
+    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    {
+      const auto & globalRidge = globalRidgeList[ridgeIdx];
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      // The top 3 rows are moment, the bottom 3 rows are force.
+      graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
+    }
+
+    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
+  }
 }
 
 void SurfaceContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
@@ -255,34 +275,30 @@ GraspContact::GraspContact(const std::string & name,
                            std::optional<sva::ForceVecd> maxWrench)
 : Contact(name, std::move(maxWrench))
 {
-  // Set graspMat_ and vertexWithRidgeList_
-  FrictionPyramid fricPyramid(fricCoeff);
+  // Set graspMat_ and localRidgeList_
+  fricPyramid_ = std::make_shared<FrictionPyramid>(fricCoeff);
 
-  graspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices.size()) * fricPyramid.ridgeNum());
-  localGraspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices.size()) * fricPyramid.ridgeNum());
+  localVertices_.resize(localVertices.size());
+  std::copy(localVertices.begin(), localVertices.end(), localVertices_.begin());
 
-  for(size_t vertexIdx = 0; vertexIdx < localVertices.size(); vertexIdx++)
+  localGraspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices_.size()) * fricPyramid_->ridgeNum());
+
+  for(size_t vertexIdx = 0; vertexIdx < localVertices_.size(); vertexIdx++)
   {
-    const auto & localVertexPose = localVertices[vertexIdx];
-    sva::PTransformd globalVertexPose = localVertices[vertexIdx] * pose;
+    const auto & localVertexPose = localVertices_[vertexIdx];
     const auto & localVertex = localVertexPose.translation();
-    const auto & localRidgeList = fricPyramid.calcGlobalRidgeList(localVertexPose.rotation().transpose());
-    const auto & globalVertex = globalVertexPose.translation();
-    const auto & globalRidgeList = fricPyramid.calcGlobalRidgeList(globalVertexPose.rotation().transpose());
-
-    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    const auto & localRidgeList = fricPyramid_->calcGlobalRidgeList(localVertexPose.rotation().transpose());
+    for(size_t ridgeIdx = 0; ridgeIdx < localRidgeList.size(); ridgeIdx++)
     {
       const auto & localRidge = localRidgeList[ridgeIdx];
-      const auto & globalRidge = globalRidgeList[ridgeIdx];
-      auto colIdx =
-          static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid.ridgeNum() + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
       // The top 3 rows are moment, the bottom 3 rows are force.
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
-      graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
     }
-
-    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
   }
+
+  updateGlobalVertices(pose);
 }
 
 GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
@@ -292,6 +308,31 @@ GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
                mcRtcConfig("pose"),
                mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
 {
+}
+
+void GraspContact::updateGlobalVertices(const sva::PTransformd & pose)
+{
+  graspMat_.resize(6, static_cast<Eigen::DenseIndex>(localVertices_.size()) * fricPyramid_->ridgeNum());
+  vertexWithRidgeList_.clear();
+
+  for(size_t vertexIdx = 0; vertexIdx < localVertices_.size(); vertexIdx++)
+  {
+    const auto & localVertexPose = localVertices_[vertexIdx];
+    sva::PTransformd globalVertexPose = sva::PTransformd(localVertexPose) * pose;
+    const auto & globalVertex = globalVertexPose.translation();
+    const auto & globalRidgeList = fricPyramid_->calcGlobalRidgeList(globalVertexPose.rotation().transpose());
+
+    for(size_t ridgeIdx = 0; ridgeIdx < globalRidgeList.size(); ridgeIdx++)
+    {
+      const auto & globalRidge = globalRidgeList[ridgeIdx];
+      auto colIdx = static_cast<Eigen::DenseIndex>(vertexIdx) * fricPyramid_->ridgeNum()
+                    + static_cast<Eigen::DenseIndex>(ridgeIdx);
+      // The top 3 rows are moment, the bottom 3 rows are force.
+      graspMat_.col(colIdx) << globalVertex.cross(globalRidge), globalRidge;
+    }
+
+    vertexWithRidgeList_.push_back(VertexWithRidge(globalVertex, globalRidgeList));
+  }
 }
 
 void GraspContact::addToGUI(mc_rtc::gui::StateBuilder & gui,
