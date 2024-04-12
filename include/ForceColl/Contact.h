@@ -157,7 +157,8 @@ public:
     return "Empty";
   }
 
-  inline virtual void updateGlobalVertices(const sva::PTransformd & pose) {}
+  /** \brief Do nothing because EmptyContact does not have any vertices. */
+  inline virtual void updateGlobalVertices(const sva::PTransformd & pose) override {}
 };
 
 /** \brief Surface contact. */
@@ -203,7 +204,7 @@ public:
   }
 
   /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
-  virtual void updateGlobalVertices(const sva::PTransformd & pose);
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
 
   /** \brief Add markers to GUI.
       \param gui GUI
@@ -262,7 +263,7 @@ public:
   }
 
   /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
-  virtual void updateGlobalVertices(const sva::PTransformd & pose);
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
 
   /** \brief Add markers to GUI.
       \param gui GUI
