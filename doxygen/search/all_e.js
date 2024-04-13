@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['wrenchdistribution_48',['WrenchDistribution',['../classForceColl_1_1WrenchDistribution.html',1,'ForceColl::WrenchDistribution'],['../classForceColl_1_1WrenchDistribution.html#ab31ba33b535a762bfa6c2f4257275522',1,'ForceColl::WrenchDistribution::WrenchDistribution()']]],
-  ['wrenchdistribution_2eh_49',['WrenchDistribution.h',['../WrenchDistribution_8h.html',1,'']]],
-  ['wrenchweight_50',['wrenchWeight',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html#a511da5feb0e7b38f0de54b06d82a5852',1,'ForceColl::WrenchDistribution::Configuration']]]
+  ['vertex_47',['vertex',['../structForceColl_1_1Contact_1_1VertexWithRidge.html#a6a0d4dc74eba6f63cda9bf3343d8ffdf',1,'ForceColl::Contact::VertexWithRidge']]],
+  ['vertexwithridge_48',['VertexWithRidge',['../structForceColl_1_1Contact_1_1VertexWithRidge.html',1,'ForceColl::Contact::VertexWithRidge'],['../structForceColl_1_1Contact_1_1VertexWithRidge.html#a4a7c10b3b1df346075571e38ef25f93f',1,'ForceColl::Contact::VertexWithRidge::VertexWithRidge()']]],
+  ['vertexwithridgelist_5f_49',['vertexWithRidgeList_',['../classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64',1,'ForceColl::Contact']]],
+  ['verticesmap_50',['verticesMap',['../classForceColl_1_1SurfaceContact.html#a79937f1fa259071ec95acbe510116095',1,'ForceColl::SurfaceContact::verticesMap()'],['../classForceColl_1_1GraspContact.html#aad629a3e36e47f5bd2cf195df756e859',1,'ForceColl::GraspContact::verticesMap()']]]
 ];

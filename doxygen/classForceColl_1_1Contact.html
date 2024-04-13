@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c2c5d381af0b711bef88ca3910863d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a7c2c5d381af0b711bef88ca3910863d9">ridgeNum</a> () const</td></tr>
 <tr class="memdesc:a7c2c5d381af0b711bef88ca3910863d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of ridges.  <a href="classForceColl_1_1Contact.html#a7c2c5d381af0b711bef88ca3910863d9">More...</a><br /></td></tr>
 <tr class="separator:a7c2c5d381af0b711bef88ca3910863d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260025d91dca8a74a33b9dd75d63f135"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a260025d91dca8a74a33b9dd75d63f135">updateGlobalVertices</a> (const sva::PTransformd &amp;pose)=0</td></tr>
+<tr class="memdesc:a260025d91dca8a74a33b9dd75d63f135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update graspMat_ and vertexWithRidgeList_ according to the input pose.  <a href="classForceColl_1_1Contact.html#a260025d91dca8a74a33b9dd75d63f135">More...</a><br /></td></tr>
+<tr class="separator:a260025d91dca8a74a33b9dd75d63f135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memItemLeft" align="right" valign="top">sva::ForceVecd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">calcWrench</a> (const Eigen::VectorXd &amp;wrenchRatio, const Eigen::Vector3d &amp;momentOrigin=Eigen::Vector3d::Zero()) const</td></tr>
 <tr class="memdesc:a67be2179a2951ef3d7dc5fe90ddae002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate wrench.  <a href="classForceColl_1_1Contact.html#a67be2179a2951ef3d7dc5fe90ddae002">More...</a><br /></td></tr>
 <tr class="separator:a67be2179a2951ef3d7dc5fe90ddae002"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,8 +146,11 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af0baa85e989855b140e449067edeacc0"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix&lt; double, 6, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#af0baa85e989855b140e449067edeacc0">localGraspMat_</a></td></tr>
 <tr class="memdesc:af0baa85e989855b140e449067edeacc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local grasp matrix.  <a href="classForceColl_1_1Contact.html#af0baa85e989855b140e449067edeacc0">More...</a><br /></td></tr>
 <tr class="separator:af0baa85e989855b140e449067edeacc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf3a3c91c890b5067212755337ec12ec"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classForceColl_1_1FrictionPyramid.html">FrictionPyramid</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#acf3a3c91c890b5067212755337ec12ec">fricPyramid_</a></td></tr>
+<tr class="memdesc:acf3a3c91c890b5067212755337ec12ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friction pyramid.  <a href="classForceColl_1_1Contact.html#acf3a3c91c890b5067212755337ec12ec">More...</a><br /></td></tr>
+<tr class="separator:acf3a3c91c890b5067212755337ec12ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42bbd7a64ba424fd427481a4487ded64"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structForceColl_1_1Contact_1_1VertexWithRidge.html">VertexWithRidge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">vertexWithRidgeList_</a></td></tr>
-<tr class="memdesc:a42bbd7a64ba424fd427481a4487ded64"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of vertex with ridges.  <a href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">More...</a><br /></td></tr>
+<tr class="memdesc:a42bbd7a64ba424fd427481a4487ded64"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of global vertex with ridges.  <a href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">More...</a><br /></td></tr>
 <tr class="separator:a42bbd7a64ba424fd427481a4487ded64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9c0357af4b2ba86f4c02b3098b4ffc5"><td class="memItemLeft" align="right" valign="top">std::optional&lt; sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#ae9c0357af4b2ba86f4c02b3098b4ffc5">maxWrench_</a></td></tr>
 <tr class="memdesc:ae9c0357af4b2ba86f4c02b3098b4ffc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum wrench in local frame that can be accepted by this contact.  <a href="classForceColl_1_1Contact.html#ae9c0357af4b2ba86f4c02b3098b4ffc5">More...</a><br /></td></tr>
@@ -418,7 +424,55 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a260025d91dca8a74a33b9dd75d63f135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260025d91dca8a74a33b9dd75d63f135">&#9670;&nbsp;</a></span>updateGlobalVertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ForceColl::Contact::updateGlobalVertices </td>
+          <td>(</td>
+          <td class="paramtype">const sva::PTransformd &amp;&#160;</td>
+          <td class="paramname"><em>pose</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update graspMat_ and vertexWithRidgeList_ according to the input pose. </p>
+
+<p>Implemented in <a class="el" href="classForceColl_1_1GraspContact.html#ada558d8e8162bcbdca4656bd2e044b56">ForceColl::GraspContact</a>, <a class="el" href="classForceColl_1_1SurfaceContact.html#ad74f7888a5647786976febfceec2ca39">ForceColl::SurfaceContact</a>, and <a class="el" href="classForceColl_1_1EmptyContact.html#a7193d3a6c2b9e252bad8725d4a28da4d">ForceColl::EmptyContact</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="acf3a3c91c890b5067212755337ec12ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf3a3c91c890b5067212755337ec12ec">&#9670;&nbsp;</a></span>fricPyramid_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classForceColl_1_1FrictionPyramid.html">FrictionPyramid</a>&gt; ForceColl::Contact::fricPyramid_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Friction pyramid. </p>
+
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00129">129</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+
+</div>
+</div>
 <a id="a57146197ace2ff24f0f41cda63629852"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a57146197ace2ff24f0f41cda63629852">&#9670;&nbsp;</a></span>graspMat_</h2>
 
@@ -433,7 +487,7 @@ Public Attributes</h2></td></tr>
 
 <p>Grasp matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00120">120</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00123">123</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -451,7 +505,7 @@ Public Attributes</h2></td></tr>
 
 <p>Local grasp matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00123">123</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00126">126</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -469,7 +523,7 @@ Public Attributes</h2></td></tr>
 
 <p>Maximum wrench in local frame that can be accepted by this contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00129">129</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00135">135</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -487,7 +541,7 @@ Public Attributes</h2></td></tr>
 
 <p>Name of contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00117">117</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00120">120</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -503,9 +557,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>List of vertex with ridges. </p>
+<p>List of global vertex with ridges. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00126">126</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00132">132</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>

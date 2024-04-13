@@ -75,6 +75,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classForceColl_1_1GraspContact-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -116,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c90f2f24ed49cce520df8ee31465deb"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#a7c90f2f24ed49cce520df8ee31465deb">type</a> () const override</td></tr>
 <tr class="memdesc:a7c90f2f24ed49cce520df8ee31465deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of contact.  <a href="classForceColl_1_1GraspContact.html#a7c90f2f24ed49cce520df8ee31465deb">More...</a><br /></td></tr>
 <tr class="separator:a7c90f2f24ed49cce520df8ee31465deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada558d8e8162bcbdca4656bd2e044b56"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#ada558d8e8162bcbdca4656bd2e044b56">updateGlobalVertices</a> (const sva::PTransformd &amp;pose) override</td></tr>
+<tr class="memdesc:ada558d8e8162bcbdca4656bd2e044b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update graspMat_ and vertexWithRidgeList_ according to the input pose.  <a href="classForceColl_1_1GraspContact.html#ada558d8e8162bcbdca4656bd2e044b56">More...</a><br /></td></tr>
+<tr class="separator:ada558d8e8162bcbdca4656bd2e044b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11bf4dd07150b3c23e5e5023670e2cd7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#a11bf4dd07150b3c23e5e5023670e2cd7">addToGUI</a> (mc_rtc::gui::StateBuilder &amp;gui, const std::vector&lt; std::string &gt; &amp;category, double forceScale=<a class="el" href="namespaceForceColl_1_1constants.html#aa4fa732bf7037e49ca07e92e96b1b408">constants::defaultForceScale</a>, double fricPyramidScale=<a class="el" href="namespaceForceColl_1_1constants.html#add557c7b35363d9b2e21fd4dd368777c">constants::defaultFricPyramidScale</a>, const Eigen::VectorXd &amp;wrenchRatio=Eigen::VectorXd::Zero(0)) override</td></tr>
 <tr class="memdesc:a11bf4dd07150b3c23e5e5023670e2cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add markers to GUI.  <a href="classForceColl_1_1GraspContact.html#a11bf4dd07150b3c23e5e5023670e2cd7">More...</a><br /></td></tr>
 <tr class="separator:a11bf4dd07150b3c23e5e5023670e2cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,14 +147,11 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a09877c9f239922603a74f35daf36dd1d inherit pub_static_methods_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make shared pointer from mc_rtc configuration.  <a href="classForceColl_1_1Contact.html#a09877c9f239922603a74f35daf36dd1d">More...</a><br /></td></tr>
 <tr class="separator:a09877c9f239922603a74f35daf36dd1d inherit pub_static_methods_classForceColl_1_1Contact"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aad629a3e36e47f5bd2cf195df756e859"><td class="memItemLeft" align="right" valign="top">static std::unordered_map&lt; std::string, std::vector&lt; sva::PTransformd &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#aad629a3e36e47f5bd2cf195df756e859">verticesMap</a></td></tr>
-<tr class="memdesc:aad629a3e36e47f5bd2cf195df756e859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of grasp vertices in local coordinates.  <a href="classForceColl_1_1GraspContact.html#aad629a3e36e47f5bd2cf195df756e859">More...</a><br /></td></tr>
-<tr class="separator:aad629a3e36e47f5bd2cf195df756e859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ab19ad28fe0bb225aa84b6de133676b01"><td class="memItemLeft" align="right" valign="top">std::vector&lt; sva::PTransformd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#ab19ad28fe0bb225aa84b6de133676b01">localVertices_</a></td></tr>
+<tr class="memdesc:ab19ad28fe0bb225aa84b6de133676b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of local verticies.  <a href="classForceColl_1_1GraspContact.html#ab19ad28fe0bb225aa84b6de133676b01">More...</a><br /></td></tr>
+<tr class="separator:ab19ad28fe0bb225aa84b6de133676b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classForceColl_1_1Contact"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classForceColl_1_1Contact')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classForceColl_1_1Contact.html">ForceColl::Contact</a></td></tr>
 <tr class="memitem:a501d816a655e704a224d94ee5bb6127e inherit pub_attribs_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a501d816a655e704a224d94ee5bb6127e">name_</a></td></tr>
 <tr class="memdesc:a501d816a655e704a224d94ee5bb6127e inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of contact.  <a href="classForceColl_1_1Contact.html#a501d816a655e704a224d94ee5bb6127e">More...</a><br /></td></tr>
@@ -161,17 +162,26 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:af0baa85e989855b140e449067edeacc0 inherit pub_attribs_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix&lt; double, 6, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#af0baa85e989855b140e449067edeacc0">localGraspMat_</a></td></tr>
 <tr class="memdesc:af0baa85e989855b140e449067edeacc0 inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local grasp matrix.  <a href="classForceColl_1_1Contact.html#af0baa85e989855b140e449067edeacc0">More...</a><br /></td></tr>
 <tr class="separator:af0baa85e989855b140e449067edeacc0 inherit pub_attribs_classForceColl_1_1Contact"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf3a3c91c890b5067212755337ec12ec inherit pub_attribs_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classForceColl_1_1FrictionPyramid.html">FrictionPyramid</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#acf3a3c91c890b5067212755337ec12ec">fricPyramid_</a></td></tr>
+<tr class="memdesc:acf3a3c91c890b5067212755337ec12ec inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friction pyramid.  <a href="classForceColl_1_1Contact.html#acf3a3c91c890b5067212755337ec12ec">More...</a><br /></td></tr>
+<tr class="separator:acf3a3c91c890b5067212755337ec12ec inherit pub_attribs_classForceColl_1_1Contact"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42bbd7a64ba424fd427481a4487ded64 inherit pub_attribs_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structForceColl_1_1Contact_1_1VertexWithRidge.html">VertexWithRidge</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">vertexWithRidgeList_</a></td></tr>
-<tr class="memdesc:a42bbd7a64ba424fd427481a4487ded64 inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of vertex with ridges.  <a href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">More...</a><br /></td></tr>
+<tr class="memdesc:a42bbd7a64ba424fd427481a4487ded64 inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of global vertex with ridges.  <a href="classForceColl_1_1Contact.html#a42bbd7a64ba424fd427481a4487ded64">More...</a><br /></td></tr>
 <tr class="separator:a42bbd7a64ba424fd427481a4487ded64 inherit pub_attribs_classForceColl_1_1Contact"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9c0357af4b2ba86f4c02b3098b4ffc5 inherit pub_attribs_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">std::optional&lt; sva::ForceVecd &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#ae9c0357af4b2ba86f4c02b3098b4ffc5">maxWrench_</a></td></tr>
 <tr class="memdesc:ae9c0357af4b2ba86f4c02b3098b4ffc5 inherit pub_attribs_classForceColl_1_1Contact"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum wrench in local frame that can be accepted by this contact.  <a href="classForceColl_1_1Contact.html#ae9c0357af4b2ba86f4c02b3098b4ffc5">More...</a><br /></td></tr>
 <tr class="separator:ae9c0357af4b2ba86f4c02b3098b4ffc5 inherit pub_attribs_classForceColl_1_1Contact"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:aad629a3e36e47f5bd2cf195df756e859"><td class="memItemLeft" align="right" valign="top">static std::unordered_map&lt; std::string, std::vector&lt; sva::PTransformd &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#aad629a3e36e47f5bd2cf195df756e859">verticesMap</a></td></tr>
+<tr class="memdesc:aad629a3e36e47f5bd2cf195df756e859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of grasp vertices in local coordinates.  <a href="classForceColl_1_1GraspContact.html#aad629a3e36e47f5bd2cf195df756e859">More...</a><br /></td></tr>
+<tr class="separator:aad629a3e36e47f5bd2cf195df756e859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Grasp contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00209">209</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00224">224</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5ead1f33e9aefe6828b02e2cfafa7ce0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ead1f33e9aefe6828b02e2cfafa7ce0">&#9670;&nbsp;</a></span>GraspContact() <span class="overload">[1/2]</span></h2>
@@ -387,11 +397,59 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classForceColl_1_1Contact.html#ae2e9d6cacc46c44df619a9282c6c65ce">ForceColl::Contact</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00242">242</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00260">260</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+
+</div>
+</div>
+<a id="ada558d8e8162bcbdca4656bd2e044b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada558d8e8162bcbdca4656bd2e044b56">&#9670;&nbsp;</a></span>updateGlobalVertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ForceColl::GraspContact::updateGlobalVertices </td>
+          <td>(</td>
+          <td class="paramtype">const sva::PTransformd &amp;&#160;</td>
+          <td class="paramname"><em>pose</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update graspMat_ and vertexWithRidgeList_ according to the input pose. </p>
+
+<p>Implements <a class="el" href="classForceColl_1_1Contact.html#a260025d91dca8a74a33b9dd75d63f135">ForceColl::Contact</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab19ad28fe0bb225aa84b6de133676b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab19ad28fe0bb225aa84b6de133676b01">&#9670;&nbsp;</a></span>localVertices_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;sva::PTransformd&gt; ForceColl::GraspContact::localVertices_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of local verticies. </p>
+
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00236">236</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+
+</div>
+</div>
 <a id="aad629a3e36e47f5bd2cf195df756e859"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad629a3e36e47f5bd2cf195df756e859">&#9670;&nbsp;</a></span>verticesMap</h2>
 
@@ -414,7 +472,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Map of grasp vertices in local coordinates. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00218">218</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00233">233</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
