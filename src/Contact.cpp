@@ -168,6 +168,11 @@ EmptyContact::EmptyContact(const mc_rtc::Configuration & mcRtcConfig)
 {
 }
 
+void EmptyContact::updateGlobalVertices(const sva::PTransformd & // pose
+)
+{
+}
+
 void SurfaceContact::loadVerticesMap(const mc_rtc::Configuration & mcRtcConfig)
 {
   for(const auto & verticesConfig : mcRtcConfig)

@@ -157,8 +157,11 @@ public:
     return "Empty";
   }
 
-  /** \brief Do nothing because EmptyContact does not have any vertices. */
-  inline virtual void updateGlobalVertices(const sva::PTransformd & pose) override {}
+  /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose.
+
+      Do nothing because EmptyContact does not have any vertices.
+  */
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
 };
 
 /** \brief Surface contact. */
