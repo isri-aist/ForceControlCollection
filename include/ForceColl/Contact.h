@@ -85,6 +85,9 @@ public:
     return static_cast<int>(graspMat_.cols());
   }
 
+  /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) = 0;
+
   /** \brief Calculate wrench.
       \param wrenchRatio wrench ratio of each ridge
       \param momentOrigin moment origin
@@ -122,7 +125,10 @@ public:
   //! Local grasp matrix
   Eigen::Matrix<double, 6, Eigen::Dynamic> localGraspMat_;
 
-  //! List of vertex with ridges
+  //! Friction pyramid
+  std::shared_ptr<FrictionPyramid> fricPyramid_;
+
+  //! List of global vertex with ridges
   std::vector<VertexWithRidge> vertexWithRidgeList_;
 
   //! Maximum wrench in local frame that can be accepted by this contact
@@ -150,6 +156,9 @@ public:
   {
     return "Empty";
   }
+
+  /** \brief Do nothing because EmptyContact does not have any vertices. */
+  inline virtual void updateGlobalVertices(const sva::PTransformd & pose) override {}
 };
 
 /** \brief Surface contact. */
@@ -163,6 +172,9 @@ public:
 
   //! Map of surface vertices in local coordinates
   static inline std::unordered_map<std::string, std::vector<Eigen::Vector3d>> verticesMap;
+
+  //! List of local verticies
+  std::vector<Eigen::Vector3d> localVertices_;
 
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -191,6 +203,9 @@ public:
     return "Surface";
   }
 
+  /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
+
   /** \brief Add markers to GUI.
       \param gui GUI
       \param category category of GUI entries
@@ -216,6 +231,9 @@ public:
 
   //! Map of grasp vertices in local coordinates
   static inline std::unordered_map<std::string, std::vector<sva::PTransformd>> verticesMap;
+
+  //! List of local verticies
+  std::vector<sva::PTransformd> localVertices_;
 
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -243,6 +261,9 @@ public:
   {
     return "Grasp";
   }
+
+  /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
+  virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
 
   /** \brief Add markers to GUI.
       \param gui GUI
