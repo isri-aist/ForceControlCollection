@@ -115,7 +115,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a8309993135937bae367b01756fd15c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of contact.  <a href="classForceColl_1_1EmptyContact.html#a8309993135937bae367b01756fd15c28">More...</a><br /></td></tr>
 <tr class="separator:a8309993135937bae367b01756fd15c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7193d3a6c2b9e252bad8725d4a28da4d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1EmptyContact.html#a7193d3a6c2b9e252bad8725d4a28da4d">updateGlobalVertices</a> (const sva::PTransformd &amp;pose) override</td></tr>
-<tr class="memdesc:a7193d3a6c2b9e252bad8725d4a28da4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do nothing because <a class="el" href="classForceColl_1_1EmptyContact.html" title="Empty contact.">EmptyContact</a> does not have any vertices.  <a href="classForceColl_1_1EmptyContact.html#a7193d3a6c2b9e252bad8725d4a28da4d">More...</a><br /></td></tr>
+<tr class="memdesc:a7193d3a6c2b9e252bad8725d4a28da4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update graspMat_ and vertexWithRidgeList_ according to the input pose.  <a href="classForceColl_1_1EmptyContact.html#a7193d3a6c2b9e252bad8725d4a28da4d">More...</a><br /></td></tr>
 <tr class="separator:a7193d3a6c2b9e252bad8725d4a28da4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classForceColl_1_1Contact"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classForceColl_1_1Contact')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classForceColl_1_1Contact.html">ForceColl::Contact</a></td></tr>
 <tr class="memitem:a10f76369ed8535681f1684d0400963da inherit pub_methods_classForceColl_1_1Contact"><td class="memItemLeft" align="right" valign="top">EIGEN_MAKE_ALIGNED_OPERATOR_NEW&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1Contact.html#a10f76369ed8535681f1684d0400963da">Contact</a> (const std::string &amp;name, std::optional&lt; sva::ForceVecd &gt; maxWrench=std::nullopt)</td></tr>
@@ -268,16 +268,15 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
+<p>Update graspMat_ and vertexWithRidgeList_ according to the input pose. </p>
 <p>Do nothing because <a class="el" href="classForceColl_1_1EmptyContact.html" title="Empty contact.">EmptyContact</a> does not have any vertices. </p>
 
 <p>Implements <a class="el" href="classForceColl_1_1Contact.html#a260025d91dca8a74a33b9dd75d63f135">ForceColl::Contact</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00161">161</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
