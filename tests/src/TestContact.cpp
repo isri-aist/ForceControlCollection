@@ -142,16 +142,11 @@ TEST(TestContact, calcWrench)
 TEST(TestContact, UpdateSurfaceContactVertices)
 {
   sva::PTransformd targetPose(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5));
-  auto originalContact = std::make_shared<ForceColl::SurfaceContact>(
-      "OriginalContact", 1.0,
-      std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
-                                   Eigen::Vector3d(0.0, 0.0, 0.1)},
-      sva::PTransformd::Identity());
-  auto targetContact = std::make_shared<ForceColl::SurfaceContact>(
-      "TargetContact", 1.0,
-      std::vector<Eigen::Vector3d>{Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
-                                   Eigen::Vector3d(0.0, 0.0, 0.1)},
-      targetPose);
+  std::vector<Eigen::Vector3d> localVertices = {Eigen::Vector3d(-0.1, -0.1, 0.0), Eigen::Vector3d(-0.1, 0.1, 0.0),
+                                                Eigen::Vector3d(0.0, 0.0, 0.1)};
+  auto originalContact =
+      std::make_shared<ForceColl::SurfaceContact>("OriginalContact", 1.0, localVertices, sva::PTransformd::Identity());
+  auto targetContact = std::make_shared<ForceColl::SurfaceContact>("TargetContact", 1.0, localVertices, targetPose);
   originalContact->updateGlobalVertices(targetPose);
   EXPECT_LT((originalContact->graspMat_ - targetContact->graspMat_).norm(), 1e-8)
       << "originalContact:\n"
@@ -163,18 +158,13 @@ TEST(TestContact, UpdateSurfaceContactVertices)
 TEST(TestContact, UpdateGraspContactVertices)
 {
   sva::PTransformd targetPose(sva::RotX(M_PI / 2), Eigen::Vector3d(0.0, 0.5, -0.5));
-  auto originalContact = std::make_shared<ForceColl::GraspContact>(
-      "OriginalContact", 1.0,
-      std::vector<sva::PTransformd>{sva::PTransformd(sva::RotX(-1 * M_PI / 2), Eigen::Vector3d(-0.1, -0.1, 0.0)),
-                                    sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(-0.1, 0.1, 0.0)),
-                                    sva::PTransformd(sva::RotX(0.0), Eigen::Vector3d(0.0, 0.0, 0.1))},
-      sva::PTransformd::Identity());
-  auto targetContact = std::make_shared<ForceColl::GraspContact>(
-      "TargetContact", 1.0,
-      std::vector<sva::PTransformd>{sva::PTransformd(sva::RotX(-1 * M_PI / 2), Eigen::Vector3d(-0.1, -0.1, 0.0)),
-                                    sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(-0.1, 0.1, 0.0)),
-                                    sva::PTransformd(sva::RotX(0.0), Eigen::Vector3d(0.0, 0.0, 0.1))},
-      targetPose);
+  std::vector<sva::PTransformd> localVertices = {
+      sva::PTransformd(sva::RotX(-1 * M_PI / 2), Eigen::Vector3d(-0.1, -0.1, 0.0)),
+      sva::PTransformd(sva::RotX(M_PI / 2), Eigen::Vector3d(-0.1, 0.1, 0.0)),
+      sva::PTransformd(sva::RotX(0.0), Eigen::Vector3d(0.0, 0.0, 0.1))};
+  auto originalContact =
+      std::make_shared<ForceColl::GraspContact>("OriginalContact", 1.0, localVertices, sva::PTransformd::Identity());
+  auto targetContact = std::make_shared<ForceColl::GraspContact>("TargetContact", 1.0, localVertices, targetPose);
   originalContact->updateGlobalVertices(targetPose);
   EXPECT_LT((originalContact->graspMat_ - targetContact->graspMat_).norm(), 1e-8)
       << "originalContact:\n"
