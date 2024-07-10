@@ -188,9 +188,22 @@ SurfaceContact::SurfaceContact(const std::string & name,
                                std::optional<sva::ForceVecd> maxWrench)
 : Contact(name, std::move(maxWrench))
 {
-  // Set graspMat_ and localRidgeList_
   fricPyramid_ = std::make_shared<FrictionPyramid>(fricCoeff);
+  updateLocalVertices(localVertices);
+  updateGlobalVertices(pose);
+}
 
+SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
+: SurfaceContact(mcRtcConfig("name"),
+                 mcRtcConfig("fricCoeff"),
+                 verticesMap.at(mcRtcConfig("verticesName")),
+                 mcRtcConfig("pose"),
+                 mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
+{
+}
+
+void SurfaceContact::updateLocalVertices(const std::vector<Eigen::Vector3d> & localVertices)
+{
   localVertices_.resize(localVertices.size());
   std::copy(localVertices.begin(), localVertices.end(), localVertices_.begin());
 
@@ -207,17 +220,6 @@ SurfaceContact::SurfaceContact(const std::string & name,
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
     }
   }
-
-  updateGlobalVertices(pose);
-}
-
-SurfaceContact::SurfaceContact(const mc_rtc::Configuration & mcRtcConfig)
-: SurfaceContact(mcRtcConfig("name"),
-                 mcRtcConfig("fricCoeff"),
-                 verticesMap.at(mcRtcConfig("verticesName")),
-                 mcRtcConfig("pose"),
-                 mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
-{
 }
 
 void SurfaceContact::updateGlobalVertices(const sva::PTransformd & pose)
@@ -280,9 +282,22 @@ GraspContact::GraspContact(const std::string & name,
                            std::optional<sva::ForceVecd> maxWrench)
 : Contact(name, std::move(maxWrench))
 {
-  // Set graspMat_ and localRidgeList_
   fricPyramid_ = std::make_shared<FrictionPyramid>(fricCoeff);
+  updateLocalVertices(localVertices);
+  updateGlobalVertices(pose);
+}
 
+GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
+: GraspContact(mcRtcConfig("name"),
+               mcRtcConfig("fricCoeff"),
+               verticesMap.at(mcRtcConfig("verticesName")),
+               mcRtcConfig("pose"),
+               mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
+{
+}
+
+void GraspContact::updateLocalVertices(const std::vector<sva::PTransformd> & localVertices)
+{
   localVertices_.resize(localVertices.size());
   std::copy(localVertices.begin(), localVertices.end(), localVertices_.begin());
 
@@ -302,17 +317,6 @@ GraspContact::GraspContact(const std::string & name,
       localGraspMat_.col(colIdx) << localVertex.cross(localRidge), localRidge;
     }
   }
-
-  updateGlobalVertices(pose);
-}
-
-GraspContact::GraspContact(const mc_rtc::Configuration & mcRtcConfig)
-: GraspContact(mcRtcConfig("name"),
-               mcRtcConfig("fricCoeff"),
-               verticesMap.at(mcRtcConfig("verticesName")),
-               mcRtcConfig("pose"),
-               mcRtcConfig("maxWrench", std::optional<sva::ForceVecd>{}))
-{
 }
 
 void GraspContact::updateGlobalVertices(const sva::PTransformd & pose)
