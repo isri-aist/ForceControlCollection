@@ -206,6 +206,9 @@ public:
     return "Surface";
   }
 
+  /** \brief Update localVertices_ and localGraspMat_ according to the input pose. */
+  void updateLocalVertices(const std::vector<Eigen::Vector3d> & localVertices);
+
   /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
   virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
 
@@ -264,6 +267,9 @@ public:
   {
     return "Grasp";
   }
+
+  /** \brief Update localVertices_ and localGraspMat_ according to the input pose. */
+  void updateLocalVertices(const std::vector<sva::PTransformd> & localVertices);
 
   /** \brief Update graspMat_ and vertexWithRidgeList_ according to the input pose. */
   virtual void updateGlobalVertices(const sva::PTransformd & pose) override;
