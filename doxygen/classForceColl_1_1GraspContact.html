@@ -117,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7c90f2f24ed49cce520df8ee31465deb"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#a7c90f2f24ed49cce520df8ee31465deb">type</a> () const override</td></tr>
 <tr class="memdesc:a7c90f2f24ed49cce520df8ee31465deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of contact.  <a href="classForceColl_1_1GraspContact.html#a7c90f2f24ed49cce520df8ee31465deb">More...</a><br /></td></tr>
 <tr class="separator:a7c90f2f24ed49cce520df8ee31465deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbc3fe01dbc35233f51e16622b505fd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#acbc3fe01dbc35233f51e16622b505fd1">updateLocalVertices</a> (const std::vector&lt; sva::PTransformd &gt; &amp;localVertices)</td></tr>
+<tr class="memdesc:acbc3fe01dbc35233f51e16622b505fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update localVertices_ and localGraspMat_ according to the input pose.  <a href="classForceColl_1_1GraspContact.html#acbc3fe01dbc35233f51e16622b505fd1">More...</a><br /></td></tr>
+<tr class="separator:acbc3fe01dbc35233f51e16622b505fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada558d8e8162bcbdca4656bd2e044b56"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1GraspContact.html#ada558d8e8162bcbdca4656bd2e044b56">updateGlobalVertices</a> (const sva::PTransformd &amp;pose) override</td></tr>
 <tr class="memdesc:ada558d8e8162bcbdca4656bd2e044b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update graspMat_ and vertexWithRidgeList_ according to the input pose.  <a href="classForceColl_1_1GraspContact.html#ada558d8e8162bcbdca4656bd2e044b56">More...</a><br /></td></tr>
 <tr class="separator:ada558d8e8162bcbdca4656bd2e044b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,7 +184,7 @@ Static Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Grasp contact. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00227">227</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00230">230</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5ead1f33e9aefe6828b02e2cfafa7ce0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ead1f33e9aefe6828b02e2cfafa7ce0">&#9670;&nbsp;</a></span>GraspContact() <span class="overload">[1/2]</span></h2>
@@ -397,7 +400,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classForceColl_1_1Contact.html#ae2e9d6cacc46c44df619a9282c6c65ce">ForceColl::Contact</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00263">263</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00266">266</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -431,6 +434,26 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="acbc3fe01dbc35233f51e16622b505fd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbc3fe01dbc35233f51e16622b505fd1">&#9670;&nbsp;</a></span>updateLocalVertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ForceColl::GraspContact::updateLocalVertices </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; sva::PTransformd &gt; &amp;&#160;</td>
+          <td class="paramname"><em>localVertices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update localVertices_ and localGraspMat_ according to the input pose. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab19ad28fe0bb225aa84b6de133676b01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab19ad28fe0bb225aa84b6de133676b01">&#9670;&nbsp;</a></span>localVertices_</h2>
@@ -446,7 +469,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>List of local verticies. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00239">239</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00242">242</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>
@@ -472,7 +495,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Map of grasp vertices in local coordinates. </p>
 
-<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00236">236</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Contact_8h_source.html#l00239">239</a> of file <a class="el" href="Contact_8h_source.html">Contact.h</a>.</p>
 
 </div>
 </div>

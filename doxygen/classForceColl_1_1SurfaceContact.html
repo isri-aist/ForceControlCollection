@@ -117,6 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e71567c63009a0b455b4ff5b294b8a7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1SurfaceContact.html#a1e71567c63009a0b455b4ff5b294b8a7">type</a> () const override</td></tr>
 <tr class="memdesc:a1e71567c63009a0b455b4ff5b294b8a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get type of contact.  <a href="classForceColl_1_1SurfaceContact.html#a1e71567c63009a0b455b4ff5b294b8a7">More...</a><br /></td></tr>
 <tr class="separator:a1e71567c63009a0b455b4ff5b294b8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3574d485b9f082ffef3a8577df160b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1SurfaceContact.html#ad3574d485b9f082ffef3a8577df160b3">updateLocalVertices</a> (const std::vector&lt; Eigen::Vector3d &gt; &amp;localVertices)</td></tr>
+<tr class="memdesc:ad3574d485b9f082ffef3a8577df160b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update localVertices_ and localGraspMat_ according to the input pose.  <a href="classForceColl_1_1SurfaceContact.html#ad3574d485b9f082ffef3a8577df160b3">More...</a><br /></td></tr>
+<tr class="separator:ad3574d485b9f082ffef3a8577df160b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad74f7888a5647786976febfceec2ca39"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classForceColl_1_1SurfaceContact.html#ad74f7888a5647786976febfceec2ca39">updateGlobalVertices</a> (const sva::PTransformd &amp;pose) override</td></tr>
 <tr class="memdesc:ad74f7888a5647786976febfceec2ca39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update graspMat_ and vertexWithRidgeList_ according to the input pose.  <a href="classForceColl_1_1SurfaceContact.html#ad74f7888a5647786976febfceec2ca39">More...</a><br /></td></tr>
 <tr class="separator:ad74f7888a5647786976febfceec2ca39"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -428,6 +431,26 @@ Static Public Attributes</h2></td></tr>
 <p>Update graspMat_ and vertexWithRidgeList_ according to the input pose. </p>
 
 <p>Implements <a class="el" href="classForceColl_1_1Contact.html#a260025d91dca8a74a33b9dd75d63f135">ForceColl::Contact</a>.</p>
+
+</div>
+</div>
+<a id="ad3574d485b9f082ffef3a8577df160b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3574d485b9f082ffef3a8577df160b3">&#9670;&nbsp;</a></span>updateLocalVertices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ForceColl::SurfaceContact::updateLocalVertices </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Eigen::Vector3d &gt; &amp;&#160;</td>
+          <td class="paramname"><em>localVertices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update localVertices_ and localGraspMat_ according to the input pose. </p>
 
 </div>
 </div>
