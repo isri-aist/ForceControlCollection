@@ -1,0 +1,106 @@
+name: CI of ForceControlCollection (catkin)
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+
+  clang-format:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+      - name: Install clang-format-14
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install clang-format-14
+      - name: Run clang-format-check
+        run: |
+          ./.clang-format-check.sh
+
+  build-and-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+        build-type: [Debug, RelWithDebInfo]
+        standalone: [standalone, colcon]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set environment variables
+        run: |
+          set -e
+          set -x
+          if [ "${{ matrix.os }}" == "ubuntu-22.04" ] && \
+             [ "${{ matrix.build-type }}" == "RelWithDebInfo" ] && \
+             [ "${{ matrix.standalone }}" == "colcon" ] &&  \
+             [ "${{ github.repository_owner }}" == "isri-aist" ] && \
+             [ "${{ github.ref }}" == "refs/heads/master" ]
+          then
+            echo "UPLOAD_DOCUMENTATION=true" >> $GITHUB_ENV
+            sudo apt-get install -qq doxygen graphviz
+          else
+            echo "UPLOAD_DOCUMENTATION=false" >> $GITHUB_ENV
+          fi
+      - name: Install ROS2
+        if: matrix.standalone == 'colcon'
+        uses: jrl-umi3218/github-actions/install-dependencies@master
+        with:
+          ros: |
+            apt: ros-base
+      - name: Install Dependencies
+        uses: jrl-umi3218/github-actions/install-dependencies@master
+        with:
+          build-type: ${{ matrix.build-type }}
+          ubuntu: |
+            apt-mirrors:
+              mc-rtc:
+                cloudsmith: mc-rtc/head
+            apt: libeigen-qld-dev 
+          github: |
+            - path: isri-aist/QpSolverCollection
+      - name: Standalone build
+        if: matrix.standalone == 'standalone'
+        uses: jrl-umi3218/github-actions/build-cmake-project@master
+        with:
+          build-type: ${{ matrix.build-type }}
+          options: -DINSTALL_DOCUMENTATION=${{ env.UPLOAD_DOCUMENTATION }}
+
+      - name: Colcon build
+        if: matrix.standalone == 'colcon'
+        uses: jrl-umi3218/github-actions/build-colcon-project@master
+        with:
+          build-type: ${{ matrix.build-type }}
+          cmake-args: -DINSTALL_DOCUMENTATION=${{ env.UPLOAD_DOCUMENTATION }}
+          build-packages: force_control_collection
+          test-packages: force_control_collection
+
+      - name: Upload documentation
+        # Only run for one configuration and on origin master branch
+        if: env.UPLOAD_DOCUMENTATION == 'true'
+        run: |
+          set -e
+          set -x
+          cd ${GITHUB_WORKSPACE}/colcon_ws/src/${{ github.repository }}
+          git config --global user.name "Masaki Murooka"
+          git config --global user.email "m-murooka@aist.go.jp"
+          git remote set-url origin "https://mmurooka:${{ secrets.CI_TOKEN }}@github.com/isri-aist/ForceControlCollection"
+          git fetch --depth=1 origin gh-pages:gh-pages
+          git checkout --quiet gh-pages
+          rm -rf doxygen/ cmake/
+          cp -r ${GITHUB_WORKSPACE}/colcon_ws/build/force_control_collection/doc/html/ doxygen
+          git add doxygen
+          git_status=`git status -s`
+          if test -n "$git_status"; then
+            git commit --quiet -m "Update Doxygen HTML files from commit ${{ github.sha }}"
+            git push origin gh-pages
+          else
+            echo "Github pages documentation is already up-to-date."
+          fi
