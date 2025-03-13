@@ -66,7 +66,7 @@ jobs:
             apt: libeigen-qld-dev 
           github: |
             - path: isri-aist/QpSolverCollection
-            - options: -DENABLE_QLD=ON
+              options: -DENABLE_QLD=ON
       - name: Standalone build
         if: matrix.standalone == 'standalone'
         uses: jrl-umi3218/github-actions/build-cmake-project@master
