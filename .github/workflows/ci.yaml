@@ -64,7 +64,7 @@ jobs:
             apt-mirrors:
               mc-rtc:
                 cloudsmith: mc-rtc/head
-            apt: gtest libeigen-qld-dev libmc-rtc-dev 
+            apt: libgtest-dev libeigen-qld-dev libmc-rtc-dev 
           github: |
             - path: isri-aist/QpSolverCollection
               options: -DENABLE_QLD=ON
