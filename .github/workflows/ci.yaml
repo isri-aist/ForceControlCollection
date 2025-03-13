@@ -1,4 +1,4 @@
-name: CI of ForceControlCollection (catkin)
+name: CI of ForceControlCollection
 
 on:
   push:
