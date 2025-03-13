@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, ubuntu-24.04]
+        os: [ubuntu-22.04]
         build-type: [Debug, RelWithDebInfo]
         standalone: [standalone, colcon]
     runs-on: ${{ matrix.os }}
@@ -63,7 +63,7 @@ jobs:
             apt-mirrors:
               mc-rtc:
                 cloudsmith: mc-rtc/head
-            apt: libeigen-qld-dev 
+            apt: libeigen-qld-dev libmc-rtc-dev
           github: |
             - path: isri-aist/QpSolverCollection
               options: -DENABLE_QLD=ON
