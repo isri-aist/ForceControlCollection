@@ -47,9 +47,9 @@ sva::ForceVecd WrenchDistribution::run(const sva::ForceVecd & desiredTotalWrench
   // Resize QP if needed
   {
     int varDim = static_cast<int>(resultWrenchRatio_.size());
-    int ineqDim = std::accumulate(contactList_.begin(), contactList_.end(), 0, [](int _ineqDim, const auto & contact) {
-      return _ineqDim + (contact->maxWrench_ ? 12 : 0);
-    });
+    int ineqDim =
+        std::accumulate(contactList_.begin(), contactList_.end(), 0,
+                        [](int _ineqDim, const auto & contact) { return _ineqDim + (contact->maxWrench_ ? 12 : 0); });
     if(qpCoeff_.dim_var_ != varDim || qpCoeff_.dim_ineq_ != ineqDim)
     {
       qpCoeff_.setup(varDim, 0, ineqDim);
