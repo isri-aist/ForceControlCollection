@@ -38,6 +38,7 @@ jobs:
         run: |
           set -e
           set -x
+          echo "LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> $GITHUB_ENV 
           if [ "${{ matrix.os }}" == "ubuntu-22.04" ] && \
              [ "${{ matrix.build-type }}" == "RelWithDebInfo" ] && \
              [ "${{ matrix.standalone }}" == "colcon" ] &&  \
