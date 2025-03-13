@@ -26,7 +26,7 @@ jobs:
       main-repo: isri-aist/ForceControlCollection
       matrix: |
           {
-            "dist": ["focal"],
+            "dist": ["jammy"],
             "arch": ["amd64"]
           }
     secrets:
