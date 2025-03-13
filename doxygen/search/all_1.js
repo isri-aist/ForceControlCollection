@@ -10,7 +10,7 @@ var searchData=
   ['config_5f_8',['config_',['../classForceColl_1_1WrenchDistribution.html#a497c70da4c36ef80fa44e850c7ed085f',1,'ForceColl::WrenchDistribution']]],
   ['configuration_9',['Configuration',['../structForceColl_1_1WrenchDistribution_1_1Configuration.html',1,'ForceColl::WrenchDistribution']]],
   ['constants_2eh_10',['Constants.h',['../Constants_8h.html',1,'']]],
-  ['contact_11',['Contact',['../classForceColl_1_1Contact.html',1,'ForceColl::Contact'],['../classForceColl_1_1Contact.html#a10f76369ed8535681f1684d0400963da',1,'ForceColl::Contact::Contact()']]],
+  ['contact_11',['Contact',['../classForceColl_1_1Contact.html#a10f76369ed8535681f1684d0400963da',1,'ForceColl::Contact::Contact()'],['../classForceColl_1_1Contact.html',1,'ForceColl::Contact']]],
   ['contact_2eh_12',['Contact.h',['../Contact_8h.html',1,'']]],
   ['contact_2ehpp_13',['Contact.hpp',['../Contact_8hpp.html',1,'']]],
   ['contactlist_5f_14',['contactList_',['../classForceColl_1_1WrenchDistribution.html#a69f036186495ce77ba53736983171a6e',1,'ForceColl::WrenchDistribution']]]
