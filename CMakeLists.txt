@@ -9,49 +9,45 @@ set(PROJECT_DESCRIPTION "")
 set(CMAKE_CXX_STANDARD 17)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 set(CXX_DISABLE_WERROR ON)
-option(INSTALL_DOCUMENTATION "Generate and install the documentation" OFF)
 
-include(cmake/base.cmake)
+option(BUILD_SHARED_LIBS "Build libraries as shared as opposed to static" ON)
+option(INSTALL_DOCUMENTATION "Generate and install the documentation" OFF)
+option(USE_ROS2 "Use ROS2" OFF)
+
 project(force_control_collection LANGUAGES CXX)
 
+# Eigen
+find_package(Eigen3 REQUIRED)
+
 # mc_rtc
-add_project_dependency(mc_rtc REQUIRED)
+find_package(mc_rtc REQUIRED)
 
-if(DEFINED CATKIN_DEVEL_PREFIX)
-  set(DOXYGEN_HTML_OUTPUT html)
-  find_package(catkin REQUIRED COMPONENTS
-    roscpp
-    qp_solver_collection
-  )
-
-  # Eigen
-  find_package(Eigen3 REQUIRED)
-  include_directories(${EIGEN3_INCLUDE_DIR})
-
-  catkin_package(
-    CATKIN_DEPENDS
-    roscpp
-    qp_solver_collection
-    DEPENDS EIGEN3
-    INCLUDE_DIRS include
-    LIBRARIES ForceColl
-  )
-
-  include_directories(include ${catkin_INCLUDE_DIRS})
-  link_directories(${catkin_LIBRARY_DIRS})
+if(USE_ROS2)
+  find_package(ament_cmake REQUIRED)
+  find_package(rclcpp REQUIRED)
+  find_package(qp_solver_collection REQUIRED)
 else()
-  set(DOXYGEN_HTML_OUTPUT doxygen-html)
-  set(CATKIN_ENABLE_TESTING OFF)
-  option(BUILD_SHARED_LIBS "Build libraries as shared as opposed to static" ON)
-  add_project_dependency(qp_solver_collection REQUIRED)
+  option(BUILD_TESTING "Build test" ON)
+  find_package(qp_solver_collection REQUIRED)
 endif()
 
 add_subdirectory(src)
 
-if(BUILD_TESTING OR CATKIN_ENABLE_TESTING)
+if(BUILD_TESTING)
   add_subdirectory(tests)
 endif()
 
 if(INSTALL_DOCUMENTATION)
   add_subdirectory(doc)
 endif()
+
+if(USE_ROS2)
+  ament_export_include_directories(include)
+  ament_export_libraries(ForceColl)
+  ament_export_dependencies(
+    rclcpp
+    qp_solver_collection
+  )
+  ament_export_targets(ForceColl)
+  ament_package()
+endif() 

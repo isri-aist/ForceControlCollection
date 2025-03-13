@@ -1,4 +1,4 @@
-<package format="2">
+<package format="3">
   <name>force_control_collection</name>
   <version>0.2.0</version>
   <description>
@@ -10,12 +10,16 @@
   <url>http://ros.org/wiki/force_control_collection</url>
   <author>Masaki Murooka</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>roscpp</depend>
+  <depend>rclcpp</depend>
   <depend>qp_solver_collection</depend>
 
   <build_depend>eigen</build_depend>
 
   <doc_depend>doxygen</doc_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>
