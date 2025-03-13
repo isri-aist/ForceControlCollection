@@ -1,3 +1,5 @@
+This is the branch for ROS2; use the [ros1](https://github.com/isri-aist/ForceControlCollection/tree/ros1) branch for ROS1.
+
 # [ForceControlCollection](https://github.com/isri-aist/ForceControlCollection)
 Force control functions for robot control
 
