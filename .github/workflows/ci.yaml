@@ -68,6 +68,9 @@ jobs:
           github: |
             - path: isri-aist/QpSolverCollection
               options: -DENABLE_QLD=ON
+      - name: Checkout repository code
+        if: matrix.standalone == 'standalone'
+        uses: actions/checkout@v3
       - name: Standalone build
         if: matrix.standalone == 'standalone'
         uses: jrl-umi3218/github-actions/build-cmake-project@master
