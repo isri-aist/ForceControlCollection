@@ -46,7 +46,6 @@ if(NOT USE_ROS2)
 \@PACKAGE_INIT\@
 
 include(\"\${CMAKE_CURRENT_LIST_DIR}/\@PROJECT_NAME\@Targets.cmake\")
-include(\"\${CMAKE_CURRENT_LIST_DIR}/qp_solver_options.cmake\")
 
 set(\@PROJECT_NAME\@_LIBRARIES \@PROJECT_NAME\@::ForceColl)
 ")
