@@ -95,6 +95,6 @@ if(USE_ROS2)
     rclcpp
     qp_solver_collection
   )
-  ament_export_targets(ForceColl)
+  ament_export_targets(${PROJECT_NAME})
   ament_package()
 endif() 
