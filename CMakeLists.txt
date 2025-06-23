@@ -15,6 +15,7 @@ option(INSTALL_DOCUMENTATION "Generate and install the documentation" OFF)
 option(USE_ROS2 "Use ROS2" OFF)
 
 project(force_control_collection LANGUAGES CXX)
+include(GNUInstallDirs) # For CMAKE_INSTALL_LIBDIR
 
 # Eigen
 find_package(Eigen3 REQUIRED)
@@ -97,4 +98,4 @@ if(USE_ROS2)
   )
   ament_export_targets(${PROJECT_NAME})
   ament_package()
-endif() 
+endif()
