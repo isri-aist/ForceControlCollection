@@ -41,24 +41,14 @@ if(NOT USE_ROS2)
     NAMESPACE ${PROJECT_NAME}::
     )
 
-  # Write initial config cmake file
-  file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/Config.cmake.in"
-"
-\@PACKAGE_INIT\@
-
-include(\"\${CMAKE_CURRENT_LIST_DIR}/\@PROJECT_NAME\@Targets.cmake\")
-
-set(\@PROJECT_NAME\@_LIBRARIES \@PROJECT_NAME\@::ForceColl)
-")
-
   include(CMakePackageConfigHelpers)
-  # generate the config file that is includes the exports
-  configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/Config.cmake.in
+  configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-    INSTALL_DESTINATION "lib/cmake/${PROJECT_NAME}"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     NO_SET_AND_CHECK_MACRO
     NO_CHECK_REQUIRED_COMPONENTS_MACRO
-    )
+  )
 
   # generate the version file for the config file
   # Extract version numbers from package.xml
